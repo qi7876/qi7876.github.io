@@ -6,7 +6,7 @@ import { getPageInfo } from '@/utils/page'
 const { currentLang, getLocalizedPath, isPost } = getPageInfo(Astro.url.pathname)
 const { title, subtitle, i18nTitle } = themeConfig.site
 
-const currentUI = ui[currentLang as keyof typeof ui]
+const currentUI = ui[currentLang as keyof typeof ui] ?? {}
 const headerTitle = i18nTitle ? currentUI.title : title
 const headerSubtitle = i18nTitle ? currentUI.subtitle : subtitle
 
@@ -16,14 +16,16 @@ const SubtitleTag = isPost ? 'div' : 'h2'
 
 <header
   class:list={[
-    isPost ? 'mb-10.8' : 'mb-10.5',
+    isPost
+    ? 'mb-10.8'
+    : 'mb-10.5',
     'lg:(uno-desktop-column top-20) cjk:tracking-0.02em',
   ]}
 >
   <TitleTag
     class:list={[
       isPost
-        ? `mb-2.8 mt-3.2 text-5.375 c-secondary lg:(mb-1.8 mt-0 text-9 c-primary)`
+        ? `mb-2.8 mt-3 text-5.375 c-secondary lg:(mb-1.8 mt-0 text-9 c-primary)`
         : `mb-1.8 w-75% text-8 c-primary lg:(w-full text-9)`,
       'font-bold font-title',
     ]}

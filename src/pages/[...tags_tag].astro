@@ -1,7 +1,7 @@
 ---
 import PostList from '@/components/PostList.astro'
+import TagList from '@/components/TagList.astro'
 import { defaultLocale, moreLocales } from '@/config'
-import { getTagPath } from '@/i18n/path'
 import Layout from '@/layouts/Layout.astro'
 import { getAllTags, getPostsByTag, getTagSupportedLangs } from '@/utils/content'
 
@@ -44,25 +44,19 @@ const supportedLangs = await getTagSupportedLangs(tag)
 
 <Layout supportedLangs={supportedLangs}>
   <!-- Decorative Line -->
-  <div class="uno-decorative-line"></div>
-  <!-- Tags List -->
-  <div class="uno-tags-wrapper">
-    {allTags.map(tagName => (
-      <a
-        href={getTagPath(tagName, lang)}
-        class={`uno-tags-style ${
-          tag === tagName
-            ? 'border-secondary/80 text-primary'
-            : ''
-        }`}
-      >
-        {tagName}
-      </a>
-    ))}
-  </div>
+  <div class="uno-decorative-line" />
+  <!-- Tag List -->
+  <TagList
+    tags={allTags}
+    currentTag={tag}
+    lang={lang}
+  />
 
   <!-- Posts List -->
   <div class="mt-10.5">
-    <PostList posts={posts} lang={lang} />
+    <PostList
+      posts={posts}
+      lang={lang}
+    />
   </div>
 </Layout>
