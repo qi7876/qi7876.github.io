@@ -44,7 +44,7 @@ Projects I consider quite interesting:
 1. **School of Computer Science and Engineering, UESTC** - Research Assistant in Prof. Jingwei Li's group, 2024.10–2025.5;
 1. **School of Artificial Intelligence, Shanghai Jiao Tong University** - Research Assistant in Prof. Zhipeng Zhang's group, 2025.7–Present.
 
-## You can find me here!
+## You can find me here
 
 Email: <qi7876@outlook.com>
 Github: [@qi7876](https://github.com/qi7876)
