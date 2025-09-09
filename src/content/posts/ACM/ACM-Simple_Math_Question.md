@@ -7,8 +7,6 @@ draft: false
 description: 一道和余数有关的ACM问题。
 ---
 
-# UESTC CDOJ Lutece 1513 简单的数学题
-
 ## 问题
 
 ### Description
