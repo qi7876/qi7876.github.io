@@ -125,10 +125,10 @@ export const themeConfig: ThemeConfig = {
     verification: {
       // google search console
       // https://search.google.com/search-console
-      google: '',
+      google: 'EdCgE-iVyMvAYqG5QjAr0NVlM-ts2wzMlvMkVcNRqt8',
       // bing webmaster tools
       // https://www.bing.com/webmasters
-      bing: '',
+      bing: '574178E2541626E1A185DCE13FD2DB17',
       // yandex webmaster
       // https://webmaster.yandex.com
       yandex: '',
@@ -137,8 +137,8 @@ export const themeConfig: ThemeConfig = {
       baidu: '',
     },
     // google analytics
-    // https://analytics.google.com
-    googleAnalyticsID: '',
+    // https://knalytics.google.com
+    googleAnalyticsID: 'G-NS394GRCQY',
     // umami analytics
     // https://cloud.umami.is
     umamiAnalyticsID: '',
