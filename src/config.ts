@@ -6,9 +6,9 @@ export const themeConfig: ThemeConfig = {
     // site title
     title: 'Qi\'s Blog',
     // site subtitle
-    subtitle: 'Think different.',
+    subtitle: 'Work & Life',
     // site description
-    description: 'Hi，这里是Qi的个人博客！',
+    description: 'It just a blog.',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
     i18nTitle: false, // true, false
     // author name
@@ -128,7 +128,7 @@ export const themeConfig: ThemeConfig = {
       google: 'EdCgE-iVyMvAYqG5QjAr0NVlM-ts2wzMlvMkVcNRqt8',
       // bing webmaster tools
       // https://www.bing.com/webmasters
-      bing: '574178E2541626E1A185DCE13FD2DB17',
+      bing: '',
       // yandex webmaster
       // https://webmaster.yandex.com
       yandex: '',
