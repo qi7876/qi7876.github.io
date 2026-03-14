@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg { fill: #f2f2f2; }
+    .text { fill: #222124; }
+
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #222124; }
+      .text { fill: #f2f2f2; }
+    }
+  </style>
+
+  <rect class="bg" width="64" height="64" rx="18"/>
+  <text
+    class="text"
+    x="50%"
+    y="50%"
+    dominant-baseline="middle"
+    text-anchor="middle"
+    font-size="50"
+    font-family="Georgia, serif"
+    font-weight="900"
+    letter-spacing="-0.02em"
+    dy="0.05"
+  >Q</text>
+</svg>
