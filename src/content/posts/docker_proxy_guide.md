@@ -1,5 +1,5 @@
 ---
-title: Docker Proxy设置指北
+title: Docker Proxy Guide
 published: 2024-03-20
 tags:
   - linux

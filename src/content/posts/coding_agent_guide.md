@@ -1,5 +1,5 @@
 ---
-title: Coding Agent使用指南
+title: Coding Agent Guide
 published: 2026-01-13
 tags:
   - tool

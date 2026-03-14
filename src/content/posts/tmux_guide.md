@@ -1,5 +1,5 @@
 ---
-title: Tmux使用指北
+title: Tmux Guide
 published: 2024-01-03
 tags:
   - tool

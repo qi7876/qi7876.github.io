@@ -1,5 +1,5 @@
 ---
-title: 什么是知识
+title: 知识点vs知识
 published: 2025-11-15
 tags:
   - reflection

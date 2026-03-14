@@ -1,5 +1,5 @@
 ---
-title: 深度学习开发环境一条龙
+title: Linux下的深度学习开发环境
 published: 2025-09-20
 tags:
   - linux
