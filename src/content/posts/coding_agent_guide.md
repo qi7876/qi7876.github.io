@@ -33,34 +33,33 @@ draft: false
 
 ### 安装前置
 
-要使用Codex，我们需要先安装bun和node
+要使用Codex，我们需要先安装node
 
 Windows：
 
 ```powershell
 winget install -e --id OpenJS.NodeJS
-winget install -e --id Oven-sh.Bun
 ```
 
 macOS：
 
 ```bash
-brew install bun node
+brew install node
 ```
 
 linux：
 
-根据具体的包管理器，安装bun和node
+根据具体的包管理器，安装node
 
 ### 安装Codex
 
-安装完bun和node后，我们就可以安装Codex了：
+安装完node后，我们就可以安装Codex了：
 
 ```bash
-bun install -g @openai/codex
+npm install -g @openai/codex
 ```
 
-事实上我们并没有使用到node，但我过去在使用Codex时，遇到过需要node来作为运行时的情况，所以我还是推荐把node也安装上。
+此教程原先使用了bun来安装codex，但根据其他用户报告，以及我个人的使用体验，使用bun安装的codex可能出现内存泄露，而npm安装的codex不存在这个问题。只能说bun还得练啊，碰到edge case就跪了，目前还是用更稳定的node/npm吧。
 
 ### 配置Codex
 
