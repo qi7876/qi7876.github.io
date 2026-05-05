@@ -1,5 +1,5 @@
 ---
-title: Some advice to anyone starting a PhD in ML.
+title: Some advice to anyone starting a PhD in ML
 published: 2026-04-05
 tags:
   - life
