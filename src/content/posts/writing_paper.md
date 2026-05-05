@@ -1,6 +1,6 @@
 ---
 title: Writing Paper
-published:
+published: 2026-05-01
 tags:
   - reflection
 draft: false
