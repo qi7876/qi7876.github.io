@@ -5,9 +5,7 @@ tags:
   - artificial-intelligence
 draft: false
 ---
-低维流形，一个被滥用的概念，通常会被用来包装理论装逼。
-
-从Reddit上看到了一个10年前非常通俗易懂的解释：
+低维流形，一个被滥用的概念。最近在Reddit上看到了一个10年前非常通俗易懂的解释：
 
 >Imagine your patterned bedsheets. They've got a nice plaid grid look to them, very easy to predict what the next few centimeters of material look like.
 >
