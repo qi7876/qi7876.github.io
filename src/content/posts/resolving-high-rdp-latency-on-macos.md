@@ -9,6 +9,7 @@ draft: false
 ## 最新编辑
 
 微软似乎已经为 macOS 上的 Windows App 带来了 UDP 功能，可以在设置中看到。
+
 ## 高延迟背后的两个问题
 
 macOS上，Windows App的时延很高，远不如Windows上RDP的效果，这背后有两个问题：
