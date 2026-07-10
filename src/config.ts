@@ -4,11 +4,11 @@ export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: 'QiArchive',
+    title: 'qi-areas',
     // site subtitle
-    subtitle: 'stay curious',
+    subtitle: 'knowledge in progress',
     // site description
-    description: 'The blog of Qi.',
+    description: 'A public extension of Qi\'s personal workspace, documenting evolving notes on AI, software, systems, research, and everyday life.',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
     i18nTitle: false, // true, false
     // author name
