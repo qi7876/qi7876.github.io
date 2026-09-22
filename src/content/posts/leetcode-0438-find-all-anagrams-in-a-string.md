@@ -1,8 +1,6 @@
 ---
 title: Leetcode 0438 find-all-anagrams-in-a-string
 published: 2024-03-18
-tags:
-  - algorithm
 draft: false
 ---
 这里给出一个比较通用的解法。

@@ -1,8 +1,6 @@
 ---
 title: 25.10 StreamingVLM
 published: 2025-12-02
-tags:
-  - artificial-intelligence
 draft: false
 ---
 训练与推理的对齐

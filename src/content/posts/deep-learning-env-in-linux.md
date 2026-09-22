@@ -1,10 +1,6 @@
 ---
 title: Linux下的深度学习开发环境
 published: 2025-09-20
-tags:
-  - linux
-  - windows
-  - artificial-intelligence
 draft: false
 ---
 这篇文章没有详细的介绍各个工具该如何使用，只是想让你知道，原来还有这些更现代更好用的工具。在了解后，你可以使用AI或者阅读其他人的教程来深入学习这些工具，熟练掌握这些工具将会很大的助力你的科研/工作。

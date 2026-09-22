@@ -1,8 +1,6 @@
 ---
 title: 栈（Stack）和堆（Heap）
 published: 2025-04-05
-tags:
-  - algorithm
 draft: false
 ---
 ## 栈

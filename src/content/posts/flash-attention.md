@@ -1,8 +1,6 @@
 ---
 title: Flash Attention
 published: 2026-03-29
-tags:
-  - artificial-intelligence
 draft: false
 ---
 Flash Attention没有改变Attention的算法复杂度，但通过底层算法优化，将数据分块并在片上完成计算，大幅降低了显存占用和显存IO开销。

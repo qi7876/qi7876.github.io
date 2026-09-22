@@ -9,6 +9,7 @@
     "build": "astro check && astro build && pnpm apply-lqip",
     "preview": "astro preview",
     "astro": "astro",
+    "test": "astro build && tsx --test tests/**/*.test.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "new-post": "tsx scripts/new-post.ts",

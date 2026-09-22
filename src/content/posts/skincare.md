@@ -1,8 +1,6 @@
 ---
 title: 护肤
 published: 2025-06-21
-tags:
-  - life
 draft: true
 ---
 精简护肤，不要什么都往脸上抹  

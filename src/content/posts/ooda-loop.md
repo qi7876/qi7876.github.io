@@ -1,8 +1,6 @@
 ---
 title: OODA循环
 published: 2025-10-30
-tags:
-  - reflection
 draft: false
 ---
 ## 4个阶段

@@ -1,8 +1,6 @@
 ---
 title: Einsum Operator
 published: 2025-04-08
-tags:
-  - artificial-intelligence
 draft: false
 ---
 ## einsum是什么

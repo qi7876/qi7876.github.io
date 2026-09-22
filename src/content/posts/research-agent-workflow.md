@@ -1,9 +1,6 @@
 ---
 title: Research Agent Workflow
 published: 2026-02-21
-tags:
-  - artificial-intelligence
-  - reflection
 draft: false
 ---
 诸如Claude Code、Codex这样的Coding Agent其实可以拿来做很多Coding之外的工作，比如科研。以我个人常用的Codex为例，我会用它来辅助我写代码、读论文、调研、写论文等等其他工作。注意我这里用的是「辅助」一词，这些事还是需要以你个人为主体的，全权交给Codex会让你迅速失去对项目的掌握，就像Vibe Coding一样，它只适合做Toy Project，不适合做严肃的工作。你可以用一句话来提醒自己：如果你不知道AI在干什么，那就不要让它做。

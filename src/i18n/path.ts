@@ -3,21 +3,6 @@ import { allLocales, base, defaultLocale } from '@/config'
 import { getLangFromPath, getNextGlobalLang } from '@/i18n/lang'
 
 /**
- * Get path to a specific tag page with language support
- *
- * @param tagName Tag name
- * @param lang Current language code
- * @returns Path to tag page
- */
-export function getTagPath(tagName: string, lang: Language): string {
-  const tagPath = lang === defaultLocale
-    ? `/tags/${tagName}/`
-    : `/${lang}/tags/${tagName}/`
-
-  return base ? `${base}${tagPath}` : tagPath
-}
-
-/**
  * Get path to a specific post page with language support
  *
  * @param slug Post slug

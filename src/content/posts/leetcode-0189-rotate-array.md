@@ -1,8 +1,6 @@
 ---
 title: Leetcode 0189 rotate-array
 published: 2025-05-12
-tags:
-  - algorithm
 draft: false
 ---
 讲讲就地更新的两个思路：

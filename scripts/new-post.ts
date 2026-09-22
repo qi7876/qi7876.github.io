@@ -30,8 +30,6 @@ const content = `---
 title: ${baseName}
 published: ${new Date().toISOString()}
 updated: ''
-tags:
-  - Tag
 draft: false
 pin: 0
 toc: ${themeConfig.global.toc}

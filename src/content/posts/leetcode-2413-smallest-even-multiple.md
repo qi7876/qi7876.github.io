@@ -1,8 +1,6 @@
 ---
 title: Leetcode 2413 smallest-even-multiple
 published: 2024-02-14
-tags:
-  - algorithm
 draft: false
 ---
 很简单，无需使用GCD算法。

@@ -1,8 +1,6 @@
 ---
 title: 信息论 The First Law of Complexodynamics
 published: 2025-11-02
-tags:
-  - math
 draft: false
 ---
 ## 信息量和熵
