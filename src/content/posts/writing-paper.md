@@ -1,8 +1,6 @@
 ---
 title: 论文叙事
 published: 2026-05-01
-tags:
-  - reflection
 draft: false
 ---
 在B站看到的一个博士生的视频

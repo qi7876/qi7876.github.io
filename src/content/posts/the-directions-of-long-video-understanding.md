@@ -1,8 +1,6 @@
 ---
 title: 长视频理解的发展方向
 published: 2026-04-19
-tags:
-  - artificial-intelligence
 draft: false
 ---
 之前一直在看流式视频理解相关的论文，长视频理解Agent和Token Compression也了解了一些，昨晚在小红书上看到了一篇讨论长视频理解的帖子，poster给目前的方向分成了4类，在这里转载一下，后面系统完善一下：

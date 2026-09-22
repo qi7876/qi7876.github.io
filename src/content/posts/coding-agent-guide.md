@@ -1,9 +1,6 @@
 ---
 title: Coding Agent Guide
 published: 2026-01-13
-tags:
-  - tool
-  - artificial-intelligence
 draft: false
 ---
 现在是一个Coding Agent井喷式爆发的时期，网络上出现了开源的、闭源的各种各样的Coding Agent，再加之各路KOL的营销炒作，令人眼花缭乱。那么我们该如何挑选一个省心又好用的Coding Agent呢？

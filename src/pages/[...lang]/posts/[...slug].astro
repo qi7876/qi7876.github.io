@@ -4,7 +4,6 @@ import type { Language } from '@/i18n/config'
 import { getCollection, render } from 'astro:content'
 import Comment from '@/components/Comment/Index.astro'
 import PostDate from '@/components/PostDate.astro'
-import TagList from '@/components/TagList.astro'
 import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
 import { allLocales } from '@/config'
@@ -120,14 +119,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <Content />
       <!-- Copyright -->
       <div id="post-copyright" />
-      <!-- Tag List -->
-      {post.data.tags?.length > 0 && (
-        <div class="mt-12.6 uno-decorative-line" />
-        <TagList
-          tags={post.data.tags}
-          lang={currentLang}
-        />
-      )}
       <!-- Comment -->
       <Comment />
     </div>

@@ -1,9 +1,6 @@
 ---
 title: Raycast Technical Report
 published: 2026-05-15
-tags:
-  - coding
-  - architecture
 draft: false
 ---
 Source: https://www.raycast.com/blog/a-technical-deep-dive-into-the-new-raycast

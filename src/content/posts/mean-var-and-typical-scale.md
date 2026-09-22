@@ -1,9 +1,6 @@
 ---
 title: Mean, Var and Typical Scale
 published: 2026-03-08
-tags:
-  - math
-  - artificial-intelligence
 draft: false
 ---
 标准差衡量了一个变量的典型大小（数量级）

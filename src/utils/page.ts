@@ -34,10 +34,6 @@ export function isPostPage(path: string) {
   return matchPageType(path, 'posts')
 }
 
-export function isTagPage(path: string) {
-  return matchPageType(path, 'tags')
-}
-
 export function isAboutPage(path: string) {
   return matchPageType(path, 'about')
 }
@@ -47,14 +43,12 @@ export function getPageInfo(path: string) {
   const currentLang = getLangFromPath(path)
   const isHome = isHomePage(path)
   const isPost = isPostPage(path)
-  const isTag = isTagPage(path)
   const isAbout = isAboutPage(path)
 
   return {
     currentLang,
     isHome,
     isPost,
-    isTag,
     isAbout,
     getLocalizedPath: (targetPath: string) =>
       getLocalizedPath(targetPath, currentLang),

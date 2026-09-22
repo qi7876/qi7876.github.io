@@ -1,8 +1,6 @@
 ---
 title: Leetcode 0239 sliding-window-maximum
 published: 2024-03-25
-tags:
-  - algorithm
 draft: false
 ---
 我们通过维护一个双端队列来解决这道题目。

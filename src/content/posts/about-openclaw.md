@@ -1,9 +1,6 @@
 ---
 title: 关于OpenClaw
 published: 2026-03-08
-tags:
-  - random-thought
-  - artificial-intelligence
 draft: false
 ---
 这个世界已经疯了，懂计算机的、不懂计算机的、普通网民、自媒体、KOL、公众号等等，全都在疯狂炒作营销OpenClaw，整个世界陷入了一场对OpenClaw的巨大狂欢之中，每个人都在想方设法的用上OpenClaw，但又有多少人思考过自己要用它来解决什么问题？

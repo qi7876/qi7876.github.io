@@ -1,8 +1,6 @@
 ---
 title: Leetcode 0056 merge-intervals
 published: 2026-06-28
-tags:
-  - algorithm
 draft: false
 ---
 思路比较简单：

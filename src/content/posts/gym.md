@@ -1,8 +1,6 @@
 ---
 title: 健身三分化计划
 published: 2025-09-04
-tags:
-  - life
 draft: false
 ---
 Source: 凯圣王

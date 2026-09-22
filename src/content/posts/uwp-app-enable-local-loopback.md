@@ -1,8 +1,6 @@
 ---
 title: UWP应用开启本地回环
 published: 2023-11-03
-tags:
-  - windows
 draft: false
 ---
 Windows默认情况下不允许uwp应用访问本地回环，这就导致uwp应用用不了代理，还好我们可以手动开启uwp应用的本地回环访问权限。

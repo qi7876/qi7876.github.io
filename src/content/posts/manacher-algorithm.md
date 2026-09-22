@@ -1,8 +1,6 @@
 ---
 title: Manacher 算法解决最大回文字串
 published: 2025-03-02
-tags:
-  - algorithm
 draft: false
 ---
 Manacher 算法是一种线性时间复杂度的算法，专门用于解决最长回文子串问题。它利用了回文串的对称性，以及已知的回文子串信息，来避免重复计算。  

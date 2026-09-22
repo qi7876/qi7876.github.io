@@ -1,8 +1,6 @@
 ---
 title: 24.05 Video-MME
 published: 2025-09-13
-tags:
-  - artificial-intelligence
 draft: false
 ---
 这是一篇引用过千的经典Video MLLM Benchmark，我们一起来看看

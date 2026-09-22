@@ -1,8 +1,6 @@
 ---
 title: Some advice to anyone starting a PhD in ML
 published: 2026-04-05
-tags:
-  - life
 draft: false
 ---
 Some advice to anyone starting a PhD in ML, or things that I heard from more experienced researchers and I tried to follow:
