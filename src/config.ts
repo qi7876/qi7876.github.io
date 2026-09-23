@@ -119,7 +119,7 @@ export const themeConfig: ThemeConfig = {
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   seo: {
     // @twitter ID
-    twitterID: '@qi7876',
+    twitterID: '',
     // site verification
     verification: {
       // google search console
@@ -170,11 +170,7 @@ export const themeConfig: ThemeConfig = {
       },
       {
         name: 'Email',
-        url: 'qi7876@gmail.com',
-      },
-      {
-        name: 'X',
-        url: 'https://x.com/qi7876',
+        url: 'qi7876@icloud.com',
       },
     ],
     // year of website start
