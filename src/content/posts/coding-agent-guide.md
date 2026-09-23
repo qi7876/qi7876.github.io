@@ -3,6 +3,8 @@ title: Coding Agent Guide
 published: 2026-01-13
 draft: false
 ---
+**2026-09-23 Update**：按照codex cli 0.156.0版本更新了一些内容
+
 现在是一个Coding Agent井喷式爆发的时期，网络上出现了开源的、闭源的各种各样的Coding Agent，再加之各路KOL的营销炒作，令人眼花缭乱。那么我们该如何挑选一个省心又好用的Coding Agent呢？
 
 ## TL;DR
@@ -16,6 +18,8 @@ draft: false
 
 对我个人而言，Codex是绝对的最佳选择。
 
+**2026-09-23 Update**：现在可以加一个dsh，deepseek v4.1 flash的性能速度以及价格很均衡，处理一些简单机械任务很不错
+
 ## 其他Coding Agent
 
 除了Claude Code和Codex，市面上还有其他许多Coding Agent，例如Kimi CLI、Gemini CLI等等。
@@ -23,6 +27,8 @@ draft: false
 这些Coding Agent在价格和免费额度上可能有一些优势，能力上也许能做到Claude Code和Codex的六七成，但这是建立在使用官方API的基础上的。而当我们使用中转站API，Codex逆向能做到极低的价格，性价比极高，再加上Codex本身的成熟设计，那我们已经完全没有理由使用其他任何Coding Agent了。
 
 至于Github Copilot，除了学生包免费之外已经基本没有什么使用的理由了，能力和Claude Code、Codex差太多，不建议使用。
+
+**2026-09-23 Update**：最近发生了ZCode、Grok等Agent自动上传整个Code repo的恶性偷数据事件，提醒尽量使用Codex、dsh、Pi这种开源Agent，或者Claude Code这种使用人数极大的闭源Agent。
 
 ## 安装与配置
 
@@ -48,6 +54,8 @@ linux：
 
 根据具体的包管理器，安装node
 
+**2026-09-23 Update**：实际上并不需要安装node，只是使用npm下载一下binary而已，你甚至可以直接用官方的shell脚本安装。
+
 ### 安装Codex
 
 安装完node后，我们就可以安装Codex了：
@@ -69,6 +77,8 @@ npm install -g @openai/codex
 对于中转站，我推荐ikuncode，低价且稳定，aff链接：https://api.ikuncode.cc/register?aff=wAM2
 
 如果你也想使用这个中转站，可以考虑点击我的aff链接给我一些邀请奖励。
+
+**2026-09-23 Update**：实际上并没有邀请奖励hh
 
 #### Codex config
 
@@ -105,6 +115,50 @@ network_access = true
 
 注意你需要在`~/.codex/auth.json`文件中放入你自己的API Key。
 
+**2026-09-23 Update**：下面的config只适用于codex cli 0.156.0及以上版本。
+
+我主要做出了以下几个改动：
+
+1. 模型更新到最新
+1. 调整reasoning effort至medium，平衡性能与价格
+1. 关闭sandbox，改用YOLO模式。现在的模型已经基本不会做危险行为了，sandbox应该用在agent训练中，而不是在实际使用中浪费人的时间，可以回忆一下你是不是无脑approve。
+1. 增加了timeout设置，减少重连现象
+1. 一些外观上的调整，个人喜好，你可以随意自定义
+
+```toml
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
+web_search = "live"
+plan_mode_reasoning_effort = "medium"
+sandbox_mode = "danger-full-access"
+approval_policy = "never"
+service_tier = "default"
+
+model_provider = "api"
+
+[model_providers.api]
+name = "api"
+base_url = "https://api.ikuncode.cc/v1"
+wire_api = "responses"
+requires_openai_auth = true
+stream_idle_timeout_ms = 1200000
+
+[tui]
+theme = "ansi"
+status_line = ["model-with-reasoning", "five-hour-limit", "weekly-limit", "git-branch"]
+status_line_use_colors = false
+session_picker_view = "dense"
+screen_reader_detection_done = true
+
+[tui.effects]
+starfield = false
+shimmer = false
+welcome = false
+effort = false
+progress = true
+title = false
+```
+
 ## 实战
 
 安装和配置完成后，我们就可以在项目中使用Codex了，随意以一个项目为例，我们运行命令进入Codex。
@@ -112,6 +166,8 @@ network_access = true
 ![](attachments/Pasted%20image%2020260310114517.png)
 
 在首次进入一个项目时，Codex会让我们确定一些基础的权限，对于有version control的项目，可以直接给予Codex编辑和运行部分命令的权限，运行其他命令仍然需要你手动同意。当然，为了最高的权限控制，你也可以让Codex的每次修改文件和运行命令都要经过你的同意。
+
+**2026-09-23 Update**：别浪费时间
 
 ![](attachments/Pasted%20image%2020260310113843.png)
 
@@ -172,3 +228,7 @@ Codex能帮你从机械重复的Coding中解放出来，让你有更多时间和
 而相反的是，我在学院开设的工程实践创新课程上，发现大部分同学对于计算机的理解只能说是惨不忍睹，AI能力在不断强化，导致他们遇到问题时下意识就不思考并去询问AI来解决问题，并且毫无输出，导致自己的能力一直得不到提升，在日后每次遇到相似问题时都会浪费大量的时间来解决，并且由于AI回答带来的信息茧房，他们很难接触到最新的、更易用的工具链。像micromamba、uv、docker这些现代化开发工具，能极大的加速代码开发流程，但我至今没看到身边有多少人在使用，更多还是业界和开源项目中先用起来，要经过很长时间才能扩散到整个社群。
 
 AI时代，愿我们都能保持好奇、独立思考，并不断输出。
+
+**2026-09-23 Update**：不要滥用AI！不要滥用AI！不要滥用AI！这会毁了你的工程素养和系统思维。你应该在学习时独立自主的探索，遇到不懂的可以询问AI，但绝不要让AI帮你做hw、lab、proj！
+
+然后在实习与工作中和Agent结对推进，继续提升自己的能力。当你认为自己已经对计算机系统、GPU编程模型等等你所工作的领域了如指掌后，你才应该化身leader指挥agent。
