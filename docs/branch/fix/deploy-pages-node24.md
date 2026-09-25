@@ -12,5 +12,5 @@ Update the GitHub Pages deployment action to a release that declares Node 24, fo
 
 ## Next steps
 
-- Verify the workflow on GitHub Actions after the branch is pushed.
+- Verify the deployment workflow on GitHub Actions after merging to `main`.
 - Remove this branch note after squash merge.
