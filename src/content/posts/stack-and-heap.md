@@ -3,6 +3,8 @@ title: 栈（Stack）和堆（Heap）
 published: 2025-04-05
 draft: false
 ---
+2026-09-25：学了rust一下通透了
+
 ## 栈
 
 栈中主要储存**值类型**：  
