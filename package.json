@@ -9,7 +9,7 @@
     "build": "astro check && astro build && pnpm apply-lqip",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "astro build && tsx --test tests/**/*.test.ts",
+    "test": "pnpm build && tsx --test tests/**/*.test.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format:posts": "prettier --write \"src/content/{posts,about}/**/*.md\" && lint-md \"src/content/{posts,about}/**/*.md\" --fix && markdownlint-cli2 --config .markdownlint-cli2.yaml --fix \"src/content/{posts,about}/**/*.md\"",
