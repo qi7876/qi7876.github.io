@@ -1,8 +1,11 @@
 ---
-import twikooCSS from 'twikoo/dist/twikoo.css?url'
-import twikooJS from 'twikoo/dist/twikoo.nocss.js?url' // Using twikoo.min.js causes CSS loading failure after page switching
 import { allLocales, base, defaultLocale, themeConfig } from '@/config'
 import { twikooLocaleMap } from '@/i18n/config'
+// Twikoo 2 exports only its root script; load the separate CSS and no-CSS script from its published dist files.
+// eslint-disable-next-line antfu/no-import-dist, antfu/no-import-node-modules-by-path
+import twikooCSS from '../../../node_modules/twikoo/dist/twikoo.css?url'
+// eslint-disable-next-line antfu/no-import-dist, antfu/no-import-node-modules-by-path
+import twikooJS from '../../../node_modules/twikoo/dist/twikoo.nocss.js?url'
 
 const { envId = '' } = themeConfig.comment.twikoo ?? {}
 
