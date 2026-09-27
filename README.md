@@ -6,7 +6,7 @@ qi-areas is a multilingual static blog built with Astro and published on GitHub 
 
 Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm test` and `pnpm lint`.
 
-Run `pnpm format:posts` to format Markdown posts with Prettier, lint-md, and markdownlint-cli2. The existing `pnpm format-posts` command applies autocorrect to Markdown content.
+Run `pnpm format:posts` to format Markdown posts and About pages with Prettier, lint-md, and markdownlint-cli2.
 
 ## Status and next steps
 

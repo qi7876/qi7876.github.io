@@ -119,9 +119,6 @@ importers:
       astro-eslint-parser:
         specifier: ^1.3.0
         version: 1.3.0
-      autocorrect-node:
-        specifier: ^2.14.0
-        version: 2.14.0
       eslint:
         specifier: ^10.0.2
         version: 10.0.2(jiti@2.6.1)
@@ -1795,41 +1792,6 @@ packages:
     engines: {node: ^18.18.0 || >=20.9.0}
     peerDependencies:
       '@astrojs/compiler': '>=0.27.0'
-
-  autocorrect-node-darwin-arm64@2.14.0:
-    resolution: {integrity: sha512-l5IRTQz6zYAlkfEc5emIDXBkayD0MIwPPAVXCFMceFwyTNhAJ5veoKqRrsPuBVthIbfYKtAUs9oy9oFoHQn7bw==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
-
-  autocorrect-node-darwin-x64@2.14.0:
-    resolution: {integrity: sha512-vRO0lwfXff2Fs41NzdDqN5t4VQ03M0Xsn6Tk4OjMrbjoWJqaEq05KZOTSaSF/wEs/7E1VoaI9Kz+c0fqylVX4Q==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [darwin]
-
-  autocorrect-node-linux-x64-gnu@2.14.0:
-    resolution: {integrity: sha512-v1y1wh340cbhrHSZZP0oPkvWUprDtUIwnBP69Bls27VhQ2ZyVV4eijDNOP//yGUyUunMB0rtWoZaBsq8ugt1Kg==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-
-  autocorrect-node-linux-x64-musl@2.14.0:
-    resolution: {integrity: sha512-3LifiLG61VIXBrOITpD/REcg/ZEUuLz/P2XUWMCfGqhzoUb8oFgM3o0A6extvIH2NefiHMndB9kNbfQjXCl3zA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-
-  autocorrect-node-win32-x64-msvc@2.14.0:
-    resolution: {integrity: sha512-OM6TeGUW0+4R9KtUYTYNEwlInd+b2kumw/B1HCbCzb1F7HpfaNxnZiMk1li0bdPPBDzD5YuzwM30VJZMCWIi5A==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [win32]
-
-  autocorrect-node@2.14.0:
-    resolution: {integrity: sha512-Pkdw3Hr1Wbtpm8f7KYOaPnHFa7TNVo9dyuOffVaNGN3iWWRBs011XBuCJUEmHV097kJkab94cs4P6KJ4pvI41g==}
-    engines: {node: '>= 10'}
-    hasBin: true
 
   autosize@6.0.1:
     resolution: {integrity: sha512-f86EjiUKE6Xvczc4ioP1JBlWG7FKrE13qe/DxBCpe8GCipCq2nFw73aO8QEBKHfSbYGDN5eB9jXWKen7tspDqQ==}
@@ -6480,29 +6442,6 @@ snapshots:
     dependencies:
       '@astrojs/compiler': 2.13.1
       synckit: 0.11.12
-
-  autocorrect-node-darwin-arm64@2.14.0:
-    optional: true
-
-  autocorrect-node-darwin-x64@2.14.0:
-    optional: true
-
-  autocorrect-node-linux-x64-gnu@2.14.0:
-    optional: true
-
-  autocorrect-node-linux-x64-musl@2.14.0:
-    optional: true
-
-  autocorrect-node-win32-x64-msvc@2.14.0:
-    optional: true
-
-  autocorrect-node@2.14.0:
-    optionalDependencies:
-      autocorrect-node-darwin-arm64: 2.14.0
-      autocorrect-node-darwin-x64: 2.14.0
-      autocorrect-node-linux-x64-gnu: 2.14.0
-      autocorrect-node-linux-x64-musl: 2.14.0
-      autocorrect-node-win32-x64-msvc: 2.14.0
 
   autosize@6.0.1: {}
 
