@@ -12,6 +12,7 @@
     "test": "astro build && tsx --test tests/**/*.test.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "format:posts": "prettier --write \"src/content/posts/**/*.md\" && lint-md \"src/content/posts/**/*.md\" --fix && markdownlint-cli2 --config .markdownlint-cli2.yaml --fix \"src/content/posts/**/*.md\"",
     "new-post": "tsx scripts/new-post.ts",
     "apply-lqip": "tsx scripts/apply-lqip.ts",
     "format-posts": "tsx scripts/format-posts.ts"
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^7.4.3",
     "@astrojs/check": "^0.9.6",
+    "@lint-md/cli": "^2.4.0",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^25.3.0",
     "@types/sanitize-html": "^2.16.0",
@@ -58,7 +60,9 @@
     "eslint-plugin-astro": "^1.6.0",
     "fast-glob": "^3.3.3",
     "lint-staged": "^16.2.7",
+    "markdownlint-cli2": "^0.23.3",
     "playwright": "^1.58.2",
+    "prettier": "^3.9.9",
     "simple-git-hooks": "^2.13.1",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
