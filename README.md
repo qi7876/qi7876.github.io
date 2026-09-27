@@ -4,6 +4,8 @@ qi-areas is a multilingual static blog built with Astro and published on GitHub 
 
 ## Development
 
+Use Node.js 24 and pnpm 12.6.0 (the version pinned in `package.json`).
+
 Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm test` and `pnpm lint`.
 
 Run `pnpm format:posts` to format Markdown posts and About pages with Prettier, lint-md, and markdownlint-cli2.
