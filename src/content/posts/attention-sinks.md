@@ -336,7 +336,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 1. 去掉 sink token，只保留 non-sink token：local tasks 提升性能
 1. 去掉 non-sink token，只保留 sink token：global tasks 提升性能
 
-<img src="./attachments/image-20260911094256105.png" alt="image-20260911094256105" style="zoom:50%;" />
+![image-20260911094256105](./attachments/image-20260911094256105.png)
 
 这里可以看到：
 
@@ -484,7 +484,7 @@ prefilling 没动
 
 结果是做到了接近无损
 
-<img src="./attachments/image-20260911211151618.png" alt="image-20260911211151618" style="zoom:50%;" />
+![image-20260911211151618](./attachments/image-20260911211151618.png)
 
 可以看到，上下文越长，加速越明显，但是比较短时基本没啥加速
 
