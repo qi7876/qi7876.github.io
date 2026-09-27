@@ -8,6 +8,8 @@ Use Node.js 24 and pnpm 12.6.0 (the version pinned in `package.json`).
 
 Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm test` and `pnpm lint`.
 
+`pnpm build` generates the site and applies LQIP to the output in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
+
 Run `pnpm format:posts` to format Markdown posts and About pages with Prettier, lint-md, and markdownlint-cli2.
 
 ## Status and next steps
