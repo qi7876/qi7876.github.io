@@ -1,0 +1,4 @@
+config:
+  default: false
+  MD029:
+    style: one

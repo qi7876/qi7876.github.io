@@ -3,11 +3,12 @@ title: Leetcode 0042 trapping-rain-water
 published: 2024-03-12
 draft: false
 ---
+
 非常经典的题。除了暴力解法外，有三种效率比较高的解法：
 
 1. 动态规划
-2. 双指针
-3. 单调栈
+1. 双指针
+1. 单调栈
 
 ## 核心
 
