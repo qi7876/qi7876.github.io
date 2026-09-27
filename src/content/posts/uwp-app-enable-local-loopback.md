@@ -3,9 +3,10 @@ title: UWP应用开启本地回环
 published: 2023-11-03
 draft: false
 ---
-Windows默认情况下不允许uwp应用访问本地回环，这就导致uwp应用用不了代理，还好我们可以手动开启uwp应用的本地回环访问权限。
 
-以admin权限运行：
+Windows 默认情况下不允许 uwp 应用访问本地回环，这就导致 uwp 应用用不了代理，还好我们可以手动开启 uwp 应用的本地回环访问权限。
+
+以 admin 权限运行：
 
 ```powershell
 Get-AppxPackage -AllUsers | ForEach-Object {
@@ -14,8 +15,8 @@ Get-AppxPackage -AllUsers | ForEach-Object {
 }
 ```
 
-即可一次性为所有uwp应用开启本地回环访问权限。
+即可一次性为所有 uwp 应用开启本地回环访问权限。
 
-或者，更方便一点，使用一个GUI小工具：
+或者，更方便一点，使用一个 GUI 小工具：
 
-https://github.com/tiagonmas/Windows-Loopback-Exemption-Manager
+<https://github.com/tiagonmas/Windows-Loopback-Exemption-Manager>

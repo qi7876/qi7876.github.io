@@ -3,9 +3,10 @@ title: Mean, Var and Typical Scale
 published: 2026-03-08
 draft: false
 ---
+
 标准差衡量了一个变量的典型大小（数量级）
 
-Transformer 中，在计算 Attention 时，对于 $Q \cdot K^T$ 除了一个 $\sqrt{d}$ ，这是为了将点积结果的典型大小拉回 $1$，避免softmax的梯度消失问题。
+Transformer 中，在计算 Attention 时，对于 $Q \cdot K^T$ 除了一个 $\sqrt{d}$ ，这是为了将点积结果的典型大小拉回 $1$，避免 softmax 的梯度消失问题。
 
 这个 $\sqrt{d}$ 就是每个向量的标准差。不过你有没有想过为什么是除以 $\sqrt{d}$ ？而不是 $d$ ?
 

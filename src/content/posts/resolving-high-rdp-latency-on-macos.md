@@ -3,33 +3,34 @@ title: 解决macOS上RDP高延迟问题
 published: 2025-09-09
 draft: false
 ---
+
 ## 最新编辑
 
 微软似乎已经为 macOS 上的 Windows App 带来了 UDP 功能，可以在设置中看到。
 
 ## 高延迟背后的两个问题
 
-macOS上，Windows App的时延很高，远不如Windows上RDP的效果，这背后有两个问题：
+macOS 上，Windows App 的时延很高，远不如 Windows 上 RDP 的效果，这背后有两个问题：
 
-1. macOS上的Windows App不支持UDP，这是最根本的问题；
-2. macOS上有TCP Delayed ACK，由于macOS上Windows App只能使用TCP进行连接，这时的TCP延迟确认就很致命了。
+1. macOS 上的 Windows App 不支持 UDP，这是最根本的问题；
+1. macOS 上有 TCP Delayed ACK，由于 macOS 上 Windows App 只能使用 TCP 进行连接，这时的 TCP 延迟确认就很致命了。
 
 ## 解决方法
 
 原因知道了，现在我们来解决问题，但显然，第一个问题我们解决不掉，只能等着微软改进，所以，我们只能对第二个问题下手：
 
-1. 关闭macOS的TCP Delayed ACK
+1. 关闭 macOS 的 TCP Delayed ACK
 
-    ```sh
-    sudo -s
-    sysctl net.inet.tcp.delayed_ack=0
-    ```
+   ```sh
+   sudo -s
+   sysctl net.inet.tcp.delayed_ack=0
+   ```
 
-1. 如果你想在mac重启后仍然保持生效，将其写入配置文件
+1. 如果你想在 mac 重启后仍然保持生效，将其写入配置文件
 
-    ```sh
-    echo net.inet.tcp.delayed_ack=0 >> /etc/sysctl.conf
-    ```
+   ```sh
+   echo net.inet.tcp.delayed_ack=0 >> /etc/sysctl.conf
+   ```
 
 ## References
 
