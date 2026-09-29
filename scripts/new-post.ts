@@ -33,7 +33,6 @@ updated: ''
 draft: false
 pin: 0
 toc: ${themeConfig.global.toc}
-lang: ''
 abbrlink: ''
 ---
 `

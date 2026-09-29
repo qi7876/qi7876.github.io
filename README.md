@@ -1,6 +1,6 @@
 # qi-areas
 
-qi-areas is a multilingual static blog built with Astro and published on GitHub Pages. Posts are written in Markdown; the site also provides RSS and Atom feeds.
+qi-areas is a static blog built with Astro and published on GitHub Pages. The interface uses English labels, while Markdown posts and the About page can mix languages. The site also provides RSS and Atom feeds.
 
 ## Development
 
@@ -14,4 +14,4 @@ Run `pnpm format:posts` to format Markdown posts and About pages with Prettier, 
 
 ## Status and next steps
 
-The site is live and maintained on `main`. GitHub Actions builds, tests, and deploys it. Future changes should keep the build green and add behavior tests for user-visible features. Architecture notes are in [`docs/c4/`](docs/c4/).
+The site is live and maintained on `main`. GitHub Actions builds, tests, and deploys it. Future changes should keep the build green and add behavior tests for user-visible features. Architecture notes are in [`docs/architecture/`](docs/architecture/).

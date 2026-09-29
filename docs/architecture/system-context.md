@@ -14,4 +14,4 @@ flowchart LR
   blog -->|Sends anonymous usage events| analytics
 ```
 
-The blog publishes multilingual Markdown posts as static pages on GitHub Pages. Readers can browse posts, switch languages, read feeds, and visit the About page. The site has no tag navigation or tag-specific URLs.
+The blog publishes Markdown posts as static pages on GitHub Pages. Readers can browse posts, read feeds, and visit the About page. The interface uses English labels; post and About content can mix languages. The site has no tag navigation or tag-specific URLs.
