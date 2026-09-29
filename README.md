@@ -1,6 +1,6 @@
-# qi-areas
+# qi-blog
 
-qi-areas is a static blog built with Astro and published on GitHub Pages. The interface uses English labels, while Markdown posts and the About page can mix languages. The site also provides RSS and Atom feeds.
+qi-blog is a static blog built with Astro and published on GitHub Pages. Special thanks go to [Retypeset](https://github.com/radishzzz/astro-theme-retypeset) made by radishzzz.
 
 ## Development
 
