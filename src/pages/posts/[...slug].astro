@@ -1,13 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import type { Language } from '@/i18n/config'
 import { getCollection, render } from 'astro:content'
-import Comment from '@/components/Comment/Index.astro'
 import PostDate from '@/components/PostDate.astro'
 import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
-import { allLocales } from '@/config'
-import { getLangFromLocale, getLangRouteParam } from '@/i18n/lang'
 import Layout from '@/layouts/Layout.astro'
 import { checkPostSlugDuplication } from '@/utils/content'
 import { getPostDescription } from '@/utils/description'
@@ -21,59 +17,23 @@ export async function getStaticPaths() {
     throw new Error(`Duplicate post slugs:\n${duplicates.join('\n')}`)
   }
 
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // Build a map of post slugs to their supported languages
-  // Handles both specific language posts (e.g., 'en') and universal posts (lang: '')
-  const slugToLangsMap = new Map<string, Set<Language>>()
-
-  for (const post of posts) {
-    const slug = post.data.abbrlink || post.id
-    const lang = post.data.lang
-
-    let langSet = slugToLangsMap.get(slug)
-    if (!langSet) {
-      langSet = new Set()
-      slugToLangsMap.set(slug, langSet)
-    }
-
-    if (lang) {
-      langSet.add(lang as Language)
-    }
-    else {
-      allLocales.forEach(locale => langSet.add(locale))
-    }
-  }
-
-  // Convert the map to a sorted record for the component props
-  // Ensure languages are always sorted by the order defined in config
-  const slugToLangs: Record<string, Language[]> = {}
-  for (const [slug, langs] of slugToLangsMap) {
-    slugToLangs[slug] = [...langs].sort((a, b) => allLocales.indexOf(a) - allLocales.indexOf(b))
-  }
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-  return allLocales.flatMap(lang => posts
+  return posts
     // Show drafts in dev mode only
     .filter(post => import.meta.env.DEV || !post.data.draft)
-    // Match current language or universal posts
-    .filter(post => post.data.lang === lang || post.data.lang === '')
     .map((post) => {
       const slug = post.data.abbrlink || post.id
       return {
-        params: { lang: getLangRouteParam(lang), slug },
-        props: { post, supportedLangs: slugToLangs[slug] },
+        params: { slug },
+        props: { post },
       }
-    }),
-  )
+    })
 }
 
 interface Props {
   post: CollectionEntry<'posts'>
-  supportedLangs: Language[]
 }
 
-const { post, supportedLangs } = Astro.props
-const currentLang = getLangFromLocale(Astro.currentLocale)
+const { post } = Astro.props
 const slug = post.data.abbrlink || post.id
 const description = getPostDescription(post, 'meta')
 const { Content, headings, remarkPluginFrontmatter } = await render(post)
@@ -82,7 +42,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
 <Layout
   postTitle={post.data.title}
   postDescription={description}
-  supportedLangs={supportedLangs}
 >
   <article class="heti">
     <div class="relative">
@@ -91,7 +50,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <!-- Title -->
       <h1 class="post-title">
         <span
-          transition:name={`post-${slug}${currentLang ? `-${currentLang}` : ''}`}
+          transition:name={`post-${slug}`}
           data-disable-theme-toggle-transition
         >
           {post.data.title}
@@ -103,7 +62,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
     <div
       id="post-date"
       class="mb-17.2 block c-primary font-time"
-      transition:name={`time-${slug}${currentLang ? `-${currentLang}` : ''}`}
+      transition:name={`time-${slug}`}
       data-disable-theme-toggle-transition
     >
       <PostDate
@@ -119,8 +78,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <Content />
       <!-- Copyright -->
       <div id="post-copyright" />
-      <!-- Comment -->
-      <Comment />
     </div>
   </article>
 </Layout>
