@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   const posts: CollectionEntry<'posts'>[] = await getCollection('posts')
 
   // Check if there are duplicate post slugs
-  const duplicates = await checkPostSlugDuplication(posts)
+  const duplicates = checkPostSlugDuplication(posts)
   if (duplicates.length > 0) {
     throw new Error(`Duplicate post slugs:\n${duplicates.join('\n')}`)
   }
@@ -34,7 +34,6 @@ interface Props {
 }
 
 const { post } = Astro.props
-const slug = post.data.abbrlink || post.id
 const description = getPostDescription(post, 'meta')
 const { Content, headings, remarkPluginFrontmatter } = await render(post)
 ---
@@ -48,22 +47,13 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
       <!-- Go Back Button On Desktop -->
       <BackButton />
       <!-- Title -->
-      <h1 class="post-title">
-        <span
-          transition:name={`post-${slug}`}
-          data-disable-theme-toggle-transition
-        >
-          {post.data.title}
-        </span>
-      </h1>
+      <h1 class="post-title">{post.data.title}</h1>
     </div>
 
     <!-- Date -->
     <div
       id="post-date"
       class="mb-17.2 block c-primary font-time"
-      transition:name={`time-${slug}`}
-      data-disable-theme-toggle-transition
     >
       <PostDate
         date={post.data.published}

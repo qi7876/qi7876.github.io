@@ -13,8 +13,8 @@ const { postTitle, postDescription } = Astro.props
 // Site Configuration
 const { title, description, author, favicon } = themeConfig.site
 const { mode: defaultMode, light: { background: lightMode }, dark: { background: darkMode } } = themeConfig.color
-const { katex: katexEnabled, reduceMotion } = themeConfig.global
-const { verification = {}, twitterID = '', googleAnalyticsID = '', umamiAnalyticsID = '', apiflashKey = '' } = themeConfig.seo ?? {}
+const { katex: katexEnabled } = themeConfig.global
+const { verification = {}, twitterID = '', googleAnalyticsID = '', umamiAnalyticsID = '' } = themeConfig.seo ?? {}
 const { google = '', bing = '', yandex = '', baidu = '' } = verification
 const { customGoogleAnalyticsJS = '', customUmamiAnalyticsJS = '' } = themeConfig.preload ?? {}
 
@@ -23,8 +23,7 @@ const metaTheme = defaultMode === 'dark' ? darkMode : lightMode
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title
 const pageDescription = postDescription || description
-const screenshotAccessKey = apiflashKey || '02a837b6188f4ba0a7fd9fbeff03a83e'
-const pageImage = `https://api.apiflash.com/v1/urltoimage?access_key=${screenshotAccessKey}&url=${encodeURIComponent(Astro.url.toString())}&format=png&width=1500&height=788&ttl=259200&wait_until=network_idle&no_tracking=true`
+const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).href
 ---
 
 <head>
@@ -71,7 +70,6 @@ const pageImage = `https://api.apiflash.com/v1/urltoimage?access_key=${screensho
     defaultMode,
     lightMode,
     darkMode,
-    reduceMotion,
  }}
 >
 (function () {
@@ -103,25 +101,13 @@ const pageImage = `https://api.apiflash.com/v1/urltoimage?access_key=${screensho
     }
   }
 
-  // Check and init motion preference
-  // Condition: theme config || system preference || browser capability
-  function initMotionPref(doc = document) {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const supportsViewTransitions = 'startViewTransition' in doc
-    const shouldReduceMotion = reduceMotion || prefersReducedMotion || !supportsViewTransitions
-
-    doc.documentElement.classList.toggle('reduce-motion', shouldReduceMotion)
-  }
-
   // Update theme before page transition to prevent flashing
   document.addEventListener('astro:before-swap', ({ newDocument }) => {
     initTheme(newDocument)
-    initMotionPref(newDocument)
   })
 
   // Initialize theme on first load
   initTheme()
-  initMotionPref()
 })()
 </script>
 

@@ -1,5 +1,4 @@
 import { unified } from '@astrojs/markdown-remark'
-import mdx from '@astrojs/mdx'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import Compress from 'astro-compress'
@@ -7,7 +6,6 @@ import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import rehypeMermaid from 'rehype-mermaid'
 import rehypeSlug from 'rehype-slug'
-import remarkDirective from 'remark-directive'
 import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
 import { base, themeConfig } from './src/config'
@@ -15,8 +13,6 @@ import { rehypeCodeCopyButton } from './src/plugins/rehype-code-copy-button.mjs'
 import { rehypeExternalLinks } from './src/plugins/rehype-external-links.mjs'
 import { rehypeHeadingAnchor } from './src/plugins/rehype-heading-anchor.mjs'
 import { rehypeImageProcessor } from './src/plugins/rehype-image-processor.mjs'
-import { remarkContainerDirectives } from './src/plugins/remark-container-directives.mjs'
-import { remarkLeafDirectives } from './src/plugins/remark-leaf-directives.mjs'
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs'
 
 const { url: site } = themeConfig.site
@@ -39,7 +35,6 @@ export default defineConfig({
     UnoCSS({
       injectReset: true,
     }),
-    mdx(),
     partytown({
       config: {
         forward: ['dataLayer.push', 'gtag'],
@@ -57,10 +52,7 @@ export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [
-        remarkDirective,
         remarkMath,
-        remarkContainerDirectives,
-        remarkLeafDirectives,
         remarkReadingTime,
       ],
       rehypePlugins: [

@@ -119,9 +119,6 @@ html.dark .heti pre span {
 .heti :where(blockquote) {
   --at-apply: 'my-6 border-l-4 border-secondary/25 border-solid px-4 py-0.5 c-secondary/80';
 }
-.heti blockquote[class*="admonition-"] {
-  --at-apply: 'py-1.5 c-secondary';
-}
 .heti blockquote blockquote {
   --at-apply: 'py-0';
 }

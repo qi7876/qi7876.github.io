@@ -35,7 +35,6 @@ export interface ThemeConfig {
     dateFormat: 'YYYY-MM-DD' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'MMM D YYYY' | 'D MMM YYYY'
     toc: boolean
     katex: boolean
-    reduceMotion: boolean
   }
   seo?: {
     twitterID?: string
@@ -51,7 +50,6 @@ export interface ThemeConfig {
       feedID?: string
       userID?: string
     }
-    apiflashKey?: string
   }
   footer: {
     links: {

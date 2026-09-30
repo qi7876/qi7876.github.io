@@ -64,8 +64,6 @@ export function getPostDescription(
     .replace(/<!--[\s\S]*?-->/g, '') // Remove HTML comments
     .replace(/```[\s\S]*?```/g, '') // Remove code blocks
     .replace(/^\s*#{1,6}\s+\S.*$/gm, '') // Remove Markdown headings
-    .replace(/^\s*::.*$/gm, '') // Remove directive containers
-    .replace(/^\s*>\s*\[!.*\]$/gm, '') // Remove GitHub admonition markers
     .replace(/\n{2,}/g, '\n\n') // Normalize newlines
 
   const renderedContent = markdownParser.render(cleanContent)
