@@ -119,7 +119,7 @@ export const themeConfig: ThemeConfig = {
       },
       {
         name: 'Email',
-        url: 'qi7876@icloud.com',
+        url: 'qi7876@gmail.com',
       },
     ],
     // year of website start
