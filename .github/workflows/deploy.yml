@@ -22,8 +22,6 @@ jobs:
         uses: actions/checkout@v5
       - name: Install, build, and upload your site
         uses: withastro/action@v6
-        with:
-          build-cmd: pnpm test
   deploy:
     needs: build
     runs-on: ubuntu-latest
