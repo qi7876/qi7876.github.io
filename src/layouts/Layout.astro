@@ -4,16 +4,14 @@ import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
 import Navbar from '@/components/Navbar.astro'
 import CodeCopyButton from '@/components/Widgets/CodeCopyButton.astro'
-import GithubCard from '@/components/Widgets/GithubCard.astro'
 import ImageZoom from '@/components/Widgets/ImageZoom.astro'
-import MediaEmbed from '@/components/Widgets/MediaEmbed.astro'
+import Mermaid from '@/components/Widgets/Mermaid.astro'
 import { themeConfig } from '@/config'
 import Head from '@/layouts/Head.astro'
 import { getPageInfo } from '@/utils/page'
 import '@/styles/extension.css'
 import '@/styles/global.css'
 import '@/styles/markdown.css'
-import '@/styles/transition.css'
 
 interface Props {
   postTitle?: string
@@ -26,6 +24,7 @@ const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'fon
 ---
 
 <html
+  transition:animate="none"
   lang="en"
   class:list={[
     fontStyle,
@@ -48,8 +47,7 @@ const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'fon
     </div>
     <Button />
     <CodeCopyButton />
-    <GithubCard />
-    <MediaEmbed />
+    <Mermaid />
     <ImageZoom />
   </body>
 </html>

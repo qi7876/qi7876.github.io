@@ -1,9 +1,9 @@
 import { visit } from 'unist-util-visit'
 
-function createFigure(imgNode, isInGallery = false) {
+function createFigure(imgNode) {
   const altText = imgNode.properties?.alt
   const shouldSkipCaption = !altText || altText.startsWith('_')
-  if (shouldSkipCaption && !isInGallery) {
+  if (shouldSkipCaption) {
     return imgNode
   }
 
@@ -21,7 +21,7 @@ function createFigure(imgNode, isInGallery = false) {
   return {
     type: 'element',
     tagName: 'figure',
-    properties: isInGallery ? { className: ['gallery-item'] } : {},
+    properties: {},
     children,
   }
 }
@@ -49,18 +49,9 @@ export function rehypeImageProcessor() {
         return
       }
 
-      const isInGallery = parent?.properties?.className?.includes('gallery-container')
-
-      // Gallery container: convert images to figures
-      if (isInGallery) {
-        const figures = imgNodes.map(imgNode => createFigure(imgNode, true))
-        parent.children.splice(index, 1, ...figures)
-        return
-      }
-
-      // Single image: convert to figure in non-gallery containers
+      // Single image: add a caption when alt text allows it
       if (imgNodes.length === 1) {
-        const figure = createFigure(imgNodes[0], false)
+        const figure = createFigure(imgNodes[0])
         if (figure !== imgNodes[0]) {
           // Only replace if conversion happened
           node.tagName = 'figure'
@@ -70,7 +61,7 @@ export function rehypeImageProcessor() {
         return
       }
 
-      // Multiple images: unwrap in non-gallery containers
+      // Multiple images: unwrap the paragraph
       parent.children.splice(index, 1, ...imgNodes)
     })
   }

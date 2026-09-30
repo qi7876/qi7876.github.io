@@ -4,9 +4,9 @@ export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: 'qi-blog',
+    title: 'Qi',
     // site description
-    description: 'qi\' blog',
+    description: 'Qi\'s blog',
     // author name
     author: 'qi7876',
     // site url
@@ -60,8 +60,6 @@ export const themeConfig: ThemeConfig = {
     toc: true, // true | false
     // enable katex math rendering
     katex: true, // true | false
-    // reduce motion
-    reduceMotion: true, // true | false
   },
   // GLOBAL SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
@@ -98,10 +96,6 @@ export const themeConfig: ThemeConfig = {
       // user ID
       userID: '',
     },
-    // apiflash access key
-    // generate website screenshots for open graph images
-    // get your access key at: https://apiflash.com/
-    apiflashKey: '',
   },
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 

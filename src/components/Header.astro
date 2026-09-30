@@ -24,11 +24,8 @@ const TitleTag = isPost ? 'h2' : 'h1'
         : `mb-1.8 w-75% text-8 c-primary lg:(w-full text-9)`,
     ]}
   >
-    <!-- Fix text cropping issues during view transition on iOS by adding a div tag -->
     <div
       class="box-content inline-block pr-1"
-      transition:name="site-title"
-      data-disable-theme-toggle-transition
     >
       <a
         id="site-title-link"

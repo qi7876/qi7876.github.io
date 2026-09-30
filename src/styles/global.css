@@ -1,5 +1,5 @@
 html {
-  --at-apply: 'bg-background c-secondary antialiased';
+  --at-apply: 'bg-background c-secondary antialiased transition-colors duration-300 ease-out';
   scrollbar-width: thin;
   scrollbar-color: oklch(var(--un-preset-theme-colors-secondary) / 0.25) transparent;
   scrollbar-gutter: stable;
@@ -18,7 +18,7 @@ body::selection {
 /* Highlight Hover Animation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 .highlight-static,
 .highlight-hover {
-  --at-apply: 'relative inline-block';
+  --at-apply: 'relative inline-block transition-inherit';
 }
 .highlight-static::after,
 .highlight-hover::after {

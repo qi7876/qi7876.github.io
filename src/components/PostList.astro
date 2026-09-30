@@ -32,8 +32,6 @@ const isHome = isHomePage(Astro.url.pathname)
               isHome ? 'text-4.5 lg:(font-medium text-5)' : '',
             ]}
             href={`${base}/posts/${slug}/`}
-            transition:name={`post-${slug}`}
-            data-disable-theme-toggle-transition
           >
             {post.data.title}
           </a>
@@ -54,8 +52,6 @@ const isHome = isHomePage(Astro.url.pathname)
               ? 'text-4 lg:(mt-2.25 py-0 text-4)'
               : 'text-3.5 lg:(mt-1.5 py-0 text-3.65)',
           ]}
-          transition:name={`time-${slug}`}
-          data-disable-theme-toggle-transition
         >
           <PostDate
             date={post.data.published}

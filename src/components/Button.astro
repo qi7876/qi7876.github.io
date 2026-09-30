@@ -69,24 +69,7 @@ function handleThemeToggle(e: MouseEvent) {
     return
   }
 
-  // If reduceMotion is enabled, update theme directly
-  if (document.documentElement.classList.contains('reduce-motion')) {
-    toggleTheme()
-    return
-  }
-
-  // Add temporary markers before view transition
-  document.documentElement.style.setProperty('view-transition-name', 'theme-toggle-transition')
-  document.documentElement.setAttribute('data-theme-changing', '')
-
-  // Use View Transitions API for theme toggle
-  const transition = document.startViewTransition(toggleTheme)
-
-  // Remove temporary markers after view transition
-  transition.finished.then(() => {
-    document.documentElement.style.removeProperty('view-transition-name')
-    document.documentElement.removeAttribute('data-theme-changing')
-  })
+  toggleTheme()
 }
 
 // Listen to system theme changes in real time
