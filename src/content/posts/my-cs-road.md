@@ -1,6 +1,7 @@
 ---
 title: 我的计算机之路
 published: 2027-05-01
+updated: 2026-10-01
 draft: false
 ---
 
@@ -58,18 +59,23 @@ CTF：大二上
 
 29 号，the book 看到第 20 章了，最长信息量也最大的一章，加油，然后今天调整了一下计划清单
 
+## 2026-10
+
+1 号，the book 还剩最后一小节就到了 final project，然后又调整了一下课程清单
+
 ## Plan
 
-- [ ] 大四上
-  - [ ] CS61B
-  - [ ] The rust programming language
-  - [ ] 软件工程实验，选的一门课，正好自己手搓一遍
-  - [ ] CSAPP 前半部分，除了体系结构，这个真的不想看，不过之前也学过一些基础了
-- [ ] 寒假
-  - [ ] CSAPP 后半部分
-  - [ ] CS336
-  - [ ] GPU Mode
-- [ ] 大四下
-  - [ ] OSTEP/xv6
-  - [ ] 6.172+CUDA
-  - [ ] GPU Mode
+- 大四上
+  - !!! CS61B
+  - !!! CSAPP Part 1
+  - ! The rust programming language
+  - !! 软件工程实验课
+- 寒假
+  - !!! CSAPP Part 2
+  - !!! CS336
+  - !! OSTEP/xv6
+- 大四下
+  - !!! CS149
+  - !!! MIT 6.5840
+  - !! PMPP
+  - ! GPU Mode
