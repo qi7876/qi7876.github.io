@@ -63,19 +63,23 @@ CTF：大二上
 
 1 号，the book 还剩最后一小节就到了 final project，然后又调整了一下课程清单
 
+![rustlings](attachments/rustlings.png)
+
+the book 的正文部分结束了！rustlings也同步做完了！开启最后的 project！
+
 ## Plan
 
 - 大四上
-  - !!! CS61B
-  - !!! CSAPP Part 1
-  - ! The rust programming language
-  - !! 软件工程实验课
+  - [ ] !!! CS61B
+  - [ ] !!! CSAPP Part 1
+  - [ ] ! The rust programming language
+  - [ ] !! 软件工程实验课
 - 寒假
-  - !!! CSAPP Part 2
-  - !!! CS336
-  - !! OSTEP/xv6
+  - [ ] !!! CSAPP Part 2
+  - [ ] !!! CS336
+  - [ ] !! OSTEP/xv6
 - 大四下
-  - !!! CS149
-  - !!! MIT 6.5840
-  - !! PMPP
-  - ! GPU Mode
+  - [ ] !!! CS149
+  - [ ] !!! MIT 6.5840
+  - [ ] !! PMPP
+  - [ ] ! GPU Mode

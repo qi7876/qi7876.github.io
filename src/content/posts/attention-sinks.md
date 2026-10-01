@@ -381,7 +381,7 @@ attention sinks -> sink token：某些 token 不管重不重要，都会被大�
 
 1. 只发生在少量 token
 
-![image-20260905090954256](./attachments/image-20260905090954256.png)
+![逐层统计](./attachments/image-20260905090954256.png)
 
 从某一层开始突然产生，通过 residual stream 传播，到最后突然消失
 
