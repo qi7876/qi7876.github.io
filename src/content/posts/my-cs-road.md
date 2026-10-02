@@ -67,12 +67,14 @@ CTF：大二上
 
 the book 的正文部分结束了！rustlings也同步做完了！开启最后的 project！
 
+2 号，结束了 the book，开始做上周 CS61B 的作业
+
 ## Plan
 
 - 大四上
   - [ ] !!! CS61B
   - [ ] !!! CSAPP Part 1
-  - [ ] ! The rust programming language
+  - [x] ! The rust programming language
   - [ ] !! 软件工程实验课
 - 寒假
   - [ ] !!! CSAPP Part 2
