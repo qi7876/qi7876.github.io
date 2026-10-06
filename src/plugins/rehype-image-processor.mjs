@@ -9,14 +9,12 @@ function createFigure(imgNode) {
 
   const children = [imgNode]
 
-  if (!shouldSkipCaption) {
-    children.push({
-      type: 'element',
-      tagName: 'figcaption',
-      properties: {},
-      children: [{ type: 'text', value: altText }],
-    })
-  }
+  children.push({
+    type: 'element',
+    tagName: 'figcaption',
+    properties: {},
+    children: [{ type: 'text', value: altText }],
+  })
 
   return {
     type: 'element',

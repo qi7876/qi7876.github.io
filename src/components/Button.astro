@@ -49,8 +49,6 @@ function applyTheme(isDark: boolean, { persist = true }: { persist?: boolean } =
   if (persist) {
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
   }
-
-  document.dispatchEvent(new Event('theme-changed'))
 }
 
 // Toggle theme mode

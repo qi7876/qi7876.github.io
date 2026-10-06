@@ -14,7 +14,11 @@ Article tables of contents are always enabled for level 2–4 headings. On deskt
 
 Content uses Markdown (`.md`). Theme changes are immediate, with simple color transitions; page navigation has no decorative animations.
 
-Mermaid code blocks render in the browser and follow the current theme. Media embed directives, admonitions, fold directives, and galleries are not supported.
+Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.
+
+Lightning CSS has draft scroll navigation controls enabled to recognize the ToC's native `:target-current` selector.
+
+RSS and Atom feeds include absolute URLs for local images in `src/content/posts/attachments/`. Missing local feed images fail the build.
 
 Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
 

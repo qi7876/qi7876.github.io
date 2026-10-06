@@ -15,9 +15,10 @@ const { title, description, url, author } = themeConfig.site
 const { follow } = themeConfig.seo ?? {}
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// Dynamically import all images from /src/content/posts/_images
+// Feed HTML is rendered separately from article pages, so local images need
+// Astro asset URLs that feed readers can resolve outside the site.
 const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/content/posts/_images/**/*.{jpeg,jpg,png,gif,webp}',
+  '/src/content/posts/attachments/**/*.{jpeg,jpg,png,gif,webp,svg,avif}',
 )
 
 /**
@@ -25,29 +26,18 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
  *
  * @param srcPath - Relative image path from markdown content
  * @param baseUrl - Site base URL
- * @returns Optimized image URL or null if processing fails
+ * @returns Optimized absolute image URL
  */
 async function _getAbsoluteImageUrl(srcPath: string, baseUrl: string) {
-  // Remove relative path prefixes (../ and ./) from image source path
-  const prefixRemoved = srcPath.replace(/^(?:\.\.\/)+|^\.\//, '')
-  const absolutePath = `/src/content/posts/${prefixRemoved}`
+  const absolutePath = decodeURIComponent(new URL(srcPath, 'file:///src/content/posts/').pathname)
   const imageImporter = imagesGlob[absolutePath]
 
   if (!imageImporter) {
-    return null
+    throw new Error(`Feed image "${srcPath}" not found at "${absolutePath}"`)
   }
 
   // Import image module and extract its metadata
-  const imageMetadata = await imageImporter()
-    .then(importedModule => importedModule.default)
-    .catch((error) => {
-      console.warn(`Failed to import image: ${absolutePath}`, error)
-      return null
-    })
-
-  if (!imageMetadata) {
-    return null
-  }
+  const { default: imageMetadata } = await imageImporter()
 
   // Create optimized image from metadata
   const optimizedImage = await getImage({ src: imageMetadata })
@@ -67,34 +57,21 @@ const getAbsoluteImageUrl = memoize(_getAbsoluteImageUrl)
 async function fixRelativeImagePaths(htmlContent: string, baseUrl: string): Promise<string> {
   const htmlDoc = parse(htmlContent)
   const images = htmlDoc.getElementsByTagName('img')
-  const imagePromises = []
-
-  for (const img of images) {
+  await Promise.all(images.map(async (img) => {
     const src = img.getAttribute('src')
     if (!src) {
-      continue
+      return
     }
 
-    imagePromises.push((async () => {
-      try {
-        // Skip if not a relative path to src/content/posts/_images directory
-        if (!src.startsWith('./') && !src.startsWith('../') && !src.startsWith('_images/')) {
-          return
-        }
+    if (/^[a-z][a-z\d+.-]*:/i.test(src)) {
+      return
+    }
 
-        // Process images from src/content/posts/_images directory
-        const absoluteImageUrl = await getAbsoluteImageUrl(src, baseUrl)
-        if (absoluteImageUrl) {
-          img.setAttribute('src', absoluteImageUrl)
-        }
-      }
-      catch (error) {
-        console.warn(`Failed to convert relative image path to absolute URL: ${src}`, error)
-      }
-    })())
-  }
-
-  await Promise.all(imagePromises)
+    const absoluteImageUrl = src.startsWith('/')
+      ? new URL(src, baseUrl).href
+      : await getAbsoluteImageUrl(src, baseUrl)
+    img.setAttribute('src', absoluteImageUrl)
+  }))
 
   return htmlDoc.toString()
 }

@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap'
 import Compress from 'astro-compress'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
-import rehypeMermaid from 'rehype-mermaid'
 import rehypeSlug from 'rehype-slug'
 import remarkMath from 'remark-math'
 import UnoCSS from 'unocss/astro'
@@ -31,6 +30,14 @@ export default defineConfig({
     defaultStrategy: 'viewport', // hover, tap, viewport, load
   },
   ...imageConfig,
+  vite: {
+    css: {
+      lightningcss: {
+        // Enable parsing of the native ToC :target-current selector.
+        drafts: { scrollNavigationControls: true },
+      },
+    },
+  },
   integrations: [
     UnoCSS({
       injectReset: true,
@@ -57,7 +64,6 @@ export default defineConfig({
       ],
       rehypePlugins: [
         rehypeKatex,
-        [rehypeMermaid, { strategy: 'pre-mermaid' }],
         rehypeSlug,
         rehypeHeadingAnchor,
         rehypeImageProcessor,
@@ -67,7 +73,6 @@ export default defineConfig({
     }),
     syntaxHighlight: {
       type: 'shiki',
-      excludeLangs: ['mermaid'],
     },
     shikiConfig: {
       // Available themes: https://shiki.style/themes
