@@ -10,6 +10,8 @@ Install dependencies with `pnpm install`, run the site with `pnpm dev`, and chec
 
 `pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
 
+Article tables of contents are always enabled for level 2–4 headings. On desktop, the heading list appears beneath Qi in the right sidebar. On mobile, the bottom-right ToC button opens a bottom sheet. Articles without eligible headings have no ToC.
+
 Content uses Markdown (`.md`). Theme changes are immediate, with simple color transitions; page navigation has no decorative animations.
 
 Mermaid code blocks render in the browser and follow the current theme. Media embed directives, admonitions, fold directives, and galleries are not supported.

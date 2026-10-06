@@ -85,15 +85,17 @@ the book 的正文部分结束了！rustlings也同步做完了！开启最后�
 
 5 号，CS61B 同步进度了，今天还尝试了使用 Jujustu colocated with Git，真的太好用了，比 Git 的 mental model 要简单很多（Git 的 stash 机制很反人类，staging area / index 也同样有些多余，jj 直接让 commit 作为 workspace，消除了这些复杂度），概念上也消除了 Git 瞎起名带来的误解（比如 branch，实际上只是个 reference，Git 使用 branch 让人很容易误解成是从 main 分叉出的一整条 commit 链，而在 jj 中，作者使用 bookmark 来指代）
 
+6 号，推进 CSAPP 105 / 1076，明天准备继续推进科研了
+
 ## Plan
 
 - 大四上
   - [ ] !!! CS61B
-  - [ ] !!! CSAPP Part 1
+  - [ ] !!! CSAPP Part 1 + 2 w/o Chapter 4 Processor Architecture
   - [x] ! The rust programming language
   - [ ] !! 软件工程实验课
 - 寒假
-  - [ ] !!! CSAPP Part 2
+  - [ ] !!! CSAPP Part 3
   - [ ] !!! CS336
   - [ ] !! OSTEP/xv6
 - 大四下 + Gap Summer

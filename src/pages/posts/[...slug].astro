@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content'
 import { getCollection, render } from 'astro:content'
 import PostDate from '@/components/PostDate.astro'
-import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
 import Layout from '@/layouts/Layout.astro'
 import { checkPostSlugDuplication } from '@/utils/content'
@@ -42,13 +41,9 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
   postTitle={post.data.title}
   postDescription={description}
 >
+  <TOC slot="toc" headings={headings} />
   <article class="heti">
-    <div class="relative">
-      <!-- Go Back Button On Desktop -->
-      <BackButton />
-      <!-- Title -->
-      <h1 class="post-title">{post.data.title}</h1>
-    </div>
+    <h1 class="post-title">{post.data.title}</h1>
 
     <!-- Date -->
     <div
@@ -61,8 +56,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(post)
         minutes={remarkPluginFrontmatter.minutes}
       />
     </div>
-    <!-- TOC -->
-    {post.data.toc && <TOC headings={headings} />}
     <!-- Content -->
     <div id="post-content">
       <Content />

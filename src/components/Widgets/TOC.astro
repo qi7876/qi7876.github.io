@@ -6,175 +6,268 @@ interface Props {
   headings: MarkdownHeading[]
 }
 
-const { headings = [] } = Astro.props
+const { headings } = Astro.props
 const filteredHeadings = headings.filter(heading => heading.depth >= 2 && heading.depth <= 4)
 ---
 
 {filteredHeadings.length > 0 && (
-  // TOC Container
-  <div
-    id="toc-container"
-    class="mb-6 uno-round-border bg-secondary/5 2xl:(fixed left-0 top-44.5 max-w-[min(calc(50vw-38rem),13rem)] border-none bg-secondary/0)"
-  >
-    {/* Hidden Checkbox */}
-    <input
-      type="checkbox"
-      id="toc-toggle"
-      hidden
-    />
-    {/* TOC Toggle */}
-    <div class="relative h-12 w-full">
-      <label
-        for="toc-toggle"
-        class="absolute inset-0 flex cursor-pointer items-center 2xl:(static flex c-secondary/60 transition-colors ease-out hover:c-primary)"
-      >
-        {/* Title on Mobile */}
-        <span id="toc-mobile-text">
-          Table of Contents
-        </span>
-
-        {/* Icon on Desktop */}
-        <TocIcon
-          id="toc-desktop-icon"
-          aria-hidden="true"
-          class="ml-4 hidden aspect-square w-4.2 2xl:(mt-4 block origin-center active:scale-90!)"
-          fill="currentColor"
-        />
-      </label>
-    </div>
-
-    {/* Expandable Content Wrapper with Accordion Animation */}
-    <div id="toc-accordion-wrapper">
-      <nav
-        id="toc-accordion-content"
-        aria-label="Table of Contents"
-      >
-        {/* TOC List */}
-        <ul id="toc-links-list">
-          {filteredHeadings.map(heading => (
-            <li
-              class:list={{
-                'ml-0': heading.depth === 2,
-                'ml-4': heading.depth === 3,
-                'ml-8': heading.depth === 4,
-              }}
-            >
-              <a
-                href={`#${heading.slug}`}
-                class:list={[
-                  { 'no-heti toc-links-h2': heading.depth === 2 },
-                  { 'no-heti toc-links-h3': heading.depth === 3 },
-                  { 'no-heti toc-links-h4': heading.depth === 4 },
-                ]}
-              >
-                {heading.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  </div>
+  <>
+    <button
+      id="toc-button"
+      type="button"
+      aria-label="Open table of contents"
+      aria-haspopup="dialog"
+      aria-controls="toc-sheet"
+      aria-expanded="false"
+    >
+      <TocIcon aria-hidden="true" fill="currentColor" class="h-5 w-5" />
+    </button>
+    {[false, true].map((mobile) => {
+      const Container = mobile ? 'dialog' : 'nav'
+      return (
+        <Container
+          id={mobile ? 'toc-sheet' : 'toc-desktop'}
+          class={mobile ? 'toc-sheet' : 'toc-desktop'}
+          aria-labelledby={mobile ? 'toc-sheet-title' : 'toc-desktop-title'}
+        >
+          {!mobile && <h2 id="toc-desktop-title">Table of Contents</h2>}
+          {mobile && (
+            <header class="toc-sheet-header">
+              <h2 id="toc-sheet-title">Table of Contents</h2>
+              <button id="toc-close" type="button" aria-label="Close table of contents">×</button>
+            </header>
+          )}
+          <ul class="toc-links" id={mobile ? 'toc-mobile-links' : 'toc-links-list'}>
+            {filteredHeadings.map(heading => (
+              <li class:list={{ 'ml-4': heading.depth === 3, 'ml-8': heading.depth === 4 }}>
+                <a href={`#${heading.slug}`} class="no-heti">{heading.text}</a>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      )
+    })}
+  </>
 )}
 
-<!-- Override heti default styles  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 <style>
-#toc-mobile-text {
-  --at-apply: 'ml-4 font-semibold 2xl:hidden';
+.toc-desktop {
+  display: none;
 }
-#toc-links-list {
-  --at-apply: 'mb-2.5 mt-1 list-none pl-0 2xl:(mb-1 space-y-1) space-y-1.1';
+
+.toc-links {
+  margin: 0;
+  padding: 0.625rem 0;
+  list-style: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 0.625rem, black calc(100% - 0.625rem), transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 0.625rem, black calc(100% - 0.625rem), transparent);
   scroll-target-group: auto;
 }
-a:target-current {
-    --at-apply: '2xl:(c-primary font-medium)';
-}
-.toc-links-h2, .toc-links-h3, .toc-links-h4 {
-  --at-apply: 'text-balance text-sm font-normal no-underline after:bottom-0.15em 2xl:(text-3.2 c-secondary/80 hover:c-primary hover:font-medium)';
-  transition: color 0.15s ease-out, font-weight 0.15s ease-out;
+
+.toc-links li + li {
+  margin-top: 0.5rem;
 }
 
-/* Overflow and Scrollbar */
-#toc-toggle:checked ~ #toc-accordion-wrapper #toc-accordion-content {
-  --at-apply: 'overflow-y-auto 2xl:overflow-hidden';
-}
-#toc-accordion-content {
-  --at-apply: 'max-h-59 overflow-hidden pl-4 pr-6 2xl:(max-h-[calc(100vh-27.5rem)] overflow-y-auto scrollbar-hidden)';
-  scrollbar-width: thin;
-  scrollbar-color: oklch(var(--un-preset-theme-colors-secondary) / 0.15) transparent;
-}
-#toc-accordion-content::-webkit-scrollbar {
-  --at-apply: 'hidden';
+.toc-links a {
+  --at-apply: 'block c-secondary/70 no-underline hover:c-primary';
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
 }
 
-/* Mobile Initial State */
-#toc-accordion-wrapper {
-  --at-apply: 'grid rows-[0fr]';
-  transition: grid-template-rows 0.3s ease-in-out;
-}
-#toc-toggle:checked ~ #toc-accordion-wrapper {
-  --at-apply: 'rows-[1fr]';
+.toc-links a:target-current {
+  --at-apply: 'c-primary font-medium';
 }
 
-/* Desktop Initial State */
-#toc-accordion-wrapper {
-  --at-apply: '2xl:rows-[1fr]';
+#toc-button {
+  --at-apply: 'fixed z-100 grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-solid border-secondary/15 bg-background c-secondary shadow-lg hover:c-primary';
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(1rem + env(safe-area-inset-bottom));
 }
-#toc-toggle:checked ~ #toc-accordion-wrapper {
-  --at-apply: '2xl:rows-[0fr]';
+
+.toc-sheet {
+  --at-apply: 'border-none rounded-t-4 bg-background c-secondary';
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 63vh;
+  max-height: 63dvh;
+  margin: 0;
+  padding: 1rem max(1.25rem, env(safe-area-inset-right)) calc(1.25rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  overflow: hidden;
+}
+
+.toc-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.toc-sheet::backdrop {
+  background: rgb(0 0 0 / 40%);
+}
+
+.toc-sheet-header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.toc-sheet-header h2 {
+  --at-apply: 'font-semibold c-primary';
+}
+
+#toc-close {
+  --at-apply: 'h-11 w-11 shrink-0 cursor-pointer text-6 hover:c-primary';
+}
+
+.toc-sheet .toc-links {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.toc-sheet .toc-links a {
+  padding-block: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  #toc-button {
+    display: none;
+  }
+
+  .toc-desktop {
+    display: flex;
+    flex-direction: column;
+    height: 82%;
+  }
+
+  #toc-desktop-title {
+    --at-apply: 'shrink-0 font-semibold c-secondary/90';
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .toc-desktop .toc-links {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+
+  .toc-desktop a {
+    font-size: 0.75rem;
+  }
 }
 </style>
 
 <script>
-const is2xl = window.matchMedia('(min-width: 1536px)')
+const desktop = window.matchMedia('(min-width: 1024px)')
+let cleanup: (() => void) | undefined
 
-let ticking = false
-let lastLink: Element | null = null
-
-// Find and scroll to the active link
-function scrollToActiveLink() {
-  const tocList = document.getElementById('toc-links-list')
-  if (!tocList) {
-    ticking = false
+function setupTOC() {
+  cleanup?.()
+  const trigger = document.getElementById('toc-button')
+  const sheet = document.getElementById('toc-sheet')
+  const closeButton = document.getElementById('toc-close')
+  const list = document.getElementById('toc-links-list')
+  if (!trigger || !(sheet instanceof HTMLDialogElement) || !closeButton || !list) {
     return
   }
 
-  const activeLink = tocList.querySelector('a:target-current')
-  if (activeLink && activeLink !== lastLink) {
-    activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    lastLink = activeLink
+  const controller = new AbortController()
+  const { signal } = controller
+  let previousOverflow: string | undefined
+  let frame: number | undefined
+  let lastLink: Element | null = null
+
+  function restoreScroll() {
+    if (previousOverflow !== undefined) {
+      document.body.style.overflow = previousOverflow
+      previousOverflow = undefined
+    }
+    trigger?.setAttribute('aria-expanded', 'false')
   }
 
-  ticking = false
-}
+  function closeSheet() {
+    if (sheet instanceof HTMLDialogElement && sheet.open) {
+      sheet.close()
+      restoreScroll()
+    }
+  }
 
-// Throttle scroll events
-function handleScroll() {
-  if (!ticking && is2xl.matches) {
-    window.requestAnimationFrame(scrollToActiveLink)
-    ticking = true
+  trigger.addEventListener('click', () => {
+    if (desktop.matches || sheet.open) {
+      return
+    }
+    sheet.showModal()
+    previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    trigger.setAttribute('aria-expanded', 'true')
+  }, { signal })
+  closeButton.addEventListener('click', closeSheet, { signal })
+  sheet.addEventListener('close', restoreScroll, { signal })
+  sheet.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('a[href^="#"]')) {
+      closeSheet()
+    }
+    else if (event.target === sheet) {
+      const bounds = sheet.getBoundingClientRect()
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
+        closeSheet()
+      }
+    }
+  }, { signal })
+  desktop.addEventListener('change', () => {
+    if (desktop.matches) {
+      closeSheet()
+    }
+  }, { signal })
+
+  if (CSS.supports('selector(:target-current)')) {
+    document.addEventListener('scroll', () => {
+      if (!desktop.matches || frame !== undefined) {
+        return
+      }
+      // Native :target-current selection settles after the scroll frame is painted.
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => {
+          frame = undefined
+          const activeLink = list.querySelector('a:target-current')
+          if (activeLink && activeLink !== lastLink) {
+            const bounds = list.getBoundingClientRect()
+            const linkBounds = activeLink.getBoundingClientRect()
+            const style = getComputedStyle(list)
+            const top = bounds.top + Number.parseFloat(style.paddingTop)
+            const bottom = bounds.bottom - Number.parseFloat(style.paddingBottom)
+            // Keep the active link clear of the fades without moving the article.
+            if (linkBounds.top < top) {
+              list.scrollTop += linkBounds.top - top
+            }
+            else if (linkBounds.bottom > bottom) {
+              list.scrollTop += linkBounds.bottom - bottom
+            }
+            lastLink = activeLink
+          }
+        })
+      })
+    }, { passive: true, signal })
+  }
+
+  cleanup = () => {
+    closeSheet()
+    restoreScroll()
+    controller.abort()
+    if (frame !== undefined) {
+      cancelAnimationFrame(frame)
+    }
   }
 }
 
-// Initialize scroll listener
-function setupAutoScroll() {
-  ticking = false
-  lastLink = null
-
-  const tocList = document.getElementById('toc-links-list')
-  if (!tocList || !CSS.supports('selector(:target-current)')) {
-    return
-  }
-
-  document.addEventListener('scroll', handleScroll, { passive: true })
-}
-
-// Cleanup listener and reset state
-function cleanupAutoScroll() {
-  document.removeEventListener('scroll', handleScroll)
-  lastLink = null
-}
-
-document.addEventListener('astro:page-load', setupAutoScroll)
-document.addEventListener('astro:before-swap', cleanupAutoScroll)
+document.addEventListener('astro:page-load', setupTOC)
+document.addEventListener('astro:before-swap', () => {
+  cleanup?.()
+  cleanup = undefined
+})
 </script>

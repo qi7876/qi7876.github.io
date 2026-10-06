@@ -8,5 +8,7 @@ export default antfu({
   toml: false,
   rules: {
     'pnpm/yaml-enforce-settings': 'off',
+    // The configured test command uses Node's built-in runner.
+    'test/no-import-node-test': 'off',
   },
 })

@@ -33,7 +33,6 @@ export interface ThemeConfig {
   global: {
     fontStyle: 'sans' | 'serif'
     dateFormat: 'YYYY-MM-DD' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'MMM D YYYY' | 'D MMM YYYY'
-    toc: boolean
     katex: boolean
   }
   seo?: {
