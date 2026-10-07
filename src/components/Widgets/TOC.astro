@@ -17,26 +17,23 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
       type="button"
       aria-label="Open table of contents"
       aria-haspopup="dialog"
-      aria-controls="toc-sheet"
+      aria-controls="toc-panel"
       aria-expanded="false"
     >
-      <TocIcon aria-hidden="true" fill="currentColor" class="h-5 w-5" />
+      <TocIcon aria-hidden="true" fill="currentColor" class="toc-open-icon h-5 w-5" />
+      <svg class="toc-close-icon h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
     </button>
     {[false, true].map((mobile) => {
       const Container = mobile ? 'dialog' : 'nav'
       return (
         <Container
-          id={mobile ? 'toc-sheet' : 'toc-desktop'}
-          class={mobile ? 'toc-sheet' : 'toc-desktop'}
-          aria-labelledby={mobile ? 'toc-sheet-title' : 'toc-desktop-title'}
+          id={mobile ? 'toc-panel' : 'toc-desktop'}
+          class={mobile ? 'toc-panel' : 'toc-desktop'}
+          aria-labelledby={mobile ? 'toc-panel-title' : 'toc-desktop-title'}
         >
-          {!mobile && <h2 id="toc-desktop-title">Table of Contents</h2>}
-          {mobile && (
-            <header class="toc-sheet-header">
-              <h2 id="toc-sheet-title">Table of Contents</h2>
-              <button id="toc-close" type="button" aria-label="Close table of contents">×</button>
-            </header>
-          )}
+          <h2 id={mobile ? 'toc-panel-title' : 'toc-desktop-title'}>Table of Contents</h2>
           <ul class="toc-links" id={mobile ? 'toc-mobile-links' : 'toc-links-list'}>
             {filteredHeadings.map(heading => (
               <li class:list={{ 'ml-4': heading.depth === 3, 'ml-8': heading.depth === 4 }}>
@@ -78,57 +75,59 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
   --at-apply: 'c-primary font-medium';
 }
 
-#toc-button {
-  --at-apply: 'fixed z-100 grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-solid border-secondary/15 bg-background c-secondary shadow-lg hover:c-primary';
-  right: max(1rem, env(safe-area-inset-right));
-  bottom: calc(1rem + env(safe-area-inset-bottom));
+#toc-button,
+.toc-panel {
+  --toc-bottom: calc(1rem + env(safe-area-inset-bottom));
+  --toc-right: max(1rem, env(safe-area-inset-right));
+  position: fixed;
+  right: var(--toc-right);
 }
 
-.toc-sheet {
-  --at-apply: 'border-none rounded-t-4 bg-background c-secondary';
-  position: fixed;
-  inset: auto 0 0;
-  width: 100%;
-  max-width: 100%;
-  max-height: 63vh;
-  max-height: 63dvh;
+#toc-button {
+  --at-apply: 'z-100 grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-solid border-secondary/15 bg-background c-secondary shadow-lg hover:c-primary';
+  bottom: var(--toc-bottom);
+}
+
+#toc-button .toc-close-icon,
+#toc-button[aria-expanded="true"] .toc-open-icon {
+  display: none;
+}
+
+#toc-button[aria-expanded="true"] .toc-close-icon {
+  display: block;
+}
+
+.toc-panel {
+  --at-apply: 'z-100 rounded-4 border border-solid border-secondary/15 bg-background c-secondary shadow-lg';
+  top: auto;
+  left: auto;
+  bottom: calc(var(--toc-bottom) + 3rem + 0.75rem);
+  width: min(22rem, calc(100vw - var(--toc-right) - max(1rem, env(safe-area-inset-left))));
+  max-width: none;
+  max-height: min(63vh, calc(100vh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top))));
+  max-height: min(63dvh, calc(100dvh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top))));
   margin: 0;
-  padding: 1rem max(1.25rem, env(safe-area-inset-right)) calc(1.25rem + env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  padding: 1rem;
   overflow: hidden;
 }
 
-.toc-sheet[open] {
+.toc-panel[open] {
   display: flex;
   flex-direction: column;
 }
 
-.toc-sheet::backdrop {
-  background: rgb(0 0 0 / 40%);
-}
-
-.toc-sheet-header {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+#toc-panel-title {
+  --at-apply: 'shrink-0 font-semibold c-primary';
   margin-bottom: 0.75rem;
 }
 
-.toc-sheet-header h2 {
-  --at-apply: 'font-semibold c-primary';
-}
-
-#toc-close {
-  --at-apply: 'h-11 w-11 shrink-0 cursor-pointer text-6 hover:c-primary';
-}
-
-.toc-sheet .toc-links {
+.toc-panel .toc-links {
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
-.toc-sheet .toc-links a {
+.toc-panel .toc-links a {
   padding-block: 0.5rem;
 }
 
@@ -169,59 +168,64 @@ let cleanup: (() => void) | undefined
 function setupTOC() {
   cleanup?.()
   const trigger = document.getElementById('toc-button')
-  const sheet = document.getElementById('toc-sheet')
-  const closeButton = document.getElementById('toc-close')
+  const panel = document.getElementById('toc-panel')
   const list = document.getElementById('toc-links-list')
-  if (!trigger || !(sheet instanceof HTMLDialogElement) || !closeButton || !list) {
+  if (!trigger || !(panel instanceof HTMLDialogElement) || !list) {
     return
   }
 
   const controller = new AbortController()
   const { signal } = controller
-  let previousOverflow: string | undefined
   let frame: number | undefined
   let lastLink: Element | null = null
 
-  function restoreScroll() {
-    if (previousOverflow !== undefined) {
-      document.body.style.overflow = previousOverflow
-      previousOverflow = undefined
-    }
-    trigger?.setAttribute('aria-expanded', 'false')
+  function syncTrigger() {
+    const open = panel instanceof HTMLDialogElement && panel.open
+    trigger?.setAttribute('aria-expanded', String(open))
+    trigger?.setAttribute('aria-label', open ? 'Close table of contents' : 'Open table of contents')
   }
 
-  function closeSheet() {
-    if (sheet instanceof HTMLDialogElement && sheet.open) {
-      sheet.close()
-      restoreScroll()
+  function closePanel() {
+    if (panel instanceof HTMLDialogElement && panel.open) {
+      panel.close()
+      syncTrigger()
     }
   }
 
   trigger.addEventListener('click', () => {
-    if (desktop.matches || sheet.open) {
+    if (desktop.matches) {
       return
     }
-    sheet.showModal()
-    previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    trigger.setAttribute('aria-expanded', 'true')
-  }, { signal })
-  closeButton.addEventListener('click', closeSheet, { signal })
-  sheet.addEventListener('close', restoreScroll, { signal })
-  sheet.addEventListener('click', (event) => {
-    if (event.target instanceof Element && event.target.closest('a[href^="#"]')) {
-      closeSheet()
+    if (panel.open) {
+      closePanel()
     }
-    else if (event.target === sheet) {
-      const bounds = sheet.getBoundingClientRect()
-      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) {
-        closeSheet()
-      }
+    else {
+      panel.show()
+      syncTrigger()
+      trigger.focus({ preventScroll: true })
+    }
+  }, { signal })
+  panel.addEventListener('close', syncTrigger, { signal })
+  panel.addEventListener('click', (event) => {
+    if (event.target instanceof Element && event.target.closest('a[href^="#"]')) {
+      closePanel()
+    }
+  }, { signal })
+  document.addEventListener('click', (event) => {
+    if (event.target instanceof Node && !panel.contains(event.target) && !trigger.contains(event.target)) {
+      closePanel()
+    }
+  }, { signal })
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && panel.open) {
+      event.preventDefault()
+      closePanel()
+      trigger.focus({ preventScroll: true })
     }
   }, { signal })
   desktop.addEventListener('change', () => {
     if (desktop.matches) {
-      closeSheet()
+      closePanel()
     }
   }, { signal })
 
@@ -256,8 +260,7 @@ function setupTOC() {
   }
 
   cleanup = () => {
-    closeSheet()
-    restoreScroll()
+    closePanel()
     controller.abort()
     if (frame !== undefined) {
       cancelAnimationFrame(frame)
