@@ -33,7 +33,7 @@ it('articles expose matching desktop and mobile ToCs outside the article', async
       withoutHeadings++
       assert.equal(page.querySelector('#toc-desktop'), null)
       assert.equal(page.querySelector('#toc-button'), null)
-      assert.equal(page.querySelector('#toc-sheet'), null)
+      assert.equal(page.querySelector('#toc-panel'), null)
       continue
     }
     withHeadings++
@@ -48,8 +48,18 @@ it('articles expose matching desktop and mobile ToCs outside the article', async
       assert.ok(list)
       assert.deepEqual(list.querySelectorAll('a').map(link => link.getAttribute('href')), expected)
     }
-    assert.equal(page.querySelector('#toc-button')?.getAttribute('aria-controls'), 'toc-sheet')
-    assert.equal(page.querySelector('#toc-sheet')?.tagName, 'DIALOG')
+    const trigger = page.querySelector('#toc-button')
+    const panel = page.querySelector('#toc-panel')
+    assert.ok(trigger)
+    assert.ok(panel)
+    assert.equal(trigger.getAttribute('aria-controls'), panel.id)
+    assert.equal(trigger.getAttribute('aria-haspopup'), 'dialog')
+    assert.equal(trigger.getAttribute('aria-expanded'), 'false')
+    assert.equal(trigger.getAttribute('aria-label'), 'Open table of contents')
+    assert.equal(panel.tagName, 'DIALOG')
+    assert.equal(panel.hasAttribute('open'), false)
+    assert.equal(panel.getAttribute('aria-labelledby'), panel.querySelector('h2')?.id)
+    assert.equal(panel.querySelector('button'), null)
   }
   assert.ok(withHeadings > 0)
   assert.ok(withoutHeadings > 0)
@@ -60,6 +70,6 @@ it('home and About have no article ToC controls', async () => {
     const page = parse(await readFile(path, 'utf8'))
     assert.equal(page.querySelector('#toc-button'), null)
     assert.equal(page.querySelector('#toc-desktop'), null)
-    assert.equal(page.querySelector('#toc-sheet'), null)
+    assert.equal(page.querySelector('#toc-panel'), null)
   }
 })

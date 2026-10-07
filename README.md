@@ -10,7 +10,7 @@ Install dependencies with `pnpm install`, run the site with `pnpm dev`, and chec
 
 `pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
 
-Article tables of contents are always enabled for level 2–4 headings. On desktop, the heading list appears beneath Qi in the right sidebar. On mobile, the bottom-right ToC button opens a bottom sheet. Articles without eligible headings have no ToC.
+Article tables of contents are always enabled for level 2–4 headings. On desktop, the heading list appears beneath Qi in the right sidebar. On mobile, the bottom-right ToC button opens a floating panel above it and switches to a close icon. The article remains scrollable; the panel closes on the same button, an outside click, Escape, or heading selection. Articles without eligible headings have no ToC.
 
 Content uses Markdown (`.md`). Theme changes are immediate, with simple color transitions; page navigation has no decorative animations.
 
