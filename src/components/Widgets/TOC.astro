@@ -30,17 +30,27 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
       return (
         <Container
           id={mobile ? 'toc-panel' : 'toc-desktop'}
-          class={mobile ? 'toc-panel' : 'toc-desktop'}
+          class:list={[mobile ? 'toc-panel' : 'toc-desktop', 'font-mono']}
           aria-labelledby={mobile ? 'toc-panel-title' : 'toc-desktop-title'}
         >
-          <h2 id={mobile ? 'toc-panel-title' : 'toc-desktop-title'}>Table of Contents</h2>
+          <h2 id={mobile ? 'toc-panel-title' : 'toc-desktop-title'}>TREE</h2>
           <ul class="toc-links" id={mobile ? 'toc-mobile-links' : 'toc-links-list'}>
             {filteredHeadings.map(heading => (
-              <li class:list={{ 'ml-4': heading.depth === 3, 'ml-8': heading.depth === 4 }}>
-                <a href={`#${heading.slug}`} class="no-heti">{heading.text}</a>
+              <li style={`--toc-depth: ${heading.depth - 2}`}>
+                <a href={`#${heading.slug}`} class="no-heti">
+                  <span class="toc-branch" aria-hidden="true">└</span>
+                  <span>{heading.text}</span>
+                </a>
               </li>
             ))}
           </ul>
+          <div class="toc-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="toc-progress-track" aria-hidden="true">
+              {'░'.repeat(40)}
+              <span class="toc-progress-fill">{'█'.repeat(40)}</span>
+            </span>
+            <span class="toc-progress-percent" aria-hidden="true">00%</span>
+          </div>
         </Container>
       )
     })}
@@ -65,10 +75,51 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
   margin-top: 0.5rem;
 }
 
+.toc-links li {
+  padding-left: calc(var(--toc-depth) * 2ch);
+}
+
 .toc-links a {
-  --at-apply: 'block c-secondary/70 no-underline hover:c-primary';
+  --at-apply: 'flex c-secondary/70 no-underline hover:c-primary';
+  gap: 1ch;
   font-size: 0.8125rem;
   overflow-wrap: anywhere;
+}
+
+.toc-branch {
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.toc-progress {
+  --at-apply: 'c-secondary/50';
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1ch;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.toc-progress-track {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.toc-progress-fill {
+  --at-apply: 'c-primary';
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--reading-progress, 0%)) 0 0);
+}
+
+.toc-progress-percent {
+  width: 4ch;
+  text-align: right;
 }
 
 .toc-links a:target-current {
@@ -116,9 +167,12 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
   flex-direction: column;
 }
 
-#toc-panel-title {
+#toc-panel-title,
+#toc-desktop-title {
   --at-apply: 'shrink-0 font-semibold c-primary';
   margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
 }
 
 .toc-panel .toc-links {
@@ -140,12 +194,6 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
     display: flex;
     flex-direction: column;
     height: 82%;
-  }
-
-  #toc-desktop-title {
-    --at-apply: 'shrink-0 font-semibold c-secondary/90';
-    margin-bottom: 0.75rem;
-    font-size: 0.75rem;
   }
 
   .toc-desktop .toc-links {
@@ -170,14 +218,56 @@ function setupTOC() {
   const trigger = document.getElementById('toc-button')
   const panel = document.getElementById('toc-panel')
   const list = document.getElementById('toc-links-list')
-  if (!trigger || !(panel instanceof HTMLDialogElement) || !list) {
+  const content = document.getElementById('post-content')
+  if (!trigger || !(panel instanceof HTMLDialogElement) || !list || !content) {
     return
   }
 
   const controller = new AbortController()
   const { signal } = controller
   let frame: number | undefined
+  let progressFrame: number | undefined
   let lastLink: Element | null = null
+  const progressBars = document.querySelectorAll<HTMLElement>('.toc-progress')
+
+  function updateProgress() {
+    if (!content) {
+      return
+    }
+    const bounds = content.getBoundingClientRect()
+    // Start when the article reaches its heading offset; finish when its end is visible.
+    const start = bounds.top + window.scrollY - 80
+    const end = bounds.bottom + window.scrollY - window.innerHeight
+    const fraction = end > start
+      ? (window.scrollY - start) / (end - start)
+      : bounds.bottom <= window.innerHeight ? 1 : 0
+    const percent = Math.round(Math.min(1, Math.max(0, fraction)) * 100)
+    for (const bar of progressBars) {
+      bar.setAttribute('aria-valuenow', String(percent))
+      bar.style.setProperty('--reading-progress', `${percent}%`)
+      const label = bar.querySelector('.toc-progress-percent')
+      if (label) {
+        label.textContent = `${String(percent).padStart(2, '0')}%`
+      }
+    }
+  }
+
+  function scheduleProgress() {
+    if (progressFrame !== undefined) {
+      return
+    }
+    progressFrame = requestAnimationFrame(() => {
+      progressFrame = undefined
+      updateProgress()
+    })
+  }
+
+  document.addEventListener('scroll', scheduleProgress, { passive: true, signal })
+  window.addEventListener('resize', scheduleProgress, { signal })
+  const resizeObserver = new ResizeObserver(scheduleProgress)
+  resizeObserver.observe(content)
+  resizeObserver.observe(document.documentElement)
+  scheduleProgress()
 
   function syncTrigger() {
     const open = panel instanceof HTMLDialogElement && panel.open
@@ -262,8 +352,12 @@ function setupTOC() {
   cleanup = () => {
     closePanel()
     controller.abort()
+    resizeObserver.disconnect()
     if (frame !== undefined) {
       cancelAnimationFrame(frame)
+    }
+    if (progressFrame !== undefined) {
+      cancelAnimationFrame(progressFrame)
     }
   }
 }

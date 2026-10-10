@@ -17,7 +17,7 @@
     dominant-baseline="middle"
     text-anchor="middle"
     font-size="50"
-    font-family="Georgia, serif"
+    font-family="Menlo, Monaco, Consolas, monospace"
     font-weight="900"
     letter-spacing="-0.02em"
     dy="0.05"

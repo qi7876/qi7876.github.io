@@ -19,7 +19,7 @@ interface Props {
 
 const { postTitle, postDescription } = Astro.props
 const { isPost } = getPageInfo(Astro.url.pathname)
-const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'font-sans'
+const fontStyle = themeConfig.global.fontStyle === 'mono' ? 'font-mono' : 'font-sans'
 ---
 
 <html
