@@ -57,7 +57,7 @@ export default defineConfig({
     fontFamily: {
       sans: systemSans,
       mono: systemMono,
-      title: systemMono,
+      title: systemSans,
       navbar: systemMono,
       time: systemMono,
     },
