@@ -52,7 +52,9 @@ it('articles expose matching desktop and mobile ToCs outside the article', async
         assert.equal(branch?.textContent, '└')
         assert.equal(branch?.getAttribute('aria-hidden'), 'true')
         const depth = Number(headings[index].tagName.slice(1)) - 2
-        assert.equal(link.parentNode?.getAttribute('style'), `--toc-depth: ${depth}`)
+        const indentation = link.parentNode?.getAttribute('style')?.match(/--toc-depth:\s*(\d+)/)
+        assert.ok(indentation)
+        assert.equal(Number(indentation[1]), depth)
       }
     }
     for (const selector of ['#toc-desktop', '#toc-panel']) {
