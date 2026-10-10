@@ -18,7 +18,7 @@ Mermaid diagram rendering, media embed directives, admonitions, fold directives,
 
 Lightning CSS has draft scroll navigation controls enabled to recognize the ToC's native `:target-current` selector.
 
-RSS and Atom feeds include absolute URLs for local images in `src/content/posts/attachments/`. Missing local feed images fail the build.
+RSS and Atom feeds include absolute URLs for local images anywhere under `src/content/posts/`, including per-post folders in `assets/` and the legacy `attachments/` directory. Missing local feed images fail the build.
 
 Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
 
