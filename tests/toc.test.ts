@@ -69,7 +69,9 @@ it('articles expose matching desktop and mobile ToCs outside the article', async
       assert.equal(progress.getAttribute('aria-valuemax'), '100')
       assert.equal(progress.getAttribute('aria-valuenow'), '0')
       assert.equal(progress.querySelector('.toc-progress-percent')?.textContent, '00%')
-      assert.ok(toc.innerHTML.indexOf('role="progressbar"') > toc.innerHTML.indexOf('</ul>'))
+      const headingList = toc.querySelector('ul')
+      assert.ok(headingList)
+      assert.ok(toc.childNodes.indexOf(progress) > toc.childNodes.indexOf(headingList))
     }
     const trigger = page.querySelector('#toc-button')
     const panel = page.querySelector('#toc-panel')
