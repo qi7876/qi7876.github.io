@@ -31,7 +31,7 @@ export interface ThemeConfig {
     }
   }
   global: {
-    fontStyle: 'sans' | 'serif'
+    fontStyle: 'sans' | 'mono'
     dateFormat: 'YYYY-MM-DD' | 'MM-DD-YYYY' | 'DD-MM-YYYY' | 'MMM D YYYY' | 'D MMM YYYY'
     katex: boolean
   }

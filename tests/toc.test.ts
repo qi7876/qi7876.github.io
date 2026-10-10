@@ -47,6 +47,27 @@ it('articles expose matching desktop and mobile ToCs outside the article', async
       const list = page.querySelector(selector)
       assert.ok(list)
       assert.deepEqual(list.querySelectorAll('a').map(link => link.getAttribute('href')), expected)
+      for (const [index, link] of list.querySelectorAll('a').entries()) {
+        const branch = link.querySelector('.toc-branch')
+        assert.equal(branch?.textContent, '└')
+        assert.equal(branch?.getAttribute('aria-hidden'), 'true')
+        const depth = Number(headings[index].tagName.slice(1)) - 2
+        assert.equal(link.parentNode?.getAttribute('style'), `--toc-depth: ${depth}`)
+      }
+    }
+    for (const selector of ['#toc-desktop', '#toc-panel']) {
+      const toc = page.querySelector(selector)
+      assert.ok(toc)
+      assert.ok(toc.classList.contains('font-mono'))
+      assert.equal(toc.querySelector('h2')?.textContent, 'TREE')
+      const progress = toc.querySelector('[role="progressbar"]')
+      assert.ok(progress)
+      assert.equal(progress.getAttribute('aria-label'), 'Reading progress')
+      assert.equal(progress.getAttribute('aria-valuemin'), '0')
+      assert.equal(progress.getAttribute('aria-valuemax'), '100')
+      assert.equal(progress.getAttribute('aria-valuenow'), '0')
+      assert.equal(progress.querySelector('.toc-progress-percent')?.textContent, '00%')
+      assert.ok(toc.innerHTML.indexOf('role="progressbar"') > toc.innerHTML.indexOf('</ul>'))
     }
     const trigger = page.querySelector('#toc-button')
     const panel = page.querySelector('#toc-panel')

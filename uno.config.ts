@@ -25,17 +25,15 @@ const systemSans = [
   'Segoe UI Emoji',
   'Segoe UI Symbol',
 ]
-const systemSerif = [
-  'Georgia',
-  'Cambria',
-  'Times New Roman',
-  'Times',
-  'Songti SC',
-  'STSong',
-  'SimSun',
-  'PMingLiU',
-  'ui-serif',
-  'serif',
+const systemMono = [
+  'ui-monospace',
+  'SFMono-Regular',
+  'Menlo',
+  'Monaco',
+  'Consolas',
+  'Liberation Mono',
+  'Courier New',
+  'monospace',
 ]
 
 export default defineConfig({
@@ -58,10 +56,10 @@ export default defineConfig({
     },
     fontFamily: {
       sans: systemSans,
-      serif: systemSerif,
-      title: systemSerif,
-      navbar: systemSerif,
-      time: systemSerif,
+      mono: systemMono,
+      title: systemMono,
+      navbar: systemMono,
+      time: systemMono,
     },
   },
   rules: [
