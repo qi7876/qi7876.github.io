@@ -6,7 +6,7 @@ draft: false
 
 Source: <https://www.raycast.com/blog/a-technical-deep-dive-into-the-new-raycast>
 
-![Tech stack of Raycast v2](https://www.raycast.com/uploads/blog-technical-deep-dive-new-raycast/raycast-2-tech-stack.png)
+![Tech stack of Raycast v2](./assets/raycast-technical-report/raycast-2-tech-stack.png)
 
 同时做到了：
 

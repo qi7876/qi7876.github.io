@@ -17,6 +17,4 @@ Get-AppxPackage -AllUsers | ForEach-Object {
 
 即可一次性为所有 uwp 应用开启本地回环访问权限。
 
-或者，更方便一点，使用一个 GUI 小工具：
-
-<https://github.com/tiagonmas/Windows-Loopback-Exemption-Manager>
+或者，更方便一点，使用一个 [GUI 小工具](https://github.com/tiagonmas/Windows-Loopback-Exemption-Manager)

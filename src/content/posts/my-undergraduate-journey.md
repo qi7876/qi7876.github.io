@@ -71,7 +71,7 @@ CTF：大二上
 
 1 号，the book 还剩最后一小节就到了 final project，然后又调整了一下课程清单
 
-![rustlings](attachments/rustlings.png)
+![rustlings](./assets/my-undergraduate-journey/rustlings.png)
 
 the book 的正文部分结束了！rustlings也同步做完了！开启最后的 project！
 
@@ -84,6 +84,12 @@ the book 的正文部分结束了！rustlings也同步做完了！开启最后�
 5 号，CS61B 同步进度了，今天还尝试了使用 Jujustu colocated with Git，真的太好用了，比 Git 的 mental model 要简单很多（Git 的 stash 机制很反人类，staging area / index 也同样有些多余，jj 直接让 commit 作为 workspace，消除了这些复杂度），概念上也消除了 Git 瞎起名带来的误解（比如 branch，实际上只是个 reference，Git 使用 branch 让人很容易误解成是从 main 分叉出的一整条 commit 链，而在 jj 中，作者使用 bookmark 来指代）
 
 6 号，推进 CSAPP 105 / 1076，明天准备继续推进科研了
+
+7，8 号，推进了一些科研
+
+9 号，搞了一天软件工程实验课。写rust太痛苦了。。。
+
+6.1 sol的架构设计能力简直是一塌糊涂。。。
 
 ## Plan
 

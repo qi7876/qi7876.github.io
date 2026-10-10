@@ -20,4 +20,4 @@ draft: false
 >
 > 数据就像是一个任意的三维乱糟糟球体中的一堆颜色，其中的模式极难辨认。但这些数据实际上位于一个低维流形上（即那张二维床单）。如果你能找出这个流形（把床单摊平），数据就会变得易于建模。
 
-Source: <https://www.reddit.com/r/MachineLearning/comments/4huo36/what_is_low_dimensional_manifold>
+[Source](https://www.reddit.com/r/MachineLearning/comments/4huo36/what_is_low_dimensional_manifold)

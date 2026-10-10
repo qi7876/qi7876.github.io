@@ -164,17 +164,17 @@ title = false
 
 安装和配置完成后，我们就可以在项目中使用 Codex 了，随意以一个项目为例，我们运行命令进入 Codex。
 
-![](attachments/Pasted%20image%2020260310114517.png)
+![](./assets/coding-agent-guide/Pasted image 20260310114517.png)
 
 在首次进入一个项目时，Codex 会让我们确定一些基础的权限，对于有 version control 的项目，可以直接给予 Codex 编辑和运行部分命令的权限，运行其他命令仍然需要你手动同意。当然，为了最高的权限控制，你也可以让 Codex 的每次修改文件和运行命令都要经过你的同意。
 
 **2026-09-23 Update**：别浪费时间
 
-![](attachments/Pasted%20image%2020260310113843.png)
+![](./assets/coding-agent-guide/Pasted image 20260310113843.png)
 
 我们选择 1
 
-![](attachments/Pasted%20image%2020260310114534.png)
+![](./assets/coding-agent-guide/Pasted image 20260310114534.png)
 
 现在的界面就很熟悉了，一个简单的对话框，但这次对话框后是一个全副武装的 Coding Agent。
 
@@ -186,7 +186,7 @@ title = false
 
 在对话框中输入 `/`，Codex 会自动展示命令列表，通过上下方向键可以快速选择命令。
 
-![](attachments/Pasted%20image%2020260310115422.png)
+![](./assets/coding-agent-guide/Pasted image 20260310115422.png)
 
 命令后有对应的作用描述，比较常用的命令有：
 
@@ -204,7 +204,7 @@ title = false
 
 在对话框中输入 `$`，Codex 会自动展示 skills 列表，通过上下方向键可以快速选择 Skill。
 
-![](attachments/Pasted%20image%2020260310115504.png)
+![](./assets/coding-agent-guide/Pasted image 20260310115504.png)
 
 也可以使用 Codex 自带的 Skill Creator 创建自己的 Skill。
 
@@ -212,7 +212,7 @@ title = false
 
 在对话框中输入 `@`，可以快速选择文件路径，Codex 会在对话中自行调用工具读取。
 
-![](attachments/Pasted%20image%2020260310125319.png)
+![](./assets/coding-agent-guide/Pasted image 20260310125319.png)
 
 注意，如果你已经输入了一些文字，然后想使用 `@`指定文件路径，你需要在文本和`@` 之间先打上一个空格。
 

@@ -18,7 +18,7 @@ const { follow } = themeConfig.seo ?? {}
 // Feed HTML is rendered separately from article pages, so local images need
 // Astro asset URLs that feed readers can resolve outside the site.
 const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/content/posts/attachments/**/*.{jpeg,jpg,png,gif,webp,svg,avif}',
+  '/src/content/posts/**/*.{jpeg,jpg,png,gif,webp,svg,avif}',
 )
 
 /**

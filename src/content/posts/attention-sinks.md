@@ -200,9 +200,9 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 
 产生了 massive activation，比普通 activation 大了几个数量级
 
-![image-20260908203809467](./attachments/image-20260908203809467.png)
+![](./assets/attention-sinks/image-20260908203809467.png)
 
-![image-20260908203757569](./attachments/image-20260908203757569.png)
+![](./assets/attention-sinks/image-20260908203757569.png)
 
 这里要注意，massive activation 和 outlier feature 并不一样，后者指的是某个 feature dimension 在很多 token 上都比较大，作者通过实验发现两个定义下找到的 token 并不重叠
 
@@ -226,11 +226,11 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 
 现代 LLM 中一般会使用 pre norm+RMSNorm，而 RMSNorm 对 outlier 很敏感，收到 massive activation 影响，非 massive activation 的 feature dimension 会被挤压到接近 0，导致这个 token 的 feature 非常稀疏，并且所有带有 massive activations 的 token 都长的差不多。因此，这些带有 massive activations 的 token 的 representation 变成接近固定的，成为了模型学习到的一个隐式的参数
 
-![image-20260909113358716](./attachments/image-20260909113358716.png)
+![](./assets/attention-sinks/image-20260909113358716.png)
 
 然后作者分解一个 token 经过 attention 后的输出，可以单独把来自 massive activation token 的那部分拿出来，这部分的值近似是固定的，也就成为了一个 implicit attention bias。所以 26 年的最新工作 OutRo 实际上和这篇工作高度相似，把 massive activations 包装成了 attention sink 又拿出来说了一遍
 
-![image-20260909113416715](./attachments/image-20260909113416715.png)
+![](./assets/attention-sinks/image-20260909113416715.png)
 
 那如果我们显式的加入可学习的 KV，用来充当 bias 呢？作者进行了三组实验：
 
@@ -238,7 +238,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 1. GPT-2 with [SINK] token：仍然存在 massive activations
 1. GPT-2 with learnable k,v for each attention head：massive activations 消失了，随着 layer 变深数值平滑提高，并且性能也并没有变化
 
-![image-20260909133323631](./attachments/image-20260909133323631.png)
+![](./assets/attention-sinks/image-20260909133323631.png)
 
 ### ViT
 
@@ -249,7 +249,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 1. 出现的比较晚
 1. 发生 massive activation 的 patch token 不固定
 
-![image-20260909134358192](./attachments/image-20260909134358192.png)
+![](./assets/attention-sinks/image-20260909134358192.png)
 
 但是功能是相同的，同样是充当 bias，上图右下角可以看到实验结果，设置为 0 会让模型性能降级
 
@@ -257,7 +257,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 
 然后作者做了一个更强的干预实验，直接将所有 register 的 feature 改成了 10K ImageNet 上的平均值，结果模型性能不变，这说明 register 本质上提供了 constant bias，而非我们预想的 global image information
 
-![image-20260909142735572](./attachments/image-20260909142735572.png)
+![](./assets/attention-sinks/image-20260909142735572.png)
 
 ## Active-Dormant Attention Heads 2024-10
 
@@ -291,7 +291,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 
 对于一个 token x，预先确定一些 sink dimensions，再判断每个 token 的 sink dimension 数值与 RMS（所有维度）的比值是否超过阈值（文章中设置为 20）
 
-![image-20260910212348831](./attachments/image-20260910212348831.png)
+![](./assets/attention-sinks/image-20260910212348831.png)
 
 从图中可以看出，这样找出的 visual sink token 的其他维度还是比较正常的，没有像 LLM 中一样基本近似为 0
 
@@ -329,14 +329,14 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
 1. relevance map：**这里用的是 ViT 中的 attention。**观察一个 sink token 或者 non-sink token，找其他 token 给他的 attention 来画一张图，发现 non-sink token 的 relevance 基本集中在附近局部 patches，而 sink token 的 relevance 分布在很大范围，并且有的头主要聚合 foreground、有的头主要聚合 background。也就是说，non-sink token 聚合局部信息，sink token 聚合粗粒度的全局信息
 1. decoding 时的 word distribution：把 attention 关了，抑制信息交换，然后看 LM Head 的 distribution 输出，发现 sink token 的 distribution 明显偏向画面主体，而 non-sink token 的 distribution 比较平滑，但是画面主体的 frequency 仍然很高
 
-![image-20260911093917389](./attachments/image-20260911093917389.png)
+![](./assets/attention-sinks/image-20260911093917389.png)
 
 然后又做了一个更激进的实验：
 
 1. 去掉 sink token，只保留 non-sink token：local tasks 提升性能
 1. 去掉 non-sink token，只保留 sink token：global tasks 提升性能
 
-![image-20260911094256105](./attachments/image-20260911094256105.png)
+![](./assets/attention-sinks/image-20260911094256105.png)
 
 这里可以看到：
 
@@ -353,7 +353,7 @@ sink token 中 kv 的 norm 都很接近 0，但深入到 dimension 来看，实�
    1. 用 CoT 让模型自己思考并分配
    1. 再用一个单独的 mlp，只根据 text tokens 来确定 sink token 和 non-sink token 的权重，然后直接把权重加权到两类 token 的 feature 上
 
-![image-20260911114853379](./attachments/image-20260911114853379.png)
+![](./assets/attention-sinks/image-20260911114853379.png)
 
 ## The Spike, the Sparse and the Sink 2026-03
 
@@ -381,7 +381,7 @@ attention sinks -> sink token：某些 token 不管重不重要，都会被大�
 
 1. 只发生在少量 token
 
-![逐层统计](./attachments/image-20260905090954256.png)
+![](./assets/attention-sinks/image-20260905090954256.png)
 
 从某一层开始突然产生，通过 residual stream 传播，到最后突然消失
 
@@ -397,7 +397,7 @@ massive activations 经过一个 RMSNorm 后，由于少数 channel 有很大的
 
 为了形成 sink head，模型必须将 non-sink key 和 sink key 拉的很开
 
-![image-20260905092100662](./attachments/image-20260905092100662.png)
+![](./assets/attention-sinks/image-20260905092100662.png)
 
 而 V 又很小，就导致最终的输出接近 0，于是 attention sink 成为模型自发学习出来的隐式 gated attention（On the Nature of Attention Sink that Shapes Decoding Strategy in Omni-LLMs 又说 V 是公共表示？？）
 
@@ -415,7 +415,7 @@ massive activations 经过一个 RMSNorm 后，由于少数 channel 有很大的
 
 然后形式化定义什么是 sink，这里选择了几个已知的 sink dimension，然后直接看 token 在这些 dimension 上的值是不是大于某个阈值，判断出 V-sink 和 L-sink 后，剩下的 token 就叫 ordinary token
 
-![image-20260911200421991](./attachments/image-20260911200421991.png)
+![](./assets/attention-sinks/image-20260911200421991.png)
 
 对于 V-sink，经过 projector 后 feature 发生了混合，而 L-sink 经过某个 mlp 后变成了 sink token
 
@@ -433,11 +433,11 @@ massive activations 经过一个 RMSNorm 后，由于少数 channel 有很大的
 
 作者用每层最后一个 token 的 hidden state 作为输入，用一个 mlp 来预测下一层应该多看 V-sink 还是 rest，然后直接 NTP
 
-![image-20260911202329036](./attachments/image-20260911202329036.png)
+![](./assets/attention-sinks/image-20260911202329036.png)
 
 同时在多层使用单独训练的 mlp 可以叠加增益
 
-![image-20260911202339118](./attachments/image-20260911202339118.png)
+![](./assets/attention-sinks/image-20260911202339118.png)
 
 ## A Unifying View of Attention Sinks 2026-06
 
@@ -460,7 +460,7 @@ massive activations 经过一个 RMSNorm 后，由于少数 channel 有很大的
 
 于是作者提出，直接用 gating attention 取代 NOP，然后让 register token 承担 broadcast 的功能
 
-![image-20260911204640510](./attachments/image-20260911204640510.png)
+![](./assets/attention-sinks/image-20260911204640510.png)
 
 ## SinkRouter 2026-04
 
@@ -478,13 +478,13 @@ prefilling 没动
 
 如果大于了，就直接令 attention output 为 0
 
-![image-20260911211056869](./attachments/image-20260911211056869.png)
+![](./assets/attention-sinks/image-20260911211056869.png)
 
-![image-20260911211116273](./attachments/image-20260911211116273.png)
+![](./assets/attention-sinks/image-20260911211116273.png)
 
 结果是做到了接近无损
 
-![image-20260911211151618](./attachments/image-20260911211151618.png)
+![](./assets/attention-sinks/image-20260911211151618.png)
 
 可以看到，上下文越长，加速越明显，但是比较短时基本没啥加速
 
