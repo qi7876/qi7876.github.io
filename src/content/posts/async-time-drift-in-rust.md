@@ -1,5 +1,5 @@
 ---
-title: Rsut中的async时间漂移
+title: Rust中的async时间漂移
 published: 2026-09-25
 draft: false
 ---
