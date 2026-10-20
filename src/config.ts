@@ -1,51 +1,51 @@
-import type { ThemeConfig } from '@/types'
+import type { ThemeConfig } from "@/types";
 
 export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: 'Qi',
+    title: "Qi",
     // site description
-    description: 'Qi\'s blog',
+    description: "Qi's blog",
     // author name
-    author: 'qi7876',
+    author: "qi7876",
     // site url
-    url: 'https://qi7876.github.io',
+    url: "https://qi7876.github.io",
     // base path
     // root directory for all pages and assets
-    base: '/', // e.g., '/blog', '/docs'
+    base: "/", // e.g., '/blog', '/docs'
     // favicon url
-    favicon: '/icons/favicon.svg', // or https://example.com/favicon.svg
+    favicon: "/icons/favicon.svg", // or https://example.com/favicon.svg
   },
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
   // COLOR SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   color: {
     // default theme mode
-    mode: 'auto', // light | dark | auto
+    mode: "auto", // light | dark | auto
     light: {
       // primary color
       // used for title, hover, etc
       // oklch color picker: https://oklch.com/
-      primary: 'oklch(25% 0.005 298)',
+      primary: "oklch(25% 0.005 298)",
       // secondary color
       // used for post text
-      secondary: 'oklch(40% 0.005 298)',
+      secondary: "oklch(40% 0.005 298)",
       // background color
-      background: 'oklch(96% 0.005 298)',
+      background: "oklch(96% 0.005 298)",
       // highlight color
       // used for navbar, selected text, etc
-      highlight: 'oklch(0.93 0.195089 103.2532 / 0.5)', // rgba(255,235,0,0.5)
+      highlight: "oklch(0.93 0.195089 103.2532 / 0.5)", // rgba(255,235,0,0.5)
     },
     dark: {
       // primary color
-      primary: 'oklch(92% 0.005 298)',
+      primary: "oklch(92% 0.005 298)",
       // secondary color
-      secondary: 'oklch(77% 0.005 298)',
+      secondary: "oklch(77% 0.005 298)",
       // background color
-      background: 'oklch(22% 0.005 298)',
+      background: "oklch(22% 0.005 298)",
       // highlight color
-      highlight: 'oklch(0.93 0.195089 103.2532 / 0.2)', // rgba(255,235,0,0.2)
+      highlight: "oklch(0.93 0.195089 103.2532 / 0.2)", // rgba(255,235,0,0.2)
     },
   },
   // COLOR SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
@@ -53,9 +53,9 @@ export const themeConfig: ThemeConfig = {
   // GLOBAL SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   global: {
     // post font style
-    fontStyle: 'sans', // sans | serif
+    fontStyle: "sans", // sans | serif
     // post date format
-    dateFormat: 'YYYY-MM-DD', // YYYY-MM-DD | MM-DD-YYYY | DD-MM-YYYY | MMM D YYYY | D MMM YYYY
+    dateFormat: "YYYY-MM-DD", // YYYY-MM-DD | MM-DD-YYYY | DD-MM-YYYY | MMM D YYYY | D MMM YYYY
     // enable katex math rendering
     katex: true, // true | false
   },
@@ -64,35 +64,35 @@ export const themeConfig: ThemeConfig = {
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   seo: {
     // @twitter ID
-    twitterID: '',
+    twitterID: "",
     // site verification
     verification: {
       // google search console
       // https://search.google.com/search-console
-      google: 'EdCgE-iVyMvAYqG5QjAr0NVlM-ts2wzMlvMkVcNRqt8',
+      google: "EdCgE-iVyMvAYqG5QjAr0NVlM-ts2wzMlvMkVcNRqt8",
       // bing webmaster tools
       // https://www.bing.com/webmasters
-      bing: '',
+      bing: "",
       // yandex webmaster
       // https://webmaster.yandex.com
-      yandex: '',
+      yandex: "",
       // baidu search
       // https://ziyuan.baidu.com
-      baidu: '',
+      baidu: "",
     },
     // google analytics
     // https://knalytics.google.com
-    googleAnalyticsID: 'G-NS394GRCQY',
+    googleAnalyticsID: "G-NS394GRCQY",
     // umami analytics
     // https://cloud.umami.is
-    umamiAnalyticsID: '',
+    umamiAnalyticsID: "",
     // follow verification
     // https://follow.is/
     follow: {
       // feed ID
-      feedID: '',
+      feedID: "",
       // user ID
-      userID: '',
+      userID: "",
     },
   },
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
@@ -102,16 +102,16 @@ export const themeConfig: ThemeConfig = {
     // social links
     links: [
       {
-        name: 'RSS',
-        url: '/atom.xml', // or /rss.xml
+        name: "RSS",
+        url: "/atom.xml", // or /rss.xml
       },
       {
-        name: 'GitHub',
-        url: 'https://github.com/qi7876',
+        name: "GitHub",
+        url: "https://github.com/qi7876",
       },
       {
-        name: 'Email',
-        url: 'qi7876@gmail.com',
+        name: "Email",
+        url: "qi7876@gmail.com",
       },
     ],
     // year of website start
@@ -123,17 +123,17 @@ export const themeConfig: ThemeConfig = {
   preload: {
     // image hosting url
     // optimize remote images in Markdown files to avoid cumulative layout shift
-    imageHostURL: 'qi7876.github.io',
+    imageHostURL: "qi7876.github.io",
     // custom google analytics js
     // for users who proxy tracking scripts to a custom domain
     // see https://gist.github.com/xiaopc/0602f06ca465d76bd9efd3dda9393738
-    customGoogleAnalyticsJS: '',
+    customGoogleAnalyticsJS: "",
     // custom umami analytics js
     // for users who deploy umami on their own, or route analytics javascript to a customized domain
     // see https://github.com/umami-software/umami/discussions/1026
-    customUmamiAnalyticsJS: '',
+    customUmamiAnalyticsJS: "",
   },
   // PRELOAD SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
-}
+};
 
-export const base = themeConfig.site.base === '/' ? '' : themeConfig.site.base.replace(/\/$/, '')
+export const base = themeConfig.site.base === "/" ? "" : themeConfig.site.base.replace(/\/$/, "");

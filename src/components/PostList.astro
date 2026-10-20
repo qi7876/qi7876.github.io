@@ -1,36 +1,29 @@
 ---
-import type { Post } from '@/types'
-import PinIcon from '@/assets/icons/pin-icon.svg'
-import PostDate from '@/components/PostDate.astro'
-import { base } from '@/config'
-import { isHomePage } from '@/utils/page'
+import type { Post } from "@/types";
+import PinIcon from "@/assets/icons/pin-icon.svg";
+import PostDate from "@/components/PostDate.astro";
+import { base } from "@/config";
+import { isHomePage } from "@/utils/page";
 
 export interface Props {
-  posts: Post[]
-  pinned?: boolean
+  posts: Post[];
+  pinned?: boolean;
 }
 
-const { posts, pinned = false } = Astro.props
-const isHome = isHomePage(Astro.url.pathname)
+const { posts, pinned = false } = Astro.props;
+const isHome = isHomePage(Astro.url.pathname);
 ---
 
 <ul>
   {posts.map((post) => {
-    const slug = post.data.abbrlink || post.id
+    const slug = post.data.abbrlink || post.id;
 
     return (
-      <li
-        class:list={[
-          'mb-5.5',
-          isHome ? 'lg:mb-10' : '',
-        ]}
-      >
+      <li class:list={["mb-5.5", isHome ? "lg:mb-10" : ""]}>
         {/* post title */}
         <h3 class="inline transition-colors hover:c-primary">
           <a
-            class:list={[
-              isHome ? 'text-4.5 lg:(font-medium text-5)' : '',
-            ]}
+            class:list={[isHome ? "text-4.5 lg:(font-medium text-5)" : ""]}
             href={`${base}/posts/${slug}/`}
           >
             {post.data.title}
@@ -47,18 +40,13 @@ const isHome = isHomePage(Astro.url.pathname)
 
         <div
           class:list={[
-            'py-0.8 font-time',
-            isHome
-              ? 'text-4 lg:(mt-2.25 py-0 text-4)'
-              : 'text-3.5 lg:(mt-1.5 py-0 text-3.65)',
+            "py-0.8 font-time",
+            isHome ? "text-4 lg:(mt-2.25 py-0 text-4)" : "text-3.5 lg:(mt-1.5 py-0 text-3.65)",
           ]}
         >
-          <PostDate
-            date={post.data.published}
-            minutes={post.remarkPluginFrontmatter.minutes}
-          />
+          <PostDate date={post.data.published} minutes={post.remarkPluginFrontmatter.minutes} />
         </div>
       </li>
-    )
+    );
   })}
 </ul>

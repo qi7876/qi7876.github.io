@@ -1,47 +1,44 @@
 ---
-import { base } from '@/config'
-import { getPageInfo } from '@/utils/page'
+import { base } from "@/config";
+import { getPageInfo } from "@/utils/page";
 
-const { isHome, isPost, isAbout } = getPageInfo(Astro.url.pathname)
+const { isHome, isPost, isAbout } = getPageInfo(Astro.url.pathname);
 
-const isPostActive = isHome || isPost
-const isAboutActive = isAbout
+const isPostActive = isHome || isPost;
+const isAboutActive = isAbout;
 
 function getNavItemClass(isActive: boolean) {
   return isActive
-    ? 'highlight-static c-primary font-bold after:bottom-0.7em'
-    : 'highlight-hover transition-[colors,font-weight] after:bottom-0.7em hover:(c-primary font-bold)'
+    ? "highlight-static c-primary font-bold after:bottom-0.7em"
+    : "highlight-hover transition-[colors,font-weight] after:bottom-0.7em hover:(c-primary font-bold)";
 }
 
 const navItems = [
   {
-    href: '/',
-    label: 'Posts',
+    href: "/",
+    label: "Posts",
     className: getNavItemClass(isPostActive),
   },
   {
-    href: '/about/',
-    label: 'About',
+    href: "/about/",
+    label: "About",
     className: getNavItemClass(isAboutActive),
   },
-]
+];
 ---
 
 <nav
   aria-label="Site Navigation"
   class:list={[
-    'mb-10.5 text-3.6 font-semibold leading-2.45em font-navbar',
-    'lg:(uno-desktop-column text-4 bottom-[min(9.04rem+3.85vw,12.5rem)])',
-    isPost ? 'hidden lg:block' : '',
+    "mb-10.5 text-3.6 font-semibold leading-2.45em font-navbar",
+    "lg:(uno-desktop-column text-4 bottom-[min(9.04rem+3.85vw,12.5rem)])",
+    isPost ? "hidden lg:block" : "",
   ]}
 >
   <ul>
-    {navItems.map(item => (
+    {navItems.map((item) => (
       <li>
-        <a
-          href={`${base}${item.href}`}
-          class={item.className}
-        >
+        <a href={`${base}${item.href}`} class={item.className}>
           {item.label}
         </a>
       </li>

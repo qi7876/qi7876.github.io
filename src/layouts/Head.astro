@@ -1,159 +1,172 @@
 ---
-import { ClientRouter } from 'astro:transitions'
-import katexCSS from 'katex/dist/katex.min.css?url'
-import { base, themeConfig } from '@/config'
+import { ClientRouter } from "astro:transitions";
+import katexCSS from "katex/dist/katex.min.css?url";
+import { base, themeConfig } from "@/config";
 
 interface Props {
-  postTitle?: string
-  postDescription?: string
+  postTitle?: string;
+  postDescription?: string;
 }
 
-const { postTitle, postDescription } = Astro.props
+const { postTitle, postDescription } = Astro.props;
 
 // Site Configuration
-const { title, description, author, favicon } = themeConfig.site
-const { mode: defaultMode, light: { background: lightMode }, dark: { background: darkMode } } = themeConfig.color
-const { katex: katexEnabled } = themeConfig.global
-const { verification = {}, twitterID = '', googleAnalyticsID = '', umamiAnalyticsID = '' } = themeConfig.seo ?? {}
-const { google = '', bing = '', yandex = '', baidu = '' } = verification
-const { customGoogleAnalyticsJS = '', customUmamiAnalyticsJS = '' } = themeConfig.preload ?? {}
+const { title, description, author, favicon } = themeConfig.site;
+const {
+  mode: defaultMode,
+  light: { background: lightMode },
+  dark: { background: darkMode },
+} = themeConfig.color;
+const { katex: katexEnabled } = themeConfig.global;
+const {
+  verification = {},
+  twitterID = "",
+  googleAnalyticsID = "",
+  umamiAnalyticsID = "",
+} = themeConfig.seo ?? {};
+const { google = "", bing = "", yandex = "", baidu = "" } = verification;
+const { customGoogleAnalyticsJS = "", customUmamiAnalyticsJS = "" } = themeConfig.preload ?? {};
 
 // Site Metadata
-const metaTheme = defaultMode === 'dark' ? darkMode : lightMode
+const metaTheme = defaultMode === "dark" ? darkMode : lightMode;
 // Page Metadata
-const pageTitle = postTitle ? `${postTitle} | ${title}` : title
-const pageDescription = postDescription || description
-const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).href
+const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
+const pageDescription = postDescription || description;
+const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).href;
 ---
 
 <head>
-<!-- Basic Info -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<link rel="icon" href={`${base}${favicon}`} type="image/svg+xml" sizes="any" />
-<title>{pageTitle}</title>
-<meta name="description" content={pageDescription} />
-<meta name="author" content={author} />
-<meta name="generator" content={Astro.generator} />
-<meta name="theme-color" content={metaTheme} />
+  <!-- Basic Info -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <link rel="icon" href={`${base}${favicon}`} type="image/svg+xml" sizes="any" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <meta name="author" content={author} />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content={metaTheme} />
 
-{katexEnabled && <link rel="stylesheet" href={katexCSS} media="print" onload={`this.media='all'`} />}
+  {katexEnabled && (
+    <link rel="stylesheet" href={katexCSS} media="print" onload={`this.media='all'`} />
+  )}
 
-<!-- Site Links -->
-<link rel="canonical" href={Astro.url} />
-<link rel="sitemap" href={`${base}/sitemap-index.xml`} />
-<link rel="alternate" href={`${base}/rss.xml`} type="application/rss+xml" title="RSS Feed" />
-<link rel="alternate" href={`${base}/atom.xml`} type="application/atom+xml" title="Atom Feed" />
+  <!-- Site Links -->
+  <link rel="canonical" href={Astro.url} />
+  <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+  <link rel="alternate" href={`${base}/rss.xml`} type="application/rss+xml" title="RSS Feed" />
+  <link rel="alternate" href={`${base}/atom.xml`} type="application/atom+xml" title="Atom Feed" />
 
-<!-- Open Graph -->
-<meta property="og:type" content={postTitle ? 'article' : 'website'} />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={pageTitle} />
-<meta property="og:description" content={pageDescription} />
-<meta property="og:image" content={pageImage} />
-<meta name="twitter:card" content="summary_large_image" />
-{twitterID && <meta name="twitter:site" content={twitterID} />}
+  <!-- Open Graph -->
+  <meta property="og:type" content={postTitle ? "article" : "website"} />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={pageImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  {twitterID && <meta name="twitter:site" content={twitterID} />}
 
-<!-- Site Verification -->
-{google && <meta name="google-site-verification" content={google} />}
-{bing && <meta name="msvalidate.01" content={bing} />}
-{yandex && <meta name="yandex-verification" content={yandex} />}
-{baidu && <meta name="baidu-site-verification" content={baidu} />}
+  <!-- Site Verification -->
+  {google && <meta name="google-site-verification" content={google} />}
+  {bing && <meta name="msvalidate.01" content={bing} />}
+  {yandex && <meta name="yandex-verification" content={yandex} />}
+  {baidu && <meta name="baidu-site-verification" content={baidu} />}
 
-<!-- Global View Transition -->
-<ClientRouter fallback="none" />
+  <!-- Global View Transition -->
+  <ClientRouter fallback="none" />
 
-<!-- Theme Toggle -->
-<script
-  is:inline
-  define:vars={{
-    defaultMode,
-    lightMode,
-    darkMode,
- }}
->
-(function () {
-  // Check if current theme is dark
-  // Priority: localStorage theme > default theme > system preference
-  function isCurrentDark() {
-    const currentTheme = localStorage.getItem('theme')
-    if (currentTheme) {
-      return currentTheme === 'dark'
-    }
-
-    if (defaultMode !== 'auto') {
-      return defaultMode === 'dark'
-    }
-
-    // If defaultMode is auto, follow system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-
-  // Initialize theme
-  function initTheme(doc = document) {
-    const isDark = isCurrentDark()
-    doc.documentElement.classList.toggle('dark', isDark)
-
-    // Update meta theme-color tag
-    const metaThemeColor = doc.head.querySelector('meta[name="theme-color"]')
-    if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', isDark ? darkMode : lightMode)
-    }
-  }
-
-  // Update theme before page transition to prevent flashing
-  document.addEventListener('astro:before-swap', ({ newDocument }) => {
-    initTheme(newDocument)
-  })
-
-  // Initialize theme on first load
-  initTheme()
-})()
-</script>
-
-<!-- Google Analytics -->
-<!-- Define gtag on window object for proper Partytown forwarding -->
-<!-- See https://github.com/QwikDev/partytown/issues/382 -->
-{googleAnalyticsID && (
-  <>
-    <script
-      is:inline
-      type="text/partytown"
-      src={customGoogleAnalyticsJS || `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsID}`}
-    />
-    <script
-      is:inline
-      type="text/partytown"
-      define:vars={{
-        googleAnalyticsID,
-        customGoogleAnalyticsJS,
-      }}
-    >
-      window.dataLayer = window.dataLayer || []
-      window.gtag = function () {
-        dataLayer.push(arguments)
-      }
-      window.gtag('js', new Date())
-
-      if (customGoogleAnalyticsJS) {
-        window.gtag('config', googleAnalyticsID, {
-          transport_url: new URL(customGoogleAnalyticsJS).origin,
-        })
-      }
-      else {
-        window.gtag('config', googleAnalyticsID)
-      }
-    </script>
-  </>
-)}
-
-<!-- Umami Analytics -->
-{umamiAnalyticsID && (
+  <!-- Theme Toggle -->
   <script
     is:inline
-    type="text/partytown"
-    src={customUmamiAnalyticsJS || 'https://cloud.umami.is/script.js'}
-    data-website-id={umamiAnalyticsID}
-  />
-)}
+    define:vars={{
+      defaultMode,
+      lightMode,
+      darkMode,
+    }}
+  >
+    (function () {
+      // Check if current theme is dark
+      // Priority: localStorage theme > default theme > system preference
+      function isCurrentDark() {
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          return currentTheme === "dark";
+        }
+
+        if (defaultMode !== "auto") {
+          return defaultMode === "dark";
+        }
+
+        // If defaultMode is auto, follow system preference
+        return window.matchMedia("(prefers-color-scheme: dark)").matches;
+      }
+
+      // Initialize theme
+      function initTheme(doc = document) {
+        const isDark = isCurrentDark();
+        doc.documentElement.classList.toggle("dark", isDark);
+
+        // Update meta theme-color tag
+        const metaThemeColor = doc.head.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute("content", isDark ? darkMode : lightMode);
+        }
+      }
+
+      // Update theme before page transition to prevent flashing
+      document.addEventListener("astro:before-swap", ({ newDocument }) => {
+        initTheme(newDocument);
+      });
+
+      // Initialize theme on first load
+      initTheme();
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <!-- Define gtag on window object for proper Partytown forwarding -->
+  <!-- See https://github.com/QwikDev/partytown/issues/382 -->
+  {googleAnalyticsID && (
+    <>
+      <script
+        is:inline
+        type="text/partytown"
+        src={
+          customGoogleAnalyticsJS ||
+          `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsID}`
+        }
+      />
+      <script
+        is:inline
+        type="text/partytown"
+        define:vars={{
+          googleAnalyticsID,
+          customGoogleAnalyticsJS,
+        }}
+      >
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          dataLayer.push(arguments);
+        };
+        window.gtag("js", new Date());
+
+        if (customGoogleAnalyticsJS) {
+          window.gtag("config", googleAnalyticsID, {
+            transport_url: new URL(customGoogleAnalyticsJS).origin,
+          });
+        } else {
+          window.gtag("config", googleAnalyticsID);
+        }
+      </script>
+    </>
+  )}
+
+  <!-- Umami Analytics -->
+  {umamiAnalyticsID && (
+    <script
+      is:inline
+      type="text/partytown"
+      src={customUmamiAnalyticsJS || "https://cloud.umami.is/script.js"}
+      data-website-id={umamiAnalyticsID}
+    />
+  )}
 </head>

@@ -1,31 +1,31 @@
-import { glob } from 'astro/loaders'
-import { z } from 'astro/zod'
-import { defineCollection } from 'astro:content'
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 
 const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/posts" }),
   schema: z.object({
     // required
     title: z.string(),
     published: z.date(),
     // optional
-    updated: z.preprocess(
-      val => val === '' ? undefined : val,
-      z.date().optional(),
-    ),
+    updated: z.preprocess((val) => (val === "" ? undefined : val), z.date().optional()),
     // Advanced
     draft: z.boolean().optional().default(false),
     pin: z.number().int().min(0).max(99).optional().default(0),
-    abbrlink: z.string().optional().default('').refine(
-      abbrlink => !abbrlink || /^[a-z0-9-]*$/.test(abbrlink),
-      { message: 'Abbrlink can only contain lowercase letters, numbers and hyphens' },
-    ),
+    abbrlink: z
+      .string()
+      .optional()
+      .default("")
+      .refine((abbrlink) => !abbrlink || /^[a-z0-9-]*$/.test(abbrlink), {
+        message: "Abbrlink can only contain lowercase letters, numbers and hyphens",
+      }),
   }),
-})
+});
 
 const about = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/about' }),
+  loader: glob({ pattern: "**/*.md", base: "./src/content/about" }),
   schema: z.object({}),
-})
+});
 
-export const collections = { posts, about }
+export const collections = { posts, about };
