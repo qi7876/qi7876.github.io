@@ -131,7 +131,6 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
     >
       window.dataLayer = window.dataLayer || []
       window.gtag = function () {
-        // eslint-disable-next-line prefer-rest-params
         dataLayer.push(arguments)
       }
       window.gtag('js', new Date())
