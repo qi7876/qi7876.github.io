@@ -43,9 +43,9 @@ docker 需要实现三个情景下的代理设置：
 
 ```toml
 [Service]
-Environment="HTTPS_PROXY=http://127.0.0.1:7890"
-Environment="HTTP_PROXY=http://127.0.0.1:7890"
-Environment="NO_PROXY=localhost,127.0.0.1"
+Environment = "HTTPS_PROXY=http://127.0.0.1:7890"
+Environment = "HTTP_PROXY=http://127.0.0.1:7890"
+Environment = "NO_PROXY=localhost,127.0.0.1"
 ```
 
 ## `docker build`和`docker run`

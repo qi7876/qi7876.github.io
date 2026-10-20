@@ -6,7 +6,7 @@ qi-blog is a static blog built with Astro and published on GitHub Pages. Special
 
 Use Node.js 24 and pnpm 12.6.0 (the version pinned in `package.json`).
 
-Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm test` and `pnpm lint`.
+Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm check` and `pnpm test`.
 
 `pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
 
@@ -22,7 +22,11 @@ RSS and Atom feeds include absolute URLs for local images in `src/content/posts/
 
 Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
 
-Run `pnpm format:posts` to format Markdown posts and About pages with Prettier, lint-md, and markdownlint-cli2.
+Run `pnpm format` to format the repository with Oxfmt defaults, including Astro files, then fix CJK/English and CJK/number spacing in Markdown with lint-md. lint-md only enforces those two spacing rules. `pnpm format:posts` limits formatting to posts and About pages.
+
+`pnpm format:check` checks formatting without writing files. `pnpm lint` runs Oxlint, and `pnpm lint:fix` applies its safe fixes. `pnpm check` runs lint and formatting checks; deployment runs it before `pnpm test`. The pre-commit hook applies the same formatting and safe lint fixes to staged files.
+
+Oxlint replaces ESLint using its default correctness rules. Astro template linting and UnoCSS-specific lint rules are no longer checked; `astro check`, the build, and the generated-page tests remain in place.
 
 ## Status and next steps
 

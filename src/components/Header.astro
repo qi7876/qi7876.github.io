@@ -1,39 +1,26 @@
 ---
-import { base, themeConfig } from '@/config'
-import { getPageInfo } from '@/utils/page'
+import { base, themeConfig } from "@/config";
+import { getPageInfo } from "@/utils/page";
 
-const { isPost } = getPageInfo(Astro.url.pathname)
-const { title } = themeConfig.site
+const { isPost } = getPageInfo(Astro.url.pathname);
+const { title } = themeConfig.site;
 
-const TitleTag = isPost ? 'h2' : 'h1'
+const TitleTag = isPost ? "h2" : "h1";
 ---
 
-<header
-  class:list={[
-    'lg:(uno-desktop-column top-20)',
-    isPost
-    ? 'mb-10.8'
-    : 'mb-10.5',
-  ]}
->
+<header class:list={["lg:(uno-desktop-column top-20)", isPost ? "mb-10.8" : "mb-10.5"]}>
   <TitleTag
     class:list={[
-      'font-bold font-title',
+      "font-bold font-title",
       isPost
         ? `mb-2.8 mt-3 text-5.375 c-secondary lg:(mb-1.8 mt-0 text-9 c-primary)`
         : `mb-1.8 w-75% text-8 c-primary lg:(w-full text-9)`,
     ]}
   >
-    <div
-      class="box-content inline-block pr-1"
-    >
-      <a
-        id="site-title-link"
-        href={`${base}/`}
-      >
-          {title}
+    <div class="box-content inline-block pr-1">
+      <a id="site-title-link" href={`${base}/`}>
+        {title}
       </a>
     </div>
   </TitleTag>
-
 </header>

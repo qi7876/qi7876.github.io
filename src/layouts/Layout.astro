@@ -1,35 +1,28 @@
 ---
-import Button from '@/components/Button.astro'
-import Footer from '@/components/Footer.astro'
-import Header from '@/components/Header.astro'
-import Navbar from '@/components/Navbar.astro'
-import CodeCopyButton from '@/components/Widgets/CodeCopyButton.astro'
-import ImageZoom from '@/components/Widgets/ImageZoom.astro'
-import { themeConfig } from '@/config'
-import Head from '@/layouts/Head.astro'
-import { getPageInfo } from '@/utils/page'
-import '@/styles/extension.css'
-import '@/styles/global.css'
-import '@/styles/markdown.css'
+import Button from "@/components/Button.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Navbar from "@/components/Navbar.astro";
+import CodeCopyButton from "@/components/Widgets/CodeCopyButton.astro";
+import ImageZoom from "@/components/Widgets/ImageZoom.astro";
+import { themeConfig } from "@/config";
+import Head from "@/layouts/Head.astro";
+import { getPageInfo } from "@/utils/page";
+import "@/styles/extension.css";
+import "@/styles/global.css";
+import "@/styles/markdown.css";
 
 interface Props {
-  postTitle?: string
-  postDescription?: string
+  postTitle?: string;
+  postDescription?: string;
 }
 
-const { postTitle, postDescription } = Astro.props
-const { isPost } = getPageInfo(Astro.url.pathname)
-const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'font-sans'
+const { postTitle, postDescription } = Astro.props;
+const { isPost } = getPageInfo(Astro.url.pathname);
+const fontStyle = themeConfig.global.fontStyle === "serif" ? "font-serif" : "font-sans";
 ---
 
-<html
-  transition:animate="none"
-  lang="en"
-  class:list={[
-    fontStyle,
-    isPost ? 'scroll-smooth' : '',
-  ]}
->
+<html transition:animate="none" lang="en" class:list={[fontStyle, isPost ? "scroll-smooth" : ""]}>
   <Head {postTitle} {postDescription} />
   <body>
     <div
@@ -37,9 +30,13 @@ const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'fon
       p="x-[min(7.25vw,3.731rem)] y-10"
       lg="mx-[max(5.75rem,calc(50vw-34.25rem))] my-20 max-w-[min(calc(75vw-16rem),44rem)] min-h-full p-0"
     >
-      <div class:list={{ 'article-sidebar': isPost }}>
+      <div class:list={{ "article-sidebar": isPost }}>
         <Header />
-        {isPost && <div class="sidebar-toc"><slot name="toc" /></div>}
+        {isPost && (
+          <div class="sidebar-toc">
+            <slot name="toc" />
+          </div>
+        )}
         <Navbar />
       </div>
       <main class="mb-12">
@@ -54,32 +51,32 @@ const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'fon
 </html>
 
 <style>
-@media (min-width: 1024px) {
-  .article-sidebar {
-    position: fixed;
-    top: 5rem;
-    right: max(5rem, calc(50vw - 35rem));
-    bottom: calc(min(9.04rem + 3.85vw, 12.5rem) + 2.625rem);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 14rem;
-    overflow-y: auto;
-  }
+  @media (min-width: 1024px) {
+    .article-sidebar {
+      position: fixed;
+      top: 5rem;
+      right: max(5rem, calc(50vw - 35rem));
+      bottom: calc(min(9.04rem + 3.85vw, 12.5rem) + 2.625rem);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 14rem;
+      overflow-y: auto;
+    }
 
-  .article-sidebar > :global(header),
-  .article-sidebar > :global(nav) {
-    position: static;
-    flex-shrink: 0;
-    width: auto;
-    margin-bottom: 0;
-  }
+    .article-sidebar > :global(header),
+    .article-sidebar > :global(nav) {
+      position: static;
+      flex-shrink: 0;
+      width: auto;
+      margin-bottom: 0;
+    }
 
-  .sidebar-toc {
-    margin-top: 4rem;
-    flex: 1;
-    min-height: 3rem;
-    overflow: hidden;
+    .sidebar-toc {
+      margin-top: 4rem;
+      flex: 1;
+      min-height: 3rem;
+      overflow: hidden;
+    }
   }
-}
 </style>

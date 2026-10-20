@@ -1,55 +1,51 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { getCollection, render } from 'astro:content'
-import PostDate from '@/components/PostDate.astro'
-import TOC from '@/components/Widgets/TOC.astro'
-import Layout from '@/layouts/Layout.astro'
-import { checkPostSlugDuplication } from '@/utils/content'
-import { getPostDescription } from '@/utils/description'
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+import PostDate from "@/components/PostDate.astro";
+import TOC from "@/components/Widgets/TOC.astro";
+import Layout from "@/layouts/Layout.astro";
+import { checkPostSlugDuplication } from "@/utils/content";
+import { getPostDescription } from "@/utils/description";
 
 export async function getStaticPaths() {
-  const posts: CollectionEntry<'posts'>[] = await getCollection('posts')
+  const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 
   // Check if there are duplicate post slugs
-  const duplicates = checkPostSlugDuplication(posts)
+  const duplicates = checkPostSlugDuplication(posts);
   if (duplicates.length > 0) {
-    throw new Error(`Duplicate post slugs:\n${duplicates.join('\n')}`)
+    throw new Error(`Duplicate post slugs:\n${duplicates.join("\n")}`);
   }
 
-  return posts
-    // Show drafts in dev mode only
-    .filter(post => import.meta.env.DEV || !post.data.draft)
-    .map((post) => {
-      const slug = post.data.abbrlink || post.id
-      return {
-        params: { slug },
-        props: { post },
-      }
-    })
+  return (
+    posts
+      // Show drafts in dev mode only
+      .filter((post) => import.meta.env.DEV || !post.data.draft)
+      .map((post) => {
+        const slug = post.data.abbrlink || post.id;
+        return {
+          params: { slug },
+          props: { post },
+        };
+      })
+  );
 }
 
 interface Props {
-  post: CollectionEntry<'posts'>
+  post: CollectionEntry<"posts">;
 }
 
-const { post } = Astro.props
-const description = getPostDescription(post, 'meta')
-const { Content, headings, remarkPluginFrontmatter } = await render(post)
+const { post } = Astro.props;
+const description = getPostDescription(post, "meta");
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
 ---
 
-<Layout
-  postTitle={post.data.title}
-  postDescription={description}
->
+<Layout postTitle={post.data.title} postDescription={description}>
   <TOC slot="toc" headings={headings} />
   <article class="heti">
     <h1 class="post-title">{post.data.title}</h1>
 
     <!-- Date -->
-    <div
-      id="post-date"
-      class="mb-17.2 block c-primary font-time"
-    >
+    <div id="post-date" class="mb-17.2 block c-primary font-time">
       <PostDate
         date={post.data.published}
         updatedDate={post.data.updated}

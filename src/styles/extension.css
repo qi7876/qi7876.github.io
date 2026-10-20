@@ -1,6 +1,6 @@
 /* KaTeX Overflow Fix */
 .katex-display {
-  --at-apply: 'my-6 overflow-x-auto overflow-y-hidden scrollbar-hidden';
+  --at-apply: "my-6 overflow-x-auto overflow-y-hidden scrollbar-hidden";
 }
 .katex-display::-webkit-scrollbar {
   display: none;

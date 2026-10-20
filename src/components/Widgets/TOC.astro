@@ -1,13 +1,13 @@
 ---
-import type { MarkdownHeading } from 'astro'
-import TocIcon from '@/assets/icons/toc-icon.svg'
+import type { MarkdownHeading } from "astro";
+import TocIcon from "@/assets/icons/toc-icon.svg";
 
 interface Props {
-  headings: MarkdownHeading[]
+  headings: MarkdownHeading[];
 }
 
-const { headings } = Astro.props
-const filteredHeadings = headings.filter(heading => heading.depth >= 2 && heading.depth <= 4)
+const { headings } = Astro.props;
+const filteredHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 4);
 ---
 
 {filteredHeadings.length > 0 && (
@@ -21,256 +21,313 @@ const filteredHeadings = headings.filter(heading => heading.depth >= 2 && headin
       aria-expanded="false"
     >
       <TocIcon aria-hidden="true" fill="currentColor" class="toc-open-icon h-5 w-5" />
-      <svg class="toc-close-icon h-5 w-5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <svg
+        class="toc-close-icon h-5 w-5"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      >
         <path d="M6 6l12 12M18 6L6 18" />
       </svg>
     </button>
     {[false, true].map((mobile) => {
-      const Container = mobile ? 'dialog' : 'nav'
+      const Container = mobile ? "dialog" : "nav";
       return (
         <Container
-          id={mobile ? 'toc-panel' : 'toc-desktop'}
-          class={mobile ? 'toc-panel' : 'toc-desktop'}
-          aria-labelledby={mobile ? 'toc-panel-title' : 'toc-desktop-title'}
+          id={mobile ? "toc-panel" : "toc-desktop"}
+          class={mobile ? "toc-panel" : "toc-desktop"}
+          aria-labelledby={mobile ? "toc-panel-title" : "toc-desktop-title"}
         >
-          <h2 id={mobile ? 'toc-panel-title' : 'toc-desktop-title'}>Table of Contents</h2>
-          <ul class="toc-links" id={mobile ? 'toc-mobile-links' : 'toc-links-list'}>
-            {filteredHeadings.map(heading => (
-              <li class:list={{ 'ml-4': heading.depth === 3, 'ml-8': heading.depth === 4 }}>
-                <a href={`#${heading.slug}`} class="no-heti">{heading.text}</a>
+          <h2 id={mobile ? "toc-panel-title" : "toc-desktop-title"}>Table of Contents</h2>
+          <ul class="toc-links" id={mobile ? "toc-mobile-links" : "toc-links-list"}>
+            {filteredHeadings.map((heading) => (
+              <li class:list={{ "ml-4": heading.depth === 3, "ml-8": heading.depth === 4 }}>
+                <a href={`#${heading.slug}`} class="no-heti">
+                  {heading.text}
+                </a>
               </li>
             ))}
           </ul>
         </Container>
-      )
+      );
     })}
   </>
 )}
 
 <style>
-.toc-desktop {
-  display: none;
-}
-
-.toc-links {
-  margin: 0;
-  padding: 0.625rem 0;
-  list-style: none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 0.625rem, black calc(100% - 0.625rem), transparent);
-  mask-image: linear-gradient(to bottom, transparent, black 0.625rem, black calc(100% - 0.625rem), transparent);
-  scroll-target-group: auto;
-}
-
-.toc-links li + li {
-  margin-top: 0.5rem;
-}
-
-.toc-links a {
-  --at-apply: 'block c-secondary/70 no-underline hover:c-primary';
-  font-size: 0.8125rem;
-  overflow-wrap: anywhere;
-}
-
-.toc-links a:target-current {
-  --at-apply: 'c-primary font-medium';
-}
-
-#toc-button,
-.toc-panel {
-  --toc-bottom: calc(1rem + env(safe-area-inset-bottom));
-  --toc-right: max(1rem, env(safe-area-inset-right));
-  position: fixed;
-  right: var(--toc-right);
-}
-
-#toc-button {
-  --at-apply: 'z-100 grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-solid border-secondary/15 bg-background c-secondary shadow-lg hover:c-primary';
-  bottom: var(--toc-bottom);
-}
-
-#toc-button .toc-close-icon,
-#toc-button[aria-expanded="true"] .toc-open-icon {
-  display: none;
-}
-
-#toc-button[aria-expanded="true"] .toc-close-icon {
-  display: block;
-}
-
-.toc-panel {
-  --at-apply: 'z-100 rounded-4 border border-solid border-secondary/15 bg-background c-secondary shadow-lg';
-  top: auto;
-  left: auto;
-  bottom: calc(var(--toc-bottom) + 3rem + 0.75rem);
-  width: min(22rem, calc(100vw - var(--toc-right) - max(1rem, env(safe-area-inset-left))));
-  max-width: none;
-  max-height: min(63vh, calc(100vh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top))));
-  max-height: min(63dvh, calc(100dvh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top))));
-  margin: 0;
-  padding: 1rem;
-  overflow: hidden;
-}
-
-.toc-panel[open] {
-  display: flex;
-  flex-direction: column;
-}
-
-#toc-panel-title {
-  --at-apply: 'shrink-0 font-semibold c-primary';
-  margin-bottom: 0.75rem;
-}
-
-.toc-panel .toc-links {
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-
-.toc-panel .toc-links a {
-  padding-block: 0.5rem;
-}
-
-@media (min-width: 1024px) {
-  #toc-button {
+  .toc-desktop {
     display: none;
   }
 
-  .toc-desktop {
+  .toc-links {
+    margin: 0;
+    padding: 0.625rem 0;
+    list-style: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 0.625rem,
+      black calc(100% - 0.625rem),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 0.625rem,
+      black calc(100% - 0.625rem),
+      transparent
+    );
+    scroll-target-group: auto;
+  }
+
+  .toc-links li + li {
+    margin-top: 0.5rem;
+  }
+
+  .toc-links a {
+    --at-apply: "block c-secondary/70 no-underline hover:c-primary";
+    font-size: 0.8125rem;
+    overflow-wrap: anywhere;
+  }
+
+  .toc-links a:target-current {
+    --at-apply: "c-primary font-medium";
+  }
+
+  #toc-button,
+  .toc-panel {
+    --toc-bottom: calc(1rem + env(safe-area-inset-bottom));
+    --toc-right: max(1rem, env(safe-area-inset-right));
+    position: fixed;
+    right: var(--toc-right);
+  }
+
+  #toc-button {
+    --at-apply: "z-100 grid h-12 w-12 cursor-pointer place-items-center rounded-full border border-solid border-secondary/15 bg-background c-secondary shadow-lg hover:c-primary";
+    bottom: var(--toc-bottom);
+  }
+
+  #toc-button .toc-close-icon,
+  #toc-button[aria-expanded="true"] .toc-open-icon {
+    display: none;
+  }
+
+  #toc-button[aria-expanded="true"] .toc-close-icon {
+    display: block;
+  }
+
+  .toc-panel {
+    --at-apply: "z-100 rounded-4 border border-solid border-secondary/15 bg-background c-secondary shadow-lg";
+    top: auto;
+    left: auto;
+    bottom: calc(var(--toc-bottom) + 3rem + 0.75rem);
+    width: min(22rem, calc(100vw - var(--toc-right) - max(1rem, env(safe-area-inset-left))));
+    max-width: none;
+    max-height: min(
+      63vh,
+      calc(100vh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top)))
+    );
+    max-height: min(
+      63dvh,
+      calc(100dvh - var(--toc-bottom) - 3rem - 0.75rem - max(1rem, env(safe-area-inset-top)))
+    );
+    margin: 0;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .toc-panel[open] {
     display: flex;
     flex-direction: column;
-    height: 82%;
   }
 
-  #toc-desktop-title {
-    --at-apply: 'shrink-0 font-semibold c-secondary/90';
+  #toc-panel-title {
+    --at-apply: "shrink-0 font-semibold c-primary";
     margin-bottom: 0.75rem;
-    font-size: 0.75rem;
   }
 
-  .toc-desktop .toc-links {
+  .toc-panel .toc-links {
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-width: thin;
   }
 
-  .toc-desktop a {
-    font-size: 0.75rem;
+  .toc-panel .toc-links a {
+    padding-block: 0.5rem;
   }
-}
+
+  @media (min-width: 1024px) {
+    #toc-button {
+      display: none;
+    }
+
+    .toc-desktop {
+      display: flex;
+      flex-direction: column;
+      height: 82%;
+    }
+
+    #toc-desktop-title {
+      --at-apply: "shrink-0 font-semibold c-secondary/90";
+      margin-bottom: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .toc-desktop .toc-links {
+      min-height: 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+
+    .toc-desktop a {
+      font-size: 0.75rem;
+    }
+  }
 </style>
 
 <script>
-const desktop = window.matchMedia('(min-width: 1024px)')
-let cleanup: (() => void) | undefined
+  const desktop = window.matchMedia("(min-width: 1024px)");
+  let cleanup: (() => void) | undefined;
 
-function setupTOC() {
-  cleanup?.()
-  const trigger = document.getElementById('toc-button')
-  const panel = document.getElementById('toc-panel')
-  const list = document.getElementById('toc-links-list')
-  if (!trigger || !(panel instanceof HTMLDialogElement) || !list) {
-    return
-  }
+  function setupTOC() {
+    cleanup?.();
+    const trigger = document.getElementById("toc-button");
+    const panel = document.getElementById("toc-panel");
+    const list = document.getElementById("toc-links-list");
+    if (!trigger || !(panel instanceof HTMLDialogElement) || !list) {
+      return;
+    }
 
-  const controller = new AbortController()
-  const { signal } = controller
-  let frame: number | undefined
-  let lastLink: Element | null = null
+    const controller = new AbortController();
+    const { signal } = controller;
+    let frame: number | undefined;
+    let lastLink: Element | null = null;
 
-  function syncTrigger() {
-    const open = panel instanceof HTMLDialogElement && panel.open
-    trigger?.setAttribute('aria-expanded', String(open))
-    trigger?.setAttribute('aria-label', open ? 'Close table of contents' : 'Open table of contents')
-  }
+    function syncTrigger() {
+      const open = panel instanceof HTMLDialogElement && panel.open;
+      trigger?.setAttribute("aria-expanded", String(open));
+      trigger?.setAttribute(
+        "aria-label",
+        open ? "Close table of contents" : "Open table of contents",
+      );
+    }
 
-  function closePanel() {
-    if (panel instanceof HTMLDialogElement && panel.open) {
-      panel.close()
-      syncTrigger()
-    }
-  }
-
-  trigger.addEventListener('click', () => {
-    if (desktop.matches) {
-      return
-    }
-    if (panel.open) {
-      closePanel()
-    }
-    else {
-      panel.show()
-      syncTrigger()
-      trigger.focus({ preventScroll: true })
-    }
-  }, { signal })
-  panel.addEventListener('close', syncTrigger, { signal })
-  panel.addEventListener('click', (event) => {
-    if (event.target instanceof Element && event.target.closest('a[href^="#"]')) {
-      closePanel()
-    }
-  }, { signal })
-  document.addEventListener('click', (event) => {
-    if (event.target instanceof Node && !panel.contains(event.target) && !trigger.contains(event.target)) {
-      closePanel()
-    }
-  }, { signal })
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && panel.open) {
-      event.preventDefault()
-      closePanel()
-      trigger.focus({ preventScroll: true })
-    }
-  }, { signal })
-  desktop.addEventListener('change', () => {
-    if (desktop.matches) {
-      closePanel()
-    }
-  }, { signal })
-
-  if (CSS.supports('selector(:target-current)')) {
-    document.addEventListener('scroll', () => {
-      if (!desktop.matches || frame !== undefined) {
-        return
+    function closePanel() {
+      if (panel instanceof HTMLDialogElement && panel.open) {
+        panel.close();
+        syncTrigger();
       }
-      // Native :target-current selection settles after the scroll frame is painted.
-      frame = requestAnimationFrame(() => {
-        frame = requestAnimationFrame(() => {
-          frame = undefined
-          const activeLink = list.querySelector('a:target-current')
-          if (activeLink && activeLink !== lastLink) {
-            const bounds = list.getBoundingClientRect()
-            const linkBounds = activeLink.getBoundingClientRect()
-            const style = getComputedStyle(list)
-            const top = bounds.top + Number.parseFloat(style.paddingTop)
-            const bottom = bounds.bottom - Number.parseFloat(style.paddingBottom)
-            // Keep the active link clear of the fades without moving the article.
-            if (linkBounds.top < top) {
-              list.scrollTop += linkBounds.top - top
-            }
-            else if (linkBounds.bottom > bottom) {
-              list.scrollTop += linkBounds.bottom - bottom
-            }
-            lastLink = activeLink
-          }
-        })
-      })
-    }, { passive: true, signal })
-  }
-
-  cleanup = () => {
-    closePanel()
-    controller.abort()
-    if (frame !== undefined) {
-      cancelAnimationFrame(frame)
     }
-  }
-}
 
-document.addEventListener('astro:page-load', setupTOC)
-document.addEventListener('astro:before-swap', () => {
-  cleanup?.()
-  cleanup = undefined
-})
+    trigger.addEventListener(
+      "click",
+      () => {
+        if (desktop.matches) {
+          return;
+        }
+        if (panel.open) {
+          closePanel();
+        } else {
+          panel.show();
+          syncTrigger();
+          trigger.focus({ preventScroll: true });
+        }
+      },
+      { signal },
+    );
+    panel.addEventListener("close", syncTrigger, { signal });
+    panel.addEventListener(
+      "click",
+      (event) => {
+        if (event.target instanceof Element && event.target.closest('a[href^="#"]')) {
+          closePanel();
+        }
+      },
+      { signal },
+    );
+    document.addEventListener(
+      "click",
+      (event) => {
+        if (
+          event.target instanceof Node &&
+          !panel.contains(event.target) &&
+          !trigger.contains(event.target)
+        ) {
+          closePanel();
+        }
+      },
+      { signal },
+    );
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Escape" && panel.open) {
+          event.preventDefault();
+          closePanel();
+          trigger.focus({ preventScroll: true });
+        }
+      },
+      { signal },
+    );
+    desktop.addEventListener(
+      "change",
+      () => {
+        if (desktop.matches) {
+          closePanel();
+        }
+      },
+      { signal },
+    );
+
+    if (CSS.supports("selector(:target-current)")) {
+      document.addEventListener(
+        "scroll",
+        () => {
+          if (!desktop.matches || frame !== undefined) {
+            return;
+          }
+          // Native :target-current selection settles after the scroll frame is painted.
+          frame = requestAnimationFrame(() => {
+            frame = requestAnimationFrame(() => {
+              frame = undefined;
+              const activeLink = list.querySelector("a:target-current");
+              if (activeLink && activeLink !== lastLink) {
+                const bounds = list.getBoundingClientRect();
+                const linkBounds = activeLink.getBoundingClientRect();
+                const style = getComputedStyle(list);
+                const top = bounds.top + Number.parseFloat(style.paddingTop);
+                const bottom = bounds.bottom - Number.parseFloat(style.paddingBottom);
+                // Keep the active link clear of the fades without moving the article.
+                if (linkBounds.top < top) {
+                  list.scrollTop += linkBounds.top - top;
+                } else if (linkBounds.bottom > bottom) {
+                  list.scrollTop += linkBounds.bottom - bottom;
+                }
+                lastLink = activeLink;
+              }
+            });
+          });
+        },
+        { passive: true, signal },
+      );
+    }
+
+    cleanup = () => {
+      closePanel();
+      controller.abort();
+      if (frame !== undefined) {
+        cancelAnimationFrame(frame);
+      }
+    };
+  }
+
+  document.addEventListener("astro:page-load", setupTOC);
+  document.addEventListener("astro:before-swap", () => {
+    cleanup?.();
+    cleanup = undefined;
+  });
 </script>
