@@ -109,11 +109,15 @@ btw，上周的 CS61B 还没做，先放一下和这周的一块清掉吧
 
 下午调整了一下设置，把之前用的不顺心的全改了，主要是 kitty 和 starship，还有 tmux 没配完，今晚清理一下
 
-18 号，大幅更新了工具链，kitty -> ghostty，tmux -> zmx，zsh -> fish，换 terminal emulator 主要是战未来，我很看好 ghostty。后两者就是纯升级了，tmux 这么基础的软件居然在 3.8 更新后改变了我配置的行为，难以置信，加上我一直都认为自己不需要这么重的 terminal multiplexer，所以换成了 zmx，一个基于 libghostty 的轻量 session persistent 工具，然后用 starship 检测一下环境；zsh 到 fish 就是纯升级了，各方面体验都是碾压的，至于兼容性，我想写脚本时也没人会用 zsh，都是用 bash
+18 号，大幅更新了工具链，kitty -> ghostty，tmux -> zmx，zsh -> fish
+
+换 terminal emulator 主要是战未来，我很看好 ghostty。后两者就是纯升级了，tmux 这么基础的软件居然在 3.8 更新后改变了我配置的行为，难以置信，加上我一直都认为自己不需要这么重的 terminal multiplexer，所以换成了 zmx，一个基于 libghostty 的轻量 session persistent 工具，然后用 starship 检测一下 zmx session 给个标记就行；zsh 到 fish 就是纯升级了，各方面体验都是碾压的；至于兼容性，写脚本时都是用 sh，所以一般没啥问题，真有问题让 Agent 做点 Patch 就行了
 
 然后推进了一点 CS61B，今天状态不是很好，头昏昏的
 
 19 号，清理 CS61B，把 CS61C 加回 plan 了，毕竟 CS61 系列已经学了两门课了，把 CS61C 加上感觉没有遗憾了，并且 lab 和 proj 的质量很高，可以和 CSAPP 搭配使用
+
+21 号，CS61B 清完了，proj4b 需要和 proj4c/d 一块做，任务量比较大，所以暂时先放着，继续科研
 
 ## Plan
 
