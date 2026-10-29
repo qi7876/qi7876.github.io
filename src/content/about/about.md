@@ -16,7 +16,9 @@ Outside of computers, I care about living a healthy life and enjoy listening to 
 
 Feel free to reach out to me via [email](mailto:qi7876@gmail.com).
 
+My tech stack: C++, CUDA, Golang, Python, Pytorch, Rust, Tilelang, Triton
+
 Friends:
 
 1. [Mengyu Yang](https://mulinjushi.github.io/)
-1. [Jie Huang](https://jie-1203.github.io/)
+2. [Jie Huang](https://jie-1203.github.io/)
