@@ -48,12 +48,7 @@ const socialLinks = links.map(({ name, url }) => {
   <p>
     {socialLinks.map((link, index) => (
       <>
-        <a
-          class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary"
-          {...link}
-        >
-          {link.name}
-        </a>
+        <a {...link}>{link.name}</a>
         {index < socialLinks.length - 1 && "/"}
       </>
     ))}
@@ -66,7 +61,6 @@ const socialLinks = links.map(({ name, url }) => {
   <p>
     Powered by{" "}
     <a
-      class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary"
       href="https://astro.build/"
       target="_blank"
       rel="noopener noreferrer"
@@ -77,7 +71,6 @@ const socialLinks = links.map(({ name, url }) => {
     </a>{" "}
     and{" "}
     <a
-      class="highlight-hover py-0.8 transition-colors after:bottom-0.35em hover:c-primary"
       href="https://github.com/radishzzz/astro-theme-retypeset"
       target="_blank"
       rel="noopener noreferrer"
@@ -88,3 +81,10 @@ const socialLinks = links.map(({ name, url }) => {
     </a>
   </p>
 </footer>
+
+<style>
+  a {
+    color: revert;
+    text-decoration: underline;
+  }
+</style>
