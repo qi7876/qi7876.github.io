@@ -6,9 +6,9 @@ qi-blog is a static blog built with Astro and published on GitHub Pages. Special
 
 Use Node.js 24 and pnpm 12.6.0 (the version pinned in `package.json`).
 
-Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm check` and `pnpm test`.
+Install dependencies with `pnpm install`, run the site with `pnpm dev`, and validate it with `pnpm check`.
 
-`pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
+`pnpm build` generates the site in `dist/`; `pnpm preview` serves that output locally. GitHub Actions runs `pnpm check && pnpm build` before deployment. There is no automated test suite.
 
 Site titles, navigation, dates, and footer text use Georgia with a generic serif fallback, without a font-style setting. Body text uses the system UI font; code retains monospace fonts.
 
@@ -22,12 +22,10 @@ RSS/Atom subscriptions and comments are not supported.
 
 Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
 
-Run `pnpm format` to format the repository with Oxfmt defaults, including Astro files, then fix CJK/English and CJK/number spacing in Markdown with lint-md. lint-md only enforces those two spacing rules. `pnpm format:posts` limits formatting to posts and About pages.
+Run `pnpm format` to format the repository with Oxfmt defaults, including Astro files, then fix CJK/English and CJK/number spacing in Markdown with lint-md. lint-md only enforces those two spacing rules.
 
-`pnpm format:check` checks formatting without writing files. `pnpm lint` runs Oxlint, and `pnpm lint:fix` applies its safe fixes. `pnpm check` runs lint and formatting checks; deployment runs it before `pnpm test`. The pre-commit hook applies the same formatting and safe lint fixes to staged files.
-
-Oxlint replaces ESLint using its default correctness rules. Astro template linting and UnoCSS-specific lint rules are no longer checked; `astro check`, the build, and the generated-page tests remain in place.
+`pnpm check` runs Astro type checking, Oxlint, Oxfmt formatting checks, and Markdown spacing checks. `pnpm format` applies formatting and Markdown spacing fixes. The pre-commit hook formats staged files and applies safe lint fixes to staged JavaScript and TypeScript.
 
 ## Status and next steps
 
-The site is live and maintained on `main`. GitHub Actions builds, tests, and deploys it. Future changes should keep the build green and add behavior tests for user-visible features. Architecture notes are in [`docs/architecture/`](docs/architecture/).
+The site is live and maintained on `main`. GitHub Actions checks, builds, and deploys it. Future changes should keep validation and builds passing. Architecture notes are in [`docs/architecture/`](docs/architecture/).

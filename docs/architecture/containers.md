@@ -5,7 +5,6 @@ flowchart LR
   subgraph repository[Git repository]
     content[Markdown content]
     source[Astro and TypeScript source]
-    tests[Node test suite]
   end
 
   action[GitHub Actions build]
@@ -16,7 +15,6 @@ flowchart LR
 
   content --> action
   source --> action
-  tests --> action
   action --> artifact
   artifact --> pages
   pages --> browser
@@ -24,5 +22,5 @@ flowchart LR
 ```
 
 - Astro validates the content schema and generates post, About, sitemap, and 404 outputs.
-- GitHub Actions runs the build-backed test suite before uploading the static artifact.
+- GitHub Actions runs type, lint, and formatting checks, then builds and uploads the static artifact.
 - GitHub Pages serves the artifact; missing legacy tag URLs use the static 404 page.
