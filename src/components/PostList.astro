@@ -21,7 +21,7 @@ const isHome = isHomePage(Astro.url.pathname);
     return (
       <li class:list={["mb-5.5", isHome ? "lg:mb-10" : ""]}>
         {/* post title */}
-        <h3 class="inline">
+        <h3 class="inline transition-colors hover:c-primary">
           <a
             class:list={[isHome ? "text-4.5 lg:(font-medium text-5)" : ""]}
             href={`${base}/posts/${slug}/`}

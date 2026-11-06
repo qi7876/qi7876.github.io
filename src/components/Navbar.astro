@@ -7,16 +7,22 @@ const { isHome, isPost, isAbout } = getPageInfo(Astro.url.pathname);
 const isPostActive = isHome || isPost;
 const isAboutActive = isAbout;
 
+function getNavItemClass(isActive: boolean) {
+  return isActive
+    ? "highlight-static c-primary font-bold after:bottom-0.7em"
+    : "highlight-hover transition-[colors,font-weight] after:bottom-0.7em hover:(c-primary font-bold)";
+}
+
 const navItems = [
   {
     href: "/",
     label: "Posts",
-    isActive: isPostActive,
+    className: getNavItemClass(isPostActive),
   },
   {
     href: "/about/",
     label: "About",
-    isActive: isAboutActive,
+    className: getNavItemClass(isAboutActive),
   },
 ];
 ---
@@ -32,7 +38,7 @@ const navItems = [
   <ul>
     {navItems.map((item) => (
       <li>
-        <a href={`${base}${item.href}`} aria-current={item.isActive ? "page" : undefined}>
+        <a href={`${base}${item.href}`} class={item.className}>
           {item.label}
         </a>
       </li>
