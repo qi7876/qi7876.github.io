@@ -1,4 +1,5 @@
 html {
+  font-family: system-ui, sans-serif;
   --at-apply: "bg-background c-secondary antialiased";
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
