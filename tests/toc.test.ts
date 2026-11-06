@@ -18,58 +18,19 @@ async function readPages(directory: string): Promise<string[]> {
   return pages.flat();
 }
 
-it("articles expose matching desktop and mobile ToCs outside the article", async () => {
+it("articles retain content and navigation without table of contents controls", async () => {
   const pages = await readPages("dist/posts");
   assert.ok(pages.length > 0);
-  let withHeadings = 0;
-  let withoutHeadings = 0;
   for (const html of pages) {
     const page = parse(html);
-    const article = page.querySelector("article");
-    assert.ok(article);
+    assert.ok(page.querySelector("article #post-content"));
+    assert.ok(page.querySelector("header"));
+    assert.ok(page.querySelector('nav[aria-label="Site Navigation"]'));
     assert.equal(page.querySelector("#back-button"), null);
-    assert.equal(article.querySelector('[aria-label="Table of Contents"]'), null);
-    assert.equal(article.querySelector("#toc-button"), null);
-    const headings = article.querySelectorAll(
-      "#post-content h2, #post-content h3, #post-content h4",
-    );
-    if (headings.length === 0) {
-      withoutHeadings++;
-      assert.equal(page.querySelector("#toc-desktop"), null);
-      assert.equal(page.querySelector("#toc-button"), null);
-      assert.equal(page.querySelector("#toc-panel"), null);
-      continue;
+    for (const selector of ["#toc-desktop", "#toc-button", "#toc-panel", ".sidebar-toc"]) {
+      assert.equal(page.querySelector(selector), null);
     }
-    withHeadings++;
-    const sidebar = page.querySelector(".article-sidebar");
-    assert.ok(sidebar);
-    assert.ok(sidebar.querySelector("header"));
-    assert.ok(sidebar.querySelector("#toc-desktop"));
-    assert.ok(sidebar.querySelector('nav[aria-label="Site Navigation"]'));
-    const expected = headings.map((heading) => `#${heading.id}`);
-    for (const selector of ["#toc-links-list", "#toc-mobile-links"]) {
-      const list = page.querySelector(selector);
-      assert.ok(list);
-      assert.deepEqual(
-        list.querySelectorAll("a").map((link) => link.getAttribute("href")),
-        expected,
-      );
-    }
-    const trigger = page.querySelector("#toc-button");
-    const panel = page.querySelector("#toc-panel");
-    assert.ok(trigger);
-    assert.ok(panel);
-    assert.equal(trigger.getAttribute("aria-controls"), panel.id);
-    assert.equal(trigger.getAttribute("aria-haspopup"), "dialog");
-    assert.equal(trigger.getAttribute("aria-expanded"), "false");
-    assert.equal(trigger.getAttribute("aria-label"), "Open table of contents");
-    assert.equal(panel.tagName, "DIALOG");
-    assert.equal(panel.hasAttribute("open"), false);
-    assert.equal(panel.getAttribute("aria-labelledby"), panel.querySelector("h2")?.id);
-    assert.equal(panel.querySelector("button"), null);
   }
-  assert.ok(withHeadings > 0);
-  assert.ok(withoutHeadings > 0);
 });
 
 it("home and About have no article ToC controls", async () => {

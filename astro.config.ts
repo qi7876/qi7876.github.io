@@ -30,14 +30,6 @@ export default defineConfig({
     defaultStrategy: "viewport", // hover, tap, viewport, load
   },
   ...imageConfig,
-  vite: {
-    css: {
-      lightningcss: {
-        // Enable parsing of the native ToC :target-current selector.
-        drafts: { scrollNavigationControls: true },
-      },
-    },
-  },
   integrations: [
     UnoCSS({
       injectReset: true,
