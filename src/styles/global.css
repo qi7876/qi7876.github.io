@@ -1,6 +1,6 @@
 html {
   font-family: system-ui, sans-serif;
-  --at-apply: "bg-background c-secondary antialiased";
+  --at-apply: "antialiased";
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
   scrollbar-gutter: stable;
@@ -40,7 +40,7 @@ img {
 
 /* Image Zoom >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 .zoom-overlay {
-  --at-apply: "fixed left-0 top-0 z-999 hidden h-full w-full cursor-zoom-out bg-background/95 op-0 transition-opacity duration-300";
+  --at-apply: "fixed left-0 top-0 z-999 hidden h-full w-full cursor-zoom-out bg-white/95 op-0 transition-opacity duration-300";
 }
 .zoom-img {
   --at-apply: "fixed z-1000 cursor-zoom-out transition-transform duration-300";
@@ -49,7 +49,7 @@ img {
 /* Code Copy Button >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 .code-copy-button {
   --at-apply: "absolute right-2.2 top-2.2 z-99 grid aspect-square w-8 cursor-pointer place-items-center uno-round-border";
-  --at-apply: "border-secondary/15 bg-background c-secondary/80 op-0 hover:(border-primary/15 c-primary/80)";
+  --at-apply: "border-black/15 bg-white c-black/80 op-0";
   transition:
     opacity 0.15s ease-out,
     background-color 0.15s ease-out;
@@ -65,7 +65,7 @@ img {
   --at-apply: "op-0";
 }
 .code-copy-button.copied {
-  --at-apply: "border-none bg-primary c-background";
+  --at-apply: "border-none bg-black c-white";
 }
 .code-copy-button.copied .icon-copy {
   --at-apply: "op-0";

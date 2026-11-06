@@ -15,28 +15,11 @@ export interface ThemeConfig {
     base: string;
     favicon: string;
   };
-  color: {
-    light: {
-      primary: string;
-      secondary: string;
-      background: string;
-      highlight: string;
-    };
-  };
-  global: {
-    dateFormat: "YYYY-MM-DD" | "MM-DD-YYYY" | "DD-MM-YYYY" | "MMM D YYYY" | "D MMM YYYY";
-    katex: boolean;
-  };
   seo?: {
-    twitterID?: string;
     verification?: {
       google?: string;
-      bing?: string;
-      yandex?: string;
-      baidu?: string;
     };
     googleAnalyticsID?: string;
-    umamiAnalyticsID?: string;
   };
   footer: {
     links: {
@@ -48,6 +31,5 @@ export interface ThemeConfig {
   preload?: {
     imageHostURL?: string;
     customGoogleAnalyticsJS?: string;
-    customUmamiAnalyticsJS?: string;
   };
 }

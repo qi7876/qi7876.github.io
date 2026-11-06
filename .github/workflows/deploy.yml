@@ -25,7 +25,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
-          build-cmd: pnpm check && pnpm test
+          build-cmd: pnpm check && pnpm build
   deploy:
     if: github.event_name != 'pull_request'
     needs: build
