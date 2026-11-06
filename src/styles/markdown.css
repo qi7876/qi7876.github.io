@@ -76,7 +76,7 @@
 
 /* Code Blocks */
 .heti :where(pre) {
-  --at-apply: "overflow-auto uno-round-border px-4 py-3 bg-secondary/5!";
+  --at-apply: "overflow-auto uno-round-border px-4 py-3";
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: scrollbar-color 0.3s ease-out;
@@ -211,7 +211,7 @@
 
 /* Wavy Underline */
 .heti :where(u) {
-  --at-apply: "underline decoration-red-400 underline-offset-0.25em decoration-wavy";
+  --at-apply: "underline decoration-primary underline-offset-0.25em decoration-wavy";
 }
 
 /* Keyboard Input */

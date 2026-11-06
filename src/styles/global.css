@@ -53,6 +53,12 @@ h4:hover .heading-anchor-link svg:hover {
   --at-apply: "op-80";
 }
 
+img {
+  border: 1px solid #000;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
 /* Image Zoom >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 .zoom-overlay {
   --at-apply: "fixed left-0 top-0 z-999 hidden h-full w-full cursor-zoom-out bg-background/95 op-0 transition-opacity duration-300";
@@ -80,7 +86,7 @@ h4:hover .heading-anchor-link svg:hover {
   --at-apply: "op-0";
 }
 .code-copy-button.copied {
-  --at-apply: "border-none bg-emerald-600 c-background";
+  --at-apply: "border-none bg-primary c-background";
 }
 .code-copy-button.copied .icon-copy {
   --at-apply: "op-0";
