@@ -9,7 +9,7 @@ flowchart LR
   end
 
   action[GitHub Actions build]
-  artifact[Static HTML, CSS, JS and feeds]
+  artifact[Static HTML, CSS and JS]
   pages[GitHub Pages]
   browser[Reader browser]
   analytics[Google Analytics]
@@ -23,6 +23,6 @@ flowchart LR
   browser --> analytics
 ```
 
-- Astro validates the content schema and generates post, About, RSS, Atom, sitemap, and 404 outputs.
+- Astro validates the content schema and generates post, About, sitemap, and 404 outputs.
 - GitHub Actions runs the build-backed test suite before uploading the static artifact.
 - GitHub Pages serves the artifact; missing legacy tag URLs use the static 404 page.

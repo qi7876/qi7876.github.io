@@ -34,7 +34,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const description = getPostDescription(post, "meta");
+const description = getPostDescription(post);
 const { Content, remarkPluginFrontmatter } = await render(post);
 ---
 

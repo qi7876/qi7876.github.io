@@ -38,10 +38,6 @@ export interface ThemeConfig {
     };
     googleAnalyticsID?: string;
     umamiAnalyticsID?: string;
-    follow?: {
-      feedID?: string;
-      userID?: string;
-    };
   };
   footer: {
     links: {

@@ -1,5 +1,5 @@
 ---
-import { base, themeConfig } from "@/config";
+import { themeConfig } from "@/config";
 
 const { author } = themeConfig.site;
 const { links, startYear } = themeConfig.footer;
@@ -8,20 +8,7 @@ const currentYear = new Date().getFullYear();
 const year = Number(startYear) === currentYear ? startYear : `${startYear}-${currentYear}`;
 
 const socialLinks = links.map(({ name, url }) => {
-  const isRSS = url === "/atom.xml" || url === "/rss.xml";
   const isEmail = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i.test(url);
-
-  if (isRSS) {
-    const feedPath = `${base}${url}`;
-    const href = import.meta.env.DEV ? `${feedPath}/` : feedPath;
-
-    return {
-      name,
-      href,
-      target: "_blank",
-      rel: "noopener noreferrer",
-    };
-  }
 
   if (isEmail) {
     const href = `mailto:${url}`;
