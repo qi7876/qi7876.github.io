@@ -12,11 +12,7 @@ const { postTitle, postDescription } = Astro.props;
 
 // Site Configuration
 const { title, description, author, favicon } = themeConfig.site;
-const {
-  mode: defaultMode,
-  light: { background: lightMode },
-  dark: { background: darkMode },
-} = themeConfig.color;
+const { background } = themeConfig.color.light;
 const { katex: katexEnabled } = themeConfig.global;
 const {
   verification = {},
@@ -27,8 +23,6 @@ const {
 const { google = "", bing = "", yandex = "", baidu = "" } = verification;
 const { customGoogleAnalyticsJS = "", customUmamiAnalyticsJS = "" } = themeConfig.preload ?? {};
 
-// Site Metadata
-const metaTheme = defaultMode === "dark" ? darkMode : lightMode;
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
 const pageDescription = postDescription || description;
@@ -44,7 +38,8 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
   <meta name="description" content={pageDescription} />
   <meta name="author" content={author} />
   <meta name="generator" content={Astro.generator} />
-  <meta name="theme-color" content={metaTheme} />
+  <meta name="theme-color" content={background} />
+  <meta name="color-scheme" content="light" />
 
   {katexEnabled && (
     <link rel="stylesheet" href={katexCSS} media="print" onload={`this.media='all'`} />
@@ -73,54 +68,6 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
 
   <!-- Global View Transition -->
   <ClientRouter fallback="none" />
-
-  <!-- Theme Toggle -->
-  <script
-    is:inline
-    define:vars={{
-      defaultMode,
-      lightMode,
-      darkMode,
-    }}
-  >
-    (function () {
-      // Check if current theme is dark
-      // Priority: localStorage theme > default theme > system preference
-      function isCurrentDark() {
-        const currentTheme = localStorage.getItem("theme");
-        if (currentTheme) {
-          return currentTheme === "dark";
-        }
-
-        if (defaultMode !== "auto") {
-          return defaultMode === "dark";
-        }
-
-        // If defaultMode is auto, follow system preference
-        return window.matchMedia("(prefers-color-scheme: dark)").matches;
-      }
-
-      // Initialize theme
-      function initTheme(doc = document) {
-        const isDark = isCurrentDark();
-        doc.documentElement.classList.toggle("dark", isDark);
-
-        // Update meta theme-color tag
-        const metaThemeColor = doc.head.querySelector('meta[name="theme-color"]');
-        if (metaThemeColor) {
-          metaThemeColor.setAttribute("content", isDark ? darkMode : lightMode);
-        }
-      }
-
-      // Update theme before page transition to prevent flashing
-      document.addEventListener("astro:before-swap", ({ newDocument }) => {
-        initTheme(newDocument);
-      });
-
-      // Initialize theme on first load
-      initTheme();
-    })();
-  </script>
 
   <!-- Google Analytics -->
   <!-- Define gtag on window object for proper Partytown forwarding -->

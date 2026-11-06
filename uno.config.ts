@@ -1,4 +1,3 @@
-import type { Preset } from "unocss";
 import {
   defineConfig,
   presetAttributify,
@@ -6,10 +5,9 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
-import presetTheme from "unocss-preset-theme";
 import { themeConfig } from "./src/config.ts";
 
-const { light, dark } = themeConfig.color;
+const { light } = themeConfig.color;
 const systemSans = [
   "ui-sans-serif",
   "system-ui",
@@ -39,19 +37,7 @@ const systemSerif = [
 ];
 
 export default defineConfig({
-  presets: [
-    presetWind3(),
-    presetAttributify(),
-    presetTheme({
-      theme: {
-        dark: {
-          colors: {
-            ...dark,
-          },
-        },
-      },
-    }) as Preset<object>,
-  ],
+  presets: [presetWind3(), presetAttributify()],
   theme: {
     colors: {
       ...light,

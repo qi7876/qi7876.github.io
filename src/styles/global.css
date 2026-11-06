@@ -1,7 +1,7 @@
 html {
-  --at-apply: "bg-background c-secondary antialiased transition-colors duration-300 ease-out";
+  --at-apply: "bg-background c-secondary antialiased";
   scrollbar-width: thin;
-  scrollbar-color: oklch(var(--un-preset-theme-colors-secondary) / 0.25) transparent;
+  scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
   scrollbar-gutter: stable;
   text-autospace: normal;
 }
@@ -81,9 +81,6 @@ h4:hover .heading-anchor-link svg:hover {
 }
 .code-copy-button.copied {
   --at-apply: "border-none bg-emerald-600 c-background";
-}
-html.dark .code-copy-button.copied {
-  --at-apply: "bg-emerald-500";
 }
 .code-copy-button.copied .icon-copy {
   --at-apply: "op-0";

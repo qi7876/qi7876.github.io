@@ -10,7 +10,7 @@ Install dependencies with `pnpm install`, run the site with `pnpm dev`, and chec
 
 `pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
 
-Content uses Markdown (`.md`). Theme changes are immediate, with simple color transitions; page navigation has no decorative animations.
+Content uses Markdown (`.md`). The site uses a fixed light color scheme; page navigation has no decorative animations.
 
 Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.
 
