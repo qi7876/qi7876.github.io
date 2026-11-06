@@ -12,16 +12,9 @@ const { postTitle, postDescription } = Astro.props;
 
 // Site Configuration
 const { title, description, author, favicon } = themeConfig.site;
-const { background } = themeConfig.color.light;
-const { katex: katexEnabled } = themeConfig.global;
-const {
-  verification = {},
-  twitterID = "",
-  googleAnalyticsID = "",
-  umamiAnalyticsID = "",
-} = themeConfig.seo ?? {};
-const { google = "", bing = "", yandex = "", baidu = "" } = verification;
-const { customGoogleAnalyticsJS = "", customUmamiAnalyticsJS = "" } = themeConfig.preload ?? {};
+const { verification = {}, googleAnalyticsID = "" } = themeConfig.seo ?? {};
+const { google = "" } = verification;
+const { customGoogleAnalyticsJS = "" } = themeConfig.preload ?? {};
 
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
@@ -38,12 +31,10 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
   <meta name="description" content={pageDescription} />
   <meta name="author" content={author} />
   <meta name="generator" content={Astro.generator} />
-  <meta name="theme-color" content={background} />
+  <meta name="theme-color" content="#fff" />
   <meta name="color-scheme" content="light" />
 
-  {katexEnabled && (
-    <link rel="stylesheet" href={katexCSS} media="print" onload={`this.media='all'`} />
-  )}
+  <link rel="stylesheet" href={katexCSS} media="print" onload={`this.media='all'`} />
 
   <!-- Site Links -->
   <link rel="canonical" href={Astro.url} />
@@ -56,13 +47,9 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
   <meta property="og:description" content={pageDescription} />
   <meta property="og:image" content={pageImage} />
   <meta name="twitter:card" content="summary_large_image" />
-  {twitterID && <meta name="twitter:site" content={twitterID} />}
 
   <!-- Site Verification -->
   {google && <meta name="google-site-verification" content={google} />}
-  {bing && <meta name="msvalidate.01" content={bing} />}
-  {yandex && <meta name="yandex-verification" content={yandex} />}
-  {baidu && <meta name="baidu-site-verification" content={baidu} />}
 
   <!-- Global View Transition -->
   <ClientRouter fallback="none" />
@@ -103,15 +90,5 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
         }
       </script>
     </>
-  )}
-
-  <!-- Umami Analytics -->
-  {umamiAnalyticsID && (
-    <script
-      is:inline
-      type="text/partytown"
-      src={customUmamiAnalyticsJS || "https://cloud.umami.is/script.js"}
-      data-website-id={umamiAnalyticsID}
-    />
   )}
 </head>

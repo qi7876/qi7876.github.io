@@ -12,6 +12,8 @@ Install dependencies with `pnpm install`, run the site with `pnpm dev`, and chec
 
 Site titles, navigation, dates, and footer text use the browser/system default serif font, without a named font stack or font-style setting. Body text uses the system UI font; code retains monospace fonts.
 
+Dates always use `YYYY-MM-DD` and KaTeX is always enabled. Site colors are fixed in the styles; there are no global or color settings. SEO verification and analytics configuration support Google only.
+
 Content uses Markdown (`.md`). Bare URLs and email addresses remain plain text. Use explicit Markdown links such as `[label](url)`, reference links, or `<https://example.com>` for clickable links. The site uses a white background, black text, and gray accents, with GitHub Light code highlighting. All site images have a 1px solid black border with square corners. The post list shows the same publication date, optional update date, and reading time as article pages. Posts/About navigation sits directly above the footer, with an underline marking the active section. Text selection uses browser defaults. Footer links use browser-default colors and underlines. Page navigation has no decorative animations.
 
 Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.

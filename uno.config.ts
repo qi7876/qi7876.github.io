@@ -5,14 +5,14 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss";
-import { themeConfig } from "./src/config.ts";
 
-const { light } = themeConfig.color;
 export default defineConfig({
   presets: [presetWind3(), presetAttributify()],
   theme: {
     colors: {
-      ...light,
+      primary: "#000",
+      secondary: "#000",
+      background: "#fff",
     },
     fontFamily: {
       title: "serif",

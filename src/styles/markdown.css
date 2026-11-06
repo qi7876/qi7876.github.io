@@ -220,18 +220,9 @@
   --at-apply: "uno-round-border border-secondary/40 c-secondary";
 }
 
-/* Highlighted Text */
-.heti :where(mark) {
-  --at-apply: "bg-highlight py-0.65 text-inherit";
-}
-
 /* Footnotes */
 .heti :where(sub, sup) :where(a) {
   --at-apply: "no-underline";
-}
-.heti :where(sup):target,
-.heti :where(sup) a:target {
-  --at-apply: "bg-highlight";
 }
 .heti .data-footnote-backref {
   font-family: serif;
