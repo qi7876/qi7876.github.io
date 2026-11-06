@@ -12,6 +12,7 @@ import { rehypeCodeCopyButton } from "./src/plugins/rehype-code-copy-button.mjs"
 import { rehypeExternalLinks } from "./src/plugins/rehype-external-links.mjs";
 import { rehypeHeadingAnchor } from "./src/plugins/rehype-heading-anchor.mjs";
 import { rehypeImageProcessor } from "./src/plugins/rehype-image-processor.mjs";
+import { remarkDisableBareAutolinks } from "./src/plugins/remark-disable-bare-autolinks.mjs";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 const { url: site } = themeConfig.site;
@@ -50,7 +51,7 @@ export default defineConfig({
   ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkReadingTime],
+      remarkPlugins: [remarkMath, remarkDisableBareAutolinks, remarkReadingTime],
       rehypePlugins: [
         rehypeKatex,
         rehypeSlug,
