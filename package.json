@@ -22,7 +22,6 @@
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.5",
     "astro-compress": "^2.4.3",
-    "feed": "^6.0.0",
     "katex": "^0.18.9",
     "markdown-it": "^15.0.2",
     "mdast-util-to-string": "^4.0.0",
@@ -31,7 +30,6 @@
     "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
     "remark-math": "^6.0.0",
-    "sanitize-html": "^2.17.7",
     "sharp": "^0.35.4",
     "unist-util-visit": "^5.1.0"
   },
@@ -41,7 +39,6 @@
     "@lint-md/cli": "^2.4.0",
     "@types/markdown-it": "^14.2.0",
     "@types/node": "^24.19.0",
-    "@types/sanitize-html": "^2.16.1",
     "@unocss/astro": "66.10.5",
     "@unocss/preset-attributify": "66.10.5",
     "@unocss/reset": "66.10.5",

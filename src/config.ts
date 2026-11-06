@@ -73,14 +73,6 @@ export const themeConfig: ThemeConfig = {
     // umami analytics
     // https://cloud.umami.is
     umamiAnalyticsID: "",
-    // follow verification
-    // https://follow.is/
-    follow: {
-      // feed ID
-      feedID: "",
-      // user ID
-      userID: "",
-    },
   },
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
@@ -88,10 +80,6 @@ export const themeConfig: ThemeConfig = {
   footer: {
     // social links
     links: [
-      {
-        name: "RSS",
-        url: "/atom.xml", // or /rss.xml
-      },
       {
         name: "GitHub",
         url: "https://github.com/qi7876",

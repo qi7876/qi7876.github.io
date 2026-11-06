@@ -14,7 +14,7 @@ Content uses Markdown (`.md`). The site uses a white background, black text, and
 
 Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.
 
-RSS and Atom feeds include absolute URLs for local images in `src/content/posts/attachments/`. Missing local feed images fail the build.
+RSS/Atom subscriptions and comments are not supported.
 
 Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
 

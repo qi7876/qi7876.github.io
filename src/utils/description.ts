@@ -1,20 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import MarkdownIt from "markdown-it";
 
-type ExcerptScene = "meta" | "feed";
-
 const markdownParser = new MarkdownIt();
-const excerptLengths: Record<ExcerptScene, { cjk: number; other: number }> = {
-  meta: {
-    cjk: 120,
-    other: 240,
-  },
-  feed: {
-    cjk: 70,
-    other: 140,
-  },
-};
-
 const htmlEntityMap: Record<string, string> = {
   "&lt;": "<",
   "&gt;": ">",
@@ -25,7 +12,7 @@ const htmlEntityMap: Record<string, string> = {
 };
 
 // Creates a clean text excerpt with a shorter limit for CJK text.
-function getExcerpt(text: string, scene: ExcerptScene): string {
+function getExcerpt(text: string): string {
   // Remove HTML tags
   let cleanText = text.replace(/<[^>]*>/g, "");
 
@@ -43,8 +30,8 @@ function getExcerpt(text: string, scene: ExcerptScene): string {
   const length = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(
     cleanText,
   )
-    ? excerptLengths[scene].cjk
-    : excerptLengths[scene].other;
+    ? 120
+    : 240;
 
   const excerpt = cleanText.slice(0, length).trim();
 
@@ -57,7 +44,7 @@ function getExcerpt(text: string, scene: ExcerptScene): string {
 }
 
 // Generates post description from content only.
-export function getPostDescription(post: CollectionEntry<"posts">, scene: ExcerptScene): string {
+export function getPostDescription(post: CollectionEntry<"posts">): string {
   const rawContent = post.body || "";
   const cleanContent = rawContent
     .replace(/<!--[\s\S]*?-->/g, "") // Remove HTML comments
@@ -66,5 +53,5 @@ export function getPostDescription(post: CollectionEntry<"posts">, scene: Excerp
     .replace(/\n{2,}/g, "\n\n"); // Normalize newlines
 
   const renderedContent = markdownParser.render(cleanContent);
-  return getExcerpt(renderedContent, scene);
+  return getExcerpt(renderedContent);
 }
