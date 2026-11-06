@@ -8,9 +8,9 @@ Use Node.js 24 and pnpm 12.6.0 (the version pinned in `package.json`).
 
 Install dependencies with `pnpm install`, run the site with `pnpm dev`, and check it with `pnpm check` and `pnpm test`.
 
-`pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build.
+`pnpm build` generates the site in `dist/`. `pnpm test` runs that full build before testing the generated pages, so deployment does not require a prior local build. After changing Markdown plugins, run `pnpm exec astro build --force` to refresh cached content rendering.
 
-Content uses Markdown (`.md`). The site uses a white background, black text, and gray accents, with GitHub Light code highlighting. All site images have a 1px solid black border with square corners. Page navigation has no decorative animations.
+Content uses Markdown (`.md`). The site uses a white background, black text, and gray accents, with browser-default link colors and GitHub Light code highlighting. Links and text buttons are underlined; code blocks have a plain Copy button. All site images have a 1px solid black border with square corners. Page navigation has no decorative animations.
 
 Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.
 

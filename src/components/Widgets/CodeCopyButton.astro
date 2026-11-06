@@ -24,8 +24,8 @@
       return;
     }
 
-    // Add copied state
-    button.classList.add("copied");
+    button.textContent = "Copied";
+    button.setAttribute("aria-label", "Code copied");
 
     // Clear existing timeout to prevent state flickering
     const existingTimeout = timeoutMap.get(button);
@@ -35,7 +35,8 @@
 
     // Reset state after 1.5s
     const timeoutId = window.setTimeout(() => {
-      button.classList.remove("copied");
+      button.textContent = "Copy";
+      button.setAttribute("aria-label", "Copy code");
       timeoutMap.delete(button);
     }, 1500);
 
