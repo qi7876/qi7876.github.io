@@ -30,11 +30,13 @@ const fontStyle = themeConfig.global.fontStyle === "serif" ? "font-serif" : "fon
       lg="mx-[max(5.75rem,calc(50vw-34.25rem))] my-20 max-w-[min(calc(75vw-16rem),44rem)] min-h-full p-0"
     >
       <Header />
-      <Navbar />
       <main class="mb-12">
         <slot />
       </main>
-      <Footer />
+      <div class="lg:(uno-desktop-column bottom-20)">
+        <Navbar />
+        <Footer />
+      </div>
     </div>
     <CodeCopyButton />
     <ImageZoom />
