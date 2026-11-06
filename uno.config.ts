@@ -10,9 +10,9 @@ export default defineConfig({
   presets: [presetWind3(), presetAttributify()],
   theme: {
     fontFamily: {
-      title: "serif",
-      navbar: "serif",
-      time: "serif",
+      title: "Georgia, serif",
+      navbar: "Georgia, serif",
+      time: "Georgia, serif",
     },
   },
   rules: [

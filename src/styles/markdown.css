@@ -225,7 +225,7 @@
   --at-apply: "no-underline";
 }
 .heti .data-footnote-backref {
-  font-family: serif;
+  font-family: Georgia, serif;
   --at-apply: "no-underline";
 }
 
@@ -234,7 +234,7 @@
   --at-apply: "mb-10.5 mt-14.5 h-auto border-none text-center";
 }
 .heti :where(hr)::before {
-  font-family: serif;
+  font-family: Georgia, serif;
   --at-apply: "whitespace-pre text-6 c-black/25";
   content: "*   *   *";
 }
