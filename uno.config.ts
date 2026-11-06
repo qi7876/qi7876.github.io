@@ -8,34 +8,6 @@ import {
 import { themeConfig } from "./src/config.ts";
 
 const { light } = themeConfig.color;
-const systemSans = [
-  "ui-sans-serif",
-  "system-ui",
-  "-apple-system",
-  "BlinkMacSystemFont",
-  "Segoe UI",
-  "PingFang SC",
-  "Hiragino Sans GB",
-  "Microsoft YaHei",
-  "Microsoft JhengHei",
-  "sans-serif",
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol",
-];
-const systemSerif = [
-  "Georgia",
-  "Cambria",
-  "Times New Roman",
-  "Times",
-  "Songti SC",
-  "STSong",
-  "SimSun",
-  "PMingLiU",
-  "ui-serif",
-  "serif",
-];
-
 export default defineConfig({
   presets: [presetWind3(), presetAttributify()],
   theme: {
@@ -43,11 +15,9 @@ export default defineConfig({
       ...light,
     },
     fontFamily: {
-      sans: systemSans,
-      serif: systemSerif,
-      title: systemSerif,
-      navbar: systemSerif,
-      time: systemSerif,
+      title: "serif",
+      navbar: "serif",
+      time: "serif",
     },
   },
   rules: [

@@ -234,7 +234,8 @@
   --at-apply: "bg-highlight";
 }
 .heti .data-footnote-backref {
-  --at-apply: "font-serif no-underline";
+  font-family: serif;
+  --at-apply: "no-underline";
 }
 
 /* Horizontal Rules */
@@ -242,7 +243,8 @@
   --at-apply: "mb-10.5 mt-14.5 h-auto border-none text-center";
 }
 .heti :where(hr)::before {
-  --at-apply: "whitespace-pre text-6 c-secondary/25 font-serif";
+  font-family: serif;
+  --at-apply: "whitespace-pre text-6 c-secondary/25";
   content: "*   *   *";
 }
 
