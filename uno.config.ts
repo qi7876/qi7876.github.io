@@ -23,18 +23,6 @@ const systemSans = [
   "Segoe UI Emoji",
   "Segoe UI Symbol",
 ];
-const systemSerif = [
-  "Georgia",
-  "Cambria",
-  "Times New Roman",
-  "Times",
-  "Songti SC",
-  "STSong",
-  "SimSun",
-  "PMingLiU",
-  "ui-serif",
-  "serif",
-];
 
 export default defineConfig({
   presets: [presetWind3(), presetAttributify()],
@@ -44,10 +32,10 @@ export default defineConfig({
     },
     fontFamily: {
       sans: systemSans,
-      serif: systemSerif,
-      title: systemSerif,
-      navbar: systemSerif,
-      time: systemSerif,
+      serif: systemSans,
+      title: systemSans,
+      navbar: systemSans,
+      time: systemSans,
     },
   },
   rules: [
