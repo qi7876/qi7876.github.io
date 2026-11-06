@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 import PostDate from "@/components/PostDate.astro";
-import TOC from "@/components/Widgets/TOC.astro";
 import Layout from "@/layouts/Layout.astro";
 import { checkPostSlugDuplication } from "@/utils/content";
 import { getPostDescription } from "@/utils/description";
@@ -36,11 +35,10 @@ interface Props {
 
 const { post } = Astro.props;
 const description = getPostDescription(post, "meta");
-const { Content, headings, remarkPluginFrontmatter } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
 ---
 
 <Layout postTitle={post.data.title} postDescription={description}>
-  <TOC slot="toc" headings={headings} />
   <article class="heti">
     <h1 class="post-title">{post.data.title}</h1>
 
