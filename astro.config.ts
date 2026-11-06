@@ -65,10 +65,7 @@ export default defineConfig({
     },
     shikiConfig: {
       // Available themes: https://shiki.style/themes
-      themes: {
-        light: "github-light",
-        dark: "github-dark",
-      },
+      theme: "github-light",
     },
   },
   devToolbar: {
