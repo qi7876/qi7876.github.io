@@ -9,11 +9,6 @@ import {
 export default defineConfig({
   presets: [presetWind3(), presetAttributify()],
   theme: {
-    colors: {
-      primary: "#000",
-      secondary: "#000",
-      background: "#fff",
-    },
     fontFamily: {
       title: "serif",
       navbar: "serif",
@@ -31,8 +26,8 @@ export default defineConfig({
   ],
   shortcuts: {
     "uno-desktop-column": "fixed right-[max(5rem,calc(50vw-35rem))] w-14rem",
-    "uno-decorative-line": "mb-4.5 h-0.25 w-10 bg-secondary/25 lg:(mb-6 w-11)",
-    "uno-round-border": "border border-secondary/5 rounded border-solid",
+    "uno-decorative-line": "mb-4.5 h-0.25 w-10 bg-black/25 lg:(mb-6 w-11)",
+    "uno-round-border": "border border-black/5 rounded border-solid",
   },
   variants: [
     (matcher) => {

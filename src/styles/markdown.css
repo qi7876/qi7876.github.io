@@ -19,10 +19,10 @@
   --at-apply: "mb-4 mt-1.5em scroll-mt-20 font-semibold";
 }
 .heti :where(h1) {
-  --at-apply: "text-7 c-primary";
+  --at-apply: "text-7";
 }
 .heti :where(h2) {
-  --at-apply: "text-6 c-primary";
+  --at-apply: "text-6";
 }
 .heti :where(h3) {
   --at-apply: "text-5";
@@ -50,8 +50,8 @@
 
 /* Links */
 .heti :where(a:not(.no-heti):not(.no-heti *)) {
-  --at-apply: "font-semibold tracking-normal underline underline-0.075em decoration-secondary/80 underline-offset-0.1em cjk:break-all";
-  --at-apply: "transition-colors ease-out hover:(c-primary decoration-primary/80) lg:underline-0.1em";
+  --at-apply: "font-semibold tracking-normal underline underline-0.075em decoration-black/80 underline-offset-0.1em cjk:break-all";
+  --at-apply: "lg:underline-0.1em";
 }
 
 /* Images */
@@ -65,7 +65,7 @@
   --at-apply: "my-6 w-full";
 }
 .heti :where(figcaption) {
-  --at-apply: "mt-2.5 text-center text-sm c-secondary/80";
+  --at-apply: "mt-2.5 text-center text-sm c-black/80";
 }
 .heti :is(h1, h2, h3, h4, h5, h6, img, figure) + :is(img, figure) {
   --at-apply: "mt-4";
@@ -99,14 +99,14 @@
 
 /* Inline Code */
 .heti :where(code) {
-  --at-apply: "uno-round-border bg-secondary/5 px-0.4em py-0.15em text-0.85em tracking-normal cjk:break-all";
+  --at-apply: "uno-round-border bg-black/5 px-0.4em py-0.15em text-0.85em tracking-normal cjk:break-all";
   counter-reset: line;
 }
 .heti code span.line {
   --at-apply: "relative pl-8";
 }
 .heti code span.line::before {
-  --at-apply: "absolute left-0 w-4 c-secondary/40 leading-1.9em";
+  --at-apply: "absolute left-0 w-4 c-black/40 leading-1.9em";
   content: counter(line);
   counter-increment: line;
   direction: rtl;
@@ -114,7 +114,7 @@
 
 /* Blockquotes */
 .heti :where(blockquote) {
-  --at-apply: "my-6 border-l-4 border-secondary/25 border-solid px-4 py-0.5 c-secondary/80";
+  --at-apply: "my-6 border-l-4 border-black/25 border-solid px-4 py-0.5 c-black/80";
 }
 .heti blockquote blockquote {
   --at-apply: "py-0";
@@ -143,7 +143,7 @@
   scrollbar-color: color-mix(in oklch, currentColor 15%, transparent) transparent;
 }
 .heti :where(th, td) {
-  --at-apply: "border-b border-b-secondary/25 px-3 pb-1.5";
+  --at-apply: "border-b border-b-black/25 px-3 pb-1.5";
 }
 .heti tr :where(td:first-child, th:first-child) {
   --at-apply: "pl-0";
@@ -206,18 +206,18 @@
 
 /* Abbreviations */
 .heti :where(abbr[title]) {
-  --at-apply: "cursor-help border-b-1 border-secondary border-dotted pb-0.25 no-underline";
+  --at-apply: "cursor-help border-b-1 border-current border-dotted pb-0.25 no-underline";
 }
 
 /* Wavy Underline */
 .heti :where(u) {
-  --at-apply: "underline decoration-primary underline-offset-0.25em decoration-wavy";
+  --at-apply: "underline decoration-current underline-offset-0.25em decoration-wavy";
 }
 
 /* Keyboard Input */
 .heti :where(kbd) {
   --at-apply: "inline-block px-0.4em py-0.3em text-0.85em font-bold leading-none tracking-normal";
-  --at-apply: "uno-round-border border-secondary/40 c-secondary";
+  --at-apply: "uno-round-border border-black/40";
 }
 
 /* Footnotes */
@@ -235,7 +235,7 @@
 }
 .heti :where(hr)::before {
   font-family: serif;
-  --at-apply: "whitespace-pre text-6 c-secondary/25";
+  --at-apply: "whitespace-pre text-6 c-black/25";
   content: "*   *   *";
 }
 
