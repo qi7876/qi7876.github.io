@@ -18,7 +18,6 @@ const { customGoogleAnalyticsJS = "" } = themeConfig.preload ?? {};
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
 const pageDescription = postDescription || description;
-const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).href;
 ---
 
 <head>
@@ -43,8 +42,6 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
   <meta property="og:url" content={Astro.url} />
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
-  <meta property="og:image" content={pageImage} />
-  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Site Verification -->
   {google && <meta name="google-site-verification" content={google} />}

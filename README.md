@@ -22,8 +22,6 @@ Mermaid diagram rendering, media embed directives, admonitions, fold directives,
 
 RSS/Atom subscriptions and comments are not supported.
 
-Link previews use the static `public/images/social.png`. Edit `public/images/social.svg` and regenerate the PNG with `node --input-type=module -e "import sharp from 'sharp'; await sharp('public/images/social.svg').png().toFile('public/images/social.png')"` to update it.
-
 Run `pnpm format` to format the repository with Oxfmt defaults, including Astro files, then fix CJK/English and CJK/number spacing in Markdown with lint-md. lint-md only enforces those two spacing rules.
 
 `pnpm check` runs Astro type checking, Oxlint, Oxfmt formatting checks, and Markdown spacing checks. `pnpm format` applies formatting and Markdown spacing fixes. The pre-commit hook formats staged files and applies safe lint fixes to staged JavaScript and TypeScript.
