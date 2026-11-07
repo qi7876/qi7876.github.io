@@ -6,14 +6,13 @@ import "@/styles/global.css";
 
 interface Props {
   postTitle?: string;
-  postDescription?: string;
 }
 
-const { postTitle, postDescription } = Astro.props;
+const { postTitle } = Astro.props;
 ---
 
 <html lang="en">
-  <Head {postTitle} {postDescription} />
+  <Head {postTitle} />
   <body>
     <div class="site-layout">
       <Header />

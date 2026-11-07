@@ -4,10 +4,9 @@ import { base, themeConfig } from "@/config";
 
 interface Props {
   postTitle?: string;
-  postDescription?: string;
 }
 
-const { postTitle, postDescription } = Astro.props;
+const { postTitle } = Astro.props;
 
 // Site Configuration
 const { title, description, author, favicon } = themeConfig.site;
@@ -17,7 +16,6 @@ const { customGoogleAnalyticsJS = "" } = themeConfig.preload ?? {};
 
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
-const pageDescription = postDescription || description;
 ---
 
 <head>
@@ -26,7 +24,7 @@ const pageDescription = postDescription || description;
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <link rel="icon" href={`${base}${favicon}`} type="image/svg+xml" sizes="any" />
   <title>{pageTitle}</title>
-  <meta name="description" content={pageDescription} />
+  {!postTitle && <meta name="description" content={description} />}
   <meta name="author" content={author} />
   <meta name="generator" content={Astro.generator} />
   <meta name="color-scheme" content="light" />
@@ -41,7 +39,7 @@ const pageDescription = postDescription || description;
   <meta property="og:type" content={postTitle ? "article" : "website"} />
   <meta property="og:url" content={Astro.url} />
   <meta property="og:title" content={pageTitle} />
-  <meta property="og:description" content={pageDescription} />
+  {!postTitle && <meta property="og:description" content={description} />}
 
   <!-- Site Verification -->
   {google && <meta name="google-site-verification" content={google} />}
