@@ -28,6 +28,8 @@ pnpm dev
 
 Markdown supports math through KaTeX and code highlighting through Shiki. Draft posts appear only in development.
 
+Post pages omit description and Open Graph description metadata; no excerpts are generated. Other pages use the site description.
+
 GitHub Actions builds and deploys updates to `main`, with manual deployment also available.
 
 ## License

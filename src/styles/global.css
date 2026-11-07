@@ -10,9 +10,6 @@ html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
-  scrollbar-gutter: stable;
 }
 
 body,
@@ -235,16 +232,6 @@ img {
   border-radius: 0.25rem;
 }
 
-.heti :where(pre, table) {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  transition: scrollbar-color 0.3s ease-out;
-}
-
-.heti :where(pre, table):hover {
-  scrollbar-color: color-mix(in oklch, currentColor 15%, transparent) transparent;
-}
-
 .heti pre code {
   border: none;
   background: transparent;
@@ -442,9 +429,4 @@ img {
   margin-block: 1.5rem;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: none;
-}
-
-.katex-display::-webkit-scrollbar {
-  display: none;
 }

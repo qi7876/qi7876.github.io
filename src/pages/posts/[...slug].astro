@@ -4,7 +4,6 @@ import { getCollection, render } from "astro:content";
 import PostDate from "@/components/PostDate.astro";
 import Layout from "@/layouts/Layout.astro";
 import { checkPostSlugDuplication } from "@/utils/content";
-import { getPostDescription } from "@/utils/description";
 
 export async function getStaticPaths() {
   const posts: CollectionEntry<"posts">[] = await getCollection("posts");
@@ -34,11 +33,10 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const description = getPostDescription(post);
 const { Content } = await render(post);
 ---
 
-<Layout postTitle={post.data.title} postDescription={description}>
+<Layout postTitle={post.data.title}>
   <article class="heti">
     <h1 class="page-title">{post.data.title}</h1>
 
