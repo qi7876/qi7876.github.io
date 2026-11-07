@@ -52,21 +52,3 @@ const { Content } = await render(post);
     </div>
   </article>
 </Layout>
-
-<script>
-  for (const img of document.querySelectorAll<HTMLImageElement>("#post-content img")) {
-    const src = img.getAttribute("src");
-    if (img.closest("a") || !src) {
-      continue;
-    }
-
-    const link = document.createElement("a");
-    link.href = img.src;
-    if (/^(?:https?:|\/\/)/.test(src)) {
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-    }
-    img.replaceWith(link);
-    link.appendChild(img);
-  }
-</script>
