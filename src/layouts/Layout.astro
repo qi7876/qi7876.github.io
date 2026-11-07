@@ -1,14 +1,10 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import Navbar from "@/components/Navbar.astro";
 import CodeCopyButton from "@/components/Widgets/CodeCopyButton.astro";
 import ImageZoom from "@/components/Widgets/ImageZoom.astro";
 import Head from "@/layouts/Head.astro";
-import { getPageInfo } from "@/utils/page";
-import "@/styles/extension.css";
 import "@/styles/global.css";
-import "@/styles/markdown.css";
 
 interface Props {
   postTitle?: string;
@@ -16,25 +12,17 @@ interface Props {
 }
 
 const { postTitle, postDescription } = Astro.props;
-const { isPost } = getPageInfo(Astro.url.pathname);
 ---
 
-<html transition:animate="none" lang="en" class:list={{ "scroll-smooth": isPost }}>
+<html lang="en">
   <Head {postTitle} {postDescription} />
   <body>
-    <div
-      class="mx-auto max-w-205.848 min-h-vh w-full min-h-dvh"
-      p="x-[min(7.25vw,3.731rem)] y-10"
-      lg="mx-[max(5.75rem,calc(50vw-34.25rem))] my-20 max-w-[min(calc(75vw-16rem),44rem)] min-h-full p-0"
-    >
+    <div class="site-layout">
       <Header />
-      <main class="mb-12">
+      <main>
         <slot />
       </main>
-      <div class="lg:(uno-desktop-column bottom-20)">
-        <Navbar />
-        <Footer />
-      </div>
+      <Footer />
     </div>
     <CodeCopyButton />
     <ImageZoom />

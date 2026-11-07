@@ -21,18 +21,11 @@ const navItems = [
 ];
 ---
 
-<nav
-  aria-label="Site Navigation"
-  class="mb-6 text-3.6 font-semibold leading-2.45em font-navbar lg:text-4"
->
+<nav aria-label="Site Navigation" class="site-nav">
   <ul>
     {navItems.map((item) => (
       <li>
-        <a
-          href={`${base}${item.href}`}
-          class:list={{ underline: item.isActive }}
-          aria-current={item.isActive ? "page" : undefined}
-        >
+        <a href={`${base}${item.href}`} aria-current={item.isActive ? "page" : undefined}>
           {item.label}
         </a>
       </li>

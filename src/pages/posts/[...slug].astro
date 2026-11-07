@@ -35,20 +35,16 @@ interface Props {
 
 const { post } = Astro.props;
 const description = getPostDescription(post);
-const { Content, remarkPluginFrontmatter } = await render(post);
+const { Content } = await render(post);
 ---
 
 <Layout postTitle={post.data.title} postDescription={description}>
   <article class="heti">
-    <h1 class="post-title">{post.data.title}</h1>
+    <h1 class="page-title">{post.data.title}</h1>
 
     <!-- Date -->
-    <div id="post-date" class="mb-17.2 block font-time">
-      <PostDate
-        date={post.data.published}
-        updatedDate={post.data.updated}
-        minutes={remarkPluginFrontmatter.minutes}
-      />
+    <div id="post-date" class="post-date">
+      <PostDate date={post.data.published} updatedDate={post.data.updated} />
     </div>
     <!-- Content -->
     <div id="post-content">

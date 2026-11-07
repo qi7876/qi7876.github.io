@@ -1,9 +1,7 @@
 ---
 import type { Post } from "@/types";
 import PinIcon from "@/assets/icons/pin-icon.svg";
-import PostDate from "@/components/PostDate.astro";
 import { base } from "@/config";
-import { isHomePage } from "@/utils/page";
 
 export interface Props {
   posts: Post[];
@@ -11,45 +9,20 @@ export interface Props {
 }
 
 const { posts, pinned = false } = Astro.props;
-const isHome = isHomePage(Astro.url.pathname);
 ---
 
-<ul>
+<ul class="post-list">
   {posts.map((post) => {
     const slug = post.data.abbrlink || post.id;
+    const published = post.data.published.toISOString().split("T")[0];
 
     return (
-      <li class:list={["mb-5.5", isHome ? "lg:mb-10" : ""]}>
-        {/* post title */}
-        <h3 class="inline">
-          <a
-            class:list={[isHome ? "text-4.5 lg:(font-medium text-5)" : ""]}
-            href={`${base}/posts/${slug}/`}
-          >
-            {post.data.title}
-          </a>
-          {/* pinned icon */}
-          {pinned && (
-            <PinIcon
-              aria-hidden="true"
-              class="ml-0.25em inline-block aspect-square w-0.98em translate-y--0.1em lg:(w-1.05em translate-y--0.15em)"
-              fill="currentColor"
-            />
-          )}
-        </h3>
-
-        <div
-          class:list={[
-            "py-0.8 font-time",
-            isHome ? "text-4 lg:(mt-2.25 py-0 text-4)" : "text-3.5 lg:(mt-1.5 py-0 text-3.65)",
-          ]}
-        >
-          <PostDate
-            date={post.data.published}
-            updatedDate={post.data.updated}
-            minutes={post.remarkPluginFrontmatter.minutes}
-          />
-        </div>
+      <li class="post-list-item">
+        <time datetime={published}>{published}</time>
+        <h2>
+          <a href={`${base}/posts/${slug}/`}>{post.data.title}</a>
+          {pinned && <PinIcon aria-hidden="true" class="pin-icon" fill="currentColor" />}
+        </h2>
       </li>
     );
   })}

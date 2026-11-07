@@ -27,7 +27,7 @@ const socialLinks = links.map(({ name, url }) => {
 });
 ---
 
-<footer class="text-3 leading-1.25em font-navbar lg:text-3.5">
+<footer class="site-footer">
   <p>
     {socialLinks.map((link, index) => (
       <>
@@ -35,13 +35,8 @@ const socialLinks = links.map(({ name, url }) => {
         {index < socialLinks.length - 1 && "/"}
       </>
     ))}
-  </p>
-
-  <p>
-    © {year} {author}
-  </p>
-
-  <p>
+    {" · "}© {year} {author}
+    {" · "}
     Powered by{" "}
     <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">
       Astro
@@ -56,10 +51,3 @@ const socialLinks = links.map(({ name, url }) => {
     </a>
   </p>
 </footer>
-
-<style>
-  a {
-    color: revert;
-    text-decoration: underline;
-  }
-</style>
