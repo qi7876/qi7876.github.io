@@ -3,7 +3,7 @@ import PostList from "@/components/PostList.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPostLists } from "@/utils/content";
 
-const { pinnedPosts, postsByYear } = await getPostLists();
+const { pinnedPosts, regularPosts } = await getPostLists();
 ---
 
 <Layout>
@@ -17,10 +17,10 @@ const { pinnedPosts, postsByYear } = await getPostLists();
   )}
 
   <!-- Regular Posts -->
-  {[...postsByYear.entries()].map(([_year, posts]) => (
+  {regularPosts.length > 0 && (
     <section class="post-group">
       <div class="decorative-line" />
-      <PostList posts={posts} />
+      <PostList posts={regularPosts} />
     </section>
-  ))}
+  )}
 </Layout>

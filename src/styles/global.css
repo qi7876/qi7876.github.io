@@ -13,7 +13,6 @@ html {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
   scrollbar-gutter: stable;
-  text-autospace: normal;
 }
 
 body,
@@ -210,10 +209,6 @@ img {
   text-wrap: balance;
 }
 
-.heti :where(h1, h2, h3):is(:lang(zh), :lang(ja), :lang(ko)) {
-  text-wrap: pretty;
-}
-
 .heti :where(h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6) {
   margin-top: 1rem;
 }
@@ -221,10 +216,6 @@ img {
 .heti :where(p:not(.no-heti):not(.no-heti *)) {
   margin-bottom: 1rem;
   text-wrap: pretty;
-}
-
-.heti :where(p:not(.no-heti):not(.no-heti *)):is(:lang(zh), :lang(ja), :lang(ko)) {
-  text-align: justify;
 }
 
 .heti :where(a:not(.no-heti):not(.no-heti *)) {
@@ -236,13 +227,8 @@ img {
   text-underline-offset: 0.1em;
 }
 
-.heti :where(a, code):is(:lang(zh), :lang(ja), :lang(ko)) {
-  word-break: break-all;
-}
-
 .heti :where(img:not(.no-heti):not(.no-heti *)) {
   margin-inline: auto;
-  cursor: zoom-in;
 }
 
 .heti :where(img:not(figure img):not(.no-heti):not(.no-heti *)),
@@ -483,12 +469,6 @@ img {
 .heti :where(em) {
   font-style: italic;
 }
-.heti :where(cite):is(:lang(zh), :lang(ja), :lang(ko)) {
-  font-style: normal;
-}
-.heti :where(q:is(:lang(zh), :lang(ja), :lang(ko))) {
-  quotes: "「" "」" "『" "』";
-}
 
 /* Article interactions. */
 .heading-anchor-link {
@@ -513,25 +493,6 @@ img {
 }
 .heading-anchor-link svg:active {
   transform: scale(0.9);
-}
-
-.zoom-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: none;
-  cursor: zoom-out;
-  background: rgb(255 255 255 / 95%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.zoom-img {
-  position: fixed;
-  z-index: 1000;
-  max-width: none;
-  cursor: zoom-out;
-  transition: transform 0.3s;
 }
 
 .code-copy-button {

@@ -23,23 +23,17 @@ export async function getPostLists() {
   posts.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 
   const pinnedPosts: Post[] = [];
-  const postsByYear = new Map<number, Post[]>();
+  const regularPosts: Post[] = [];
   for (const post of posts) {
     if (post.data.pin > 0) {
       pinnedPosts.push(post);
       continue;
     }
 
-    const year = post.data.published.getFullYear();
-    const yearPosts = postsByYear.get(year);
-    if (yearPosts) {
-      yearPosts.push(post);
-    } else {
-      postsByYear.set(year, [post]);
-    }
+    regularPosts.push(post);
   }
 
   // Stable sorting retains publication order for posts with the same pin priority.
   pinnedPosts.sort((a, b) => b.data.pin - a.data.pin);
-  return { pinnedPosts, postsByYear };
+  return { pinnedPosts, regularPosts };
 }
