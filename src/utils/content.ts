@@ -19,21 +19,7 @@ export function checkPostSlugDuplication(posts: CollectionEntry<"posts">[]): str
 }
 
 export async function getPostLists() {
-  const entries = await getCollection("posts", ({ data }) => import.meta.env.DEV || !data.draft);
-  const posts: Post[] = entries.map((post) => {
-    // The glob loader renders Markdown during content sync, including reading time.
-    // Reading metadata directly avoids processing each post's body images again.
-    const frontmatter = post.rendered?.metadata?.frontmatter;
-    const minutes =
-      frontmatter && typeof frontmatter === "object" && "minutes" in frontmatter
-        ? frontmatter.minutes
-        : undefined;
-    if (typeof minutes !== "number" || !Number.isInteger(minutes) || minutes < 1) {
-      throw new Error(`Missing or invalid reading time for post "${post.id}"`);
-    }
-
-    return { ...post, remarkPluginFrontmatter: { minutes } };
-  });
+  const posts = await getCollection("posts", ({ data }) => import.meta.env.DEV || !data.draft);
   posts.sort((a, b) => b.data.published.valueOf() - a.data.published.valueOf());
 
   const pinnedPosts: Post[] = [];

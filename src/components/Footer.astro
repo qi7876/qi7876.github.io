@@ -2,64 +2,14 @@
 import { themeConfig } from "@/config";
 
 const { author } = themeConfig.site;
-const { links, startYear } = themeConfig.footer;
+const { startYear } = themeConfig.footer;
 
 const currentYear = new Date().getFullYear();
 const year = Number(startYear) === currentYear ? startYear : `${startYear}-${currentYear}`;
-
-const socialLinks = links.map(({ name, url }) => {
-  const isEmail = /^[\w.-]+@[\w.-]+\.[a-z]{2,}$/i.test(url);
-
-  if (isEmail) {
-    const href = `mailto:${url}`;
-    return {
-      name,
-      href,
-    };
-  }
-
-  return {
-    name,
-    href: url,
-    target: "_blank",
-    rel: "noopener noreferrer",
-  };
-});
 ---
 
-<footer class="text-3 leading-1.25em font-navbar lg:text-3.5">
-  <p>
-    {socialLinks.map((link, index) => (
-      <>
-        <a {...link}>{link.name}</a>
-        {index < socialLinks.length - 1 && "/"}
-      </>
-    ))}
-  </p>
-
+<footer class="site-footer">
   <p>
     © {year} {author}
   </p>
-
-  <p>
-    Powered by{" "}
-    <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">
-      Astro
-    </a>{" "}
-    and{" "}
-    <a
-      href="https://github.com/radishzzz/astro-theme-retypeset"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Retypeset
-    </a>
-  </p>
 </footer>
-
-<style>
-  a {
-    color: revert;
-    text-decoration: underline;
-  }
-</style>

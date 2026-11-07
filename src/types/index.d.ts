@@ -1,10 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 
-export type Post = CollectionEntry<"posts"> & {
-  remarkPluginFrontmatter: {
-    minutes: number;
-  };
-};
+export type Post = CollectionEntry<"posts">;
 
 export interface ThemeConfig {
   site: {
@@ -22,10 +18,6 @@ export interface ThemeConfig {
     googleAnalyticsID?: string;
   };
   footer: {
-    links: {
-      name: string;
-      url: string;
-    }[];
     startYear: number;
   };
   preload?: {

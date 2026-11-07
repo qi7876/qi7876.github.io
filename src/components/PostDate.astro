@@ -1,29 +1,13 @@
 ---
-import { isPostPage } from "@/utils/page";
-
 interface Props {
   date: Date;
   updatedDate?: Date;
-  minutes: number;
 }
 
-const { date, updatedDate, minutes } = Astro.props;
-const isPost = isPostPage(Astro.url.pathname);
-const timeSpacingClass = isPost ? "ml-1.75" : "ml-1.5";
-
+const { date, updatedDate } = Astro.props;
 const published = date.toISOString().split("T")[0];
 const updated = updatedDate?.toISOString().split("T")[0];
 ---
 
-<!-- published date -->
 <time datetime={published}>{published}</time>
-
-<!-- updated date -->
-{updated && (
-  <time datetime={updated} class={timeSpacingClass}>
-    updated {updated}
-  </time>
-)}
-
-<!-- reading time -->
-<span class={timeSpacingClass}>{minutes} min</span>
+{updated && <time datetime={updated}>updated {updated}</time>}

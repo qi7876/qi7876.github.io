@@ -1,26 +1,13 @@
 ---
+import Navbar from "@/components/Navbar.astro";
 import { base, themeConfig } from "@/config";
-import { getPageInfo } from "@/utils/page";
 
-const { isPost } = getPageInfo(Astro.url.pathname);
 const { title } = themeConfig.site;
-
-const TitleTag = isPost ? "h2" : "h1";
 ---
 
-<header class:list={["lg:(uno-desktop-column top-20)", isPost ? "mb-10.8" : "mb-10.5"]}>
-  <TitleTag
-    class:list={[
-      "font-bold font-title",
-      isPost
-        ? `mb-2.8 mt-3 text-5.375 lg:(mb-1.8 mt-0 text-9)`
-        : `mb-1.8 w-75% text-8 lg:(w-full text-9)`,
-    ]}
-  >
-    <div class="box-content inline-block pr-1">
-      <a id="site-title-link" href={`${base}/`}>
-        {title}
-      </a>
-    </div>
-  </TitleTag>
+<header class="site-header">
+  <a id="site-title-link" class="site-title" href={`${base}/`}>
+    {title}
+  </a>
+  <Navbar />
 </header>

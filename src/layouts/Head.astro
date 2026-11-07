@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import katexCSS from "katex/dist/katex.min.css?url";
 import { base, themeConfig } from "@/config";
 
@@ -49,9 +48,6 @@ const pageImage = new URL(`${base}/images/social.png`, themeConfig.site.url).hre
 
   <!-- Site Verification -->
   {google && <meta name="google-site-verification" content={google} />}
-
-  <!-- Global View Transition -->
-  <ClientRouter fallback="none" />
 
   <!-- Google Analytics -->
   <!-- Define gtag on window object for proper Partytown forwarding -->
