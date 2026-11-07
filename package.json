@@ -15,7 +15,6 @@
     "@astrojs/partytown": "^2.1.8",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.3.5",
-    "astro-compress": "^2.4.3",
     "katex": "^0.18.9",
     "markdown-it": "^15.0.2",
     "rehype-katex": "^7.0.1",

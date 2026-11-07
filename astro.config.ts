@@ -1,7 +1,6 @@
 import { unified } from "@astrojs/markdown-remark";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import Compress from "astro-compress";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
@@ -26,13 +25,6 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    Compress({
-      CSS: true,
-      HTML: true,
-      Image: false,
-      JavaScript: true,
-      SVG: false,
-    }),
   ],
   markdown: {
     processor: unified({
