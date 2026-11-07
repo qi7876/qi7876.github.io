@@ -10,7 +10,7 @@ Install dependencies with `pnpm install`, run the site with `pnpm dev`, and vali
 
 `pnpm build` generates the site in `dist/`; `pnpm preview` serves that output locally. GitHub Actions runs `pnpm check && pnpm build` before deployment. There is no automated test suite.
 
-Site titles, navigation, dates, and footer text use Georgia with a generic serif fallback, without a font-style setting. Body text uses the system UI font; code retains monospace fonts.
+Site titles, navigation, and footer text use Georgia with a generic serif fallback, without a font-style setting. Body text uses the system UI font; dates (including update labels) and code use system monospace fonts.
 
 Dates always use `YYYY-MM-DD` and KaTeX is always enabled. Page background and text use browser light-mode defaults; gray accents, image borders, and overlays remain styled. There are no global or color settings. SEO verification and analytics configuration support Google only.
 

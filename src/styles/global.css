@@ -60,7 +60,9 @@ button {
 
 pre,
 code,
-kbd {
+kbd,
+.post-list-item time,
+.post-date {
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
@@ -148,11 +150,6 @@ img {
   gap: 1.25rem;
   margin-bottom: 1rem;
   font-size: 1rem;
-}
-
-.post-list-item time,
-.post-date {
-  font-family: Georgia, serif;
 }
 
 .post-list-item time {
