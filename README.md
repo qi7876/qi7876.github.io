@@ -1,6 +1,6 @@
 # qi-blog
 
-qi-blog is a static blog built with Astro and published on GitHub Pages. Special thanks go to [Retypeset](https://github.com/radishzzz/astro-theme-retypeset) made by radishzzz.
+qi-blog is a static blog built with Astro and published on GitHub Pages. Thanks to [Astro](https://astro.build/) and [Retypeset](https://github.com/radishzzz/astro-theme-retypeset), made by radishzzz, for the framework and original theme.
 
 ## Development
 
@@ -14,7 +14,7 @@ Site titles, navigation, and footer text use Georgia with a generic serif fallba
 
 Dates always use `YYYY-MM-DD` and KaTeX is always enabled. Page background and text use browser light-mode defaults; gray accents, image borders, and overlays remain styled. There are no global or color settings. SEO verification and analytics configuration support Google only.
 
-Content uses Markdown (`.md`). Bare URLs and email addresses remain plain text. Use explicit Markdown links such as `[label](url)`, reference links, or `<https://example.com>` for clickable links. The site uses a white background, black text, and gray accents, with GitHub Light code highlighting. All site images have a 1px solid black border with square corners. The site uses a centered single column with the same typography and layout on desktop and mobile. Qi and Posts/About navigation sit at the top, with an underline marking the active section. Posts, About, and article pages share a 2rem page-title size. Post lists show the publication date and title on one row at the same font size; long titles wrap beside the date. Optional update dates appear only on article pages. Footer links, copyright, and credits form one line that wraps naturally on narrow screens. Styles are maintained in one native CSS stylesheet. Text selection uses browser defaults. Footer links use browser-default colors and underlines. Page links use native browser navigation without page transitions or proactive page prefetching.
+Content uses Markdown (`.md`). Bare URLs and email addresses remain plain text. Use explicit Markdown links such as `[label](url)`, reference links, or `<https://example.com>` for clickable links. The site uses a white background, black text, and gray accents, with GitHub Light code highlighting. All site images have a 1px solid black border with square corners. The site uses a centered single column with the same typography and layout on desktop and mobile. Qi and Posts/About navigation sit at the top at the same font size, with an underline marking the active section. Posts, About, and article pages share a 2rem page-title size. Post lists show the publication date and title on one row at the same font size; long titles wrap beside the date. Optional update dates appear only on article pages. The footer contains only the copyright notice. Styles are maintained in one native CSS stylesheet. Text selection uses browser defaults. Page links use native browser navigation without page transitions or proactive page prefetching.
 
 Mermaid diagram rendering, media embed directives, admonitions, fold directives, and galleries are not supported.
 

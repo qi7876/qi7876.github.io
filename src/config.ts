@@ -35,17 +35,6 @@ export const themeConfig: ThemeConfig = {
 
   // FOOTER SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   footer: {
-    // social links
-    links: [
-      {
-        name: "GitHub",
-        url: "https://github.com/qi7876",
-      },
-      {
-        name: "Email",
-        url: "qi7876@gmail.com",
-      },
-    ],
     // year of website start
     startYear: 2024,
   },

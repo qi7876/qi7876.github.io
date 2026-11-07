@@ -18,10 +18,6 @@ export interface ThemeConfig {
     googleAnalyticsID?: string;
   };
   footer: {
-    links: {
-      name: string;
-      url: string;
-    }[];
     startYear: number;
   };
   preload?: {
