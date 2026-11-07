@@ -13,7 +13,6 @@ html {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklch, currentColor 25%, transparent) transparent;
   scrollbar-gutter: stable;
-  text-autospace: normal;
 }
 
 body,
@@ -26,7 +25,6 @@ h6,
 p,
 ul,
 ol,
-figure,
 blockquote,
 pre {
   margin: 0;
@@ -51,11 +49,6 @@ ol {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-button {
-  font: inherit;
-  color: inherit;
 }
 
 pre,
@@ -131,13 +124,6 @@ img {
   margin-bottom: 2rem;
 }
 
-.decorative-line {
-  width: 2.75rem;
-  height: 1px;
-  margin-bottom: 1.5rem;
-  background: rgb(0 0 0 / 25%);
-}
-
 .post-list-item {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -210,10 +196,6 @@ img {
   text-wrap: balance;
 }
 
-.heti :where(h1, h2, h3):is(:lang(zh), :lang(ja), :lang(ko)) {
-  text-wrap: pretty;
-}
-
 .heti :where(h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6) {
   margin-top: 1rem;
 }
@@ -221,10 +203,6 @@ img {
 .heti :where(p:not(.no-heti):not(.no-heti *)) {
   margin-bottom: 1rem;
   text-wrap: pretty;
-}
-
-.heti :where(p:not(.no-heti):not(.no-heti *)):is(:lang(zh), :lang(ja), :lang(ko)) {
-  text-align: justify;
 }
 
 .heti :where(a:not(.no-heti):not(.no-heti *)) {
@@ -236,40 +214,21 @@ img {
   text-underline-offset: 0.1em;
 }
 
-.heti :where(a, code):is(:lang(zh), :lang(ja), :lang(ko)) {
-  word-break: break-all;
-}
-
 .heti :where(img:not(.no-heti):not(.no-heti *)) {
   margin-inline: auto;
-  cursor: zoom-in;
-}
-
-.heti :where(img:not(figure img):not(.no-heti):not(.no-heti *)),
-.heti :where(figure) {
   margin-block: 1.5rem;
 }
 
-.heti :where(figure) {
-  width: 100%;
-}
-
-.heti :where(figcaption) {
-  margin-top: 0.625rem;
-  color: rgb(0 0 0 / 80%);
-  font-size: 0.875rem;
-  text-align: center;
-}
-
-.heti :is(h1, h2, h3, h4, h5, h6, img, figure) + :is(img, figure) {
+.heti :is(h1, h2, h3, h4, h5, h6, img) + img {
   margin-top: 1rem;
 }
 
-.heti :is(img, figure):has(+ :is(img, figure)) {
+.heti img:has(+ img) {
   margin-bottom: 1rem;
 }
 
 .heti :where(pre) {
+  margin-block: 1.5rem;
   overflow: auto;
   padding: 0.75rem 1rem;
   border: 1px solid rgb(0 0 0 / 5%);
@@ -292,16 +251,11 @@ img {
   padding: 0;
 }
 
-.heti .code-block-wrapper {
-  position: relative;
-  margin-block: 1.5rem;
-}
-
-.heti :is(h1, h2, h3, h4, h5, h6, .code-block-wrapper) + .code-block-wrapper {
+.heti :is(h1, h2, h3, h4, h5, h6, pre) + pre {
   margin-top: 1rem;
 }
 
-.heti .code-block-wrapper:has(+ .code-block-wrapper) {
+.heti pre:has(+ pre) {
   margin-bottom: 1rem;
 }
 
@@ -482,109 +436,6 @@ img {
 }
 .heti :where(em) {
   font-style: italic;
-}
-.heti :where(cite):is(:lang(zh), :lang(ja), :lang(ko)) {
-  font-style: normal;
-}
-.heti :where(q:is(:lang(zh), :lang(ja), :lang(ko))) {
-  quotes: "「" "」" "『" "』";
-}
-
-/* Article interactions. */
-.heading-anchor-link {
-  display: inline-block;
-  transform: translateY(0.1em);
-}
-
-.heading-anchor-link svg {
-  width: 0.9em;
-  height: 0.9em;
-  margin-left: 0.4em;
-  opacity: 0;
-  transition: opacity 0.15s ease-out;
-}
-
-:is(h1, h2, h3, h4):hover .heading-anchor-link svg,
-.heading-anchor-link:focus-visible svg {
-  opacity: 0.4;
-}
-:is(h1, h2, h3, h4):hover .heading-anchor-link svg:hover {
-  opacity: 0.8;
-}
-.heading-anchor-link svg:active {
-  transform: scale(0.9);
-}
-
-.zoom-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: none;
-  cursor: zoom-out;
-  background: rgb(255 255 255 / 95%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.zoom-img {
-  position: fixed;
-  z-index: 1000;
-  max-width: none;
-  cursor: zoom-out;
-  transition: transform 0.3s;
-}
-
-.code-copy-button {
-  position: absolute;
-  right: 0.55rem;
-  top: 0.55rem;
-  z-index: 99;
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
-  border: 1px solid rgb(0 0 0 / 15%);
-  border-radius: 0.25rem;
-  background: white;
-  color: rgb(0 0 0 / 80%);
-  opacity: 0;
-  transition:
-    opacity 0.15s ease-out,
-    background-color 0.15s ease-out;
-}
-
-.code-block-wrapper:hover .code-copy-button,
-.code-block-wrapper:focus-within .code-copy-button {
-  opacity: 1;
-}
-
-@media (hover: none) {
-  .code-copy-button {
-    opacity: 1;
-  }
-}
-
-.icon-copy,
-.icon-check {
-  grid-area: 1 / 1;
-  width: 50%;
-  aspect-ratio: 1;
-}
-
-.icon-check {
-  opacity: 0;
-}
-.code-copy-button.copied {
-  border: none;
-  background: black;
-  color: white;
-}
-.code-copy-button.copied .icon-copy {
-  opacity: 0;
-}
-.code-copy-button.copied .icon-check {
-  opacity: 1;
 }
 
 .katex-display {

@@ -1,17 +1,10 @@
 import { unified } from "@astrojs/markdown-remark";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import Compress from "astro-compress";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
-import rehypeSlug from "rehype-slug";
 import remarkMath from "remark-math";
 import { base, themeConfig } from "./src/config";
-import { rehypeCodeCopyButton } from "./src/plugins/rehype-code-copy-button.mjs";
-import { rehypeExternalLinks } from "./src/plugins/rehype-external-links.mjs";
-import { rehypeHeadingAnchor } from "./src/plugins/rehype-heading-anchor.mjs";
-import { rehypeImageProcessor } from "./src/plugins/rehype-image-processor.mjs";
-import { remarkDisableBareAutolinks } from "./src/plugins/remark-disable-bare-autolinks.mjs";
 
 const { url: site } = themeConfig.site;
 const { imageHostURL } = themeConfig.preload ?? {};
@@ -32,25 +25,11 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    Compress({
-      CSS: true,
-      HTML: true,
-      Image: false,
-      JavaScript: true,
-      SVG: false,
-    }),
   ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkDisableBareAutolinks],
-      rehypePlugins: [
-        rehypeKatex,
-        rehypeSlug,
-        rehypeHeadingAnchor,
-        rehypeImageProcessor,
-        rehypeExternalLinks,
-        rehypeCodeCopyButton,
-      ],
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
     }),
     syntaxHighlight: {
       type: "shiki",
