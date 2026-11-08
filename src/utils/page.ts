@@ -1,9 +1,5 @@
-import { base } from "@/config";
-
 function normalizePath(path: string): string {
-  const pathWithoutBase = base && path.startsWith(`${base}/`) ? path.slice(base.length) : path;
-
-  return pathWithoutBase.replace(/^\/|\/$/g, "");
+  return path.replace(/^\/|\/$/g, "");
 }
 
 export function isHomePage(path: string): boolean {

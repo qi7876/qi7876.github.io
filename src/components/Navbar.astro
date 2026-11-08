@@ -1,5 +1,4 @@
 ---
-import { base } from "@/config";
 import { getPageInfo } from "@/utils/page";
 
 const { isHome, isPost, isAbout } = getPageInfo(Astro.url.pathname);
@@ -25,7 +24,7 @@ const navItems = [
   <ul>
     {navItems.map((item) => (
       <li>
-        <a href={`${base}${item.href}`} aria-current={item.isActive ? "page" : undefined}>
+        <a href={item.href} aria-current={item.isActive ? "page" : undefined}>
           {item.label}
         </a>
       </li>

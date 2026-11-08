@@ -1,6 +1,6 @@
 ---
 import katexCSS from "katex/dist/katex.min.css?url";
-import { base, themeConfig } from "@/config";
+import { siteConfig } from "@/config";
 
 interface Props {
   postTitle?: string;
@@ -9,9 +9,7 @@ interface Props {
 const { postTitle } = Astro.props;
 
 // Site Configuration
-const { title, description, author, favicon } = themeConfig.site;
-const { verification = {} } = themeConfig.seo ?? {};
-const { google = "" } = verification;
+const { title, description, author, googleSiteVerification } = siteConfig;
 
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
@@ -21,7 +19,7 @@ const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
   <!-- Basic Info -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <link rel="icon" href={`${base}${favicon}`} type="image/svg+xml" sizes="any" />
+  <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" sizes="any" />
   <title>{pageTitle}</title>
   {!postTitle && <meta name="description" content={description} />}
   <meta name="author" content={author} />
@@ -32,7 +30,7 @@ const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
 
   <!-- Site Links -->
   <link rel="canonical" href={Astro.url} />
-  <link rel="sitemap" href={`${base}/sitemap-index.xml`} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
   <!-- Open Graph -->
   <meta property="og:type" content={postTitle ? "article" : "website"} />
@@ -41,5 +39,5 @@ const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
   {!postTitle && <meta property="og:description" content={description} />}
 
   <!-- Site Verification -->
-  {google && <meta name="google-site-verification" content={google} />}
+  <meta name="google-site-verification" content={googleSiteVerification} />
 </head>

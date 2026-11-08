@@ -1,11 +1,10 @@
 ---
-import { themeConfig } from "@/config";
+import { siteConfig } from "@/config";
 
-const { author } = themeConfig.site;
-const { startYear } = themeConfig.footer;
+const { author, startYear } = siteConfig;
 
 const currentYear = new Date().getFullYear();
-const year = Number(startYear) === currentYear ? startYear : `${startYear}-${currentYear}`;
+const year = startYear === currentYear ? startYear : `${startYear}-${currentYear}`;
 ---
 
 <footer class="site-footer">
