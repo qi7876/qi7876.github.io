@@ -199,11 +199,6 @@ img {
 
 .post-list-item a,
 .heti :where(a) {
-  color: #0000ee;
-}
-
-.post-list-item a:hover,
-.heti :where(a:hover) {
   text-decoration: underline;
 }
 
