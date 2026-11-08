@@ -94,9 +94,11 @@ img {
   font-weight: 600;
 }
 
-.site-nav a[aria-current="page"] {
+.site-nav a:hover {
   text-decoration: underline;
-  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.075em;
+  text-decoration-color: rgb(0 0 0 / 80%);
+  text-underline-offset: 0.1em;
 }
 
 .page-title,
