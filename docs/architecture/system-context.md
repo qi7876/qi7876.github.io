@@ -6,12 +6,10 @@ flowchart LR
   author[Author]
   blog[qi-areas static blog]
   github[GitHub repository and Actions]
-  analytics[Google Analytics]
 
   reader -->|Reads published posts| blog
   author -->|Writes Markdown and configuration| github
   github -->|Builds and deploys| blog
-  blog -->|Sends anonymous usage events| analytics
 ```
 
 The blog publishes Markdown posts as static pages on GitHub Pages. Readers can browse posts and visit the About page. The interface uses English labels; post and About content can mix languages. The site has no subscriptions, comments, tag navigation, or tag-specific URLs.

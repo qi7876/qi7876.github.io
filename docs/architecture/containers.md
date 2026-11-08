@@ -11,14 +11,12 @@ flowchart LR
   artifact[Static HTML, CSS and JS]
   pages[GitHub Pages]
   browser[Reader browser]
-  analytics[Google Analytics]
 
   content --> action
   source --> action
   action --> artifact
   artifact --> pages
   pages --> browser
-  browser --> analytics
 ```
 
 - Astro validates the content schema and generates post, About, sitemap, and 404 outputs.

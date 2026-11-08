@@ -27,9 +27,6 @@ export const themeConfig: ThemeConfig = {
       // https://search.google.com/search-console
       google: "EdCgE-iVyMvAYqG5QjAr0NVlM-ts2wzMlvMkVcNRqt8",
     },
-    // google analytics
-    // https://knalytics.google.com
-    googleAnalyticsID: "G-NS394GRCQY",
   },
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
@@ -45,10 +42,6 @@ export const themeConfig: ThemeConfig = {
     // image hosting url
     // optimize remote images in Markdown files to avoid cumulative layout shift
     imageHostURL: "qi7876.github.io",
-    // custom google analytics js
-    // for users who proxy tracking scripts to a custom domain
-    // see https://gist.github.com/xiaopc/0602f06ca465d76bd9efd3dda9393738
-    customGoogleAnalyticsJS: "",
   },
   // PRELOAD SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 };

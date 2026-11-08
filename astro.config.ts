@@ -1,5 +1,4 @@
 import { unified } from "@astrojs/markdown-remark";
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
@@ -18,14 +17,7 @@ export default defineConfig({
   trailingSlash: "always", // Not recommended to change
   compressHTML: true,
   ...imageConfig,
-  integrations: [
-    partytown({
-      config: {
-        forward: ["dataLayer.push", "gtag"],
-      },
-    }),
-    sitemap(),
-  ],
+  integrations: [sitemap()],
   markdown: {
     processor: unified({
       remarkPlugins: [remarkMath],

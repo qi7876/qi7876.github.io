@@ -30,6 +30,8 @@ Markdown supports math through KaTeX and code highlighting through Shiki. Draft 
 
 Post pages omit description and Open Graph description metadata; no excerpts are generated. Other pages use the site description.
 
+The site includes a sitemap, robots.txt, canonical URLs, and Google Search Console verification for search discovery. It does not load analytics or visitor tracking scripts.
+
 GitHub Actions builds and deploys updates to `main`, with manual deployment also available.
 
 ## License
