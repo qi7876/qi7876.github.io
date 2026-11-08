@@ -4,7 +4,7 @@ A personal blog built with [Astro](https://astro.build/) and deployed to [GitHub
 
 ## Development
 
-Use Node.js 24 and pnpm 12.6.0.
+Use Node.js 26 LTS and pnpm 12.18.0.
 
 ```sh
 pnpm install
