@@ -1,7 +1,7 @@
 ---
 title: My Undergraduate Journey
 published: 2027-05-01
-updated: 2026-11-06
+updated: 2026-11-08
 ---
 
 经过两三年的探索，大概知道了自己的方向：Multimodal LLMs, Agentic AI, and ML Systems
@@ -149,6 +149,12 @@ X 上看到的。上午上软工课，很多同学到大四了甚至都没怎么
 步入 11 月，依旧忙忙忙，好多好多事都赶一块了
 
 月初这周（2-6 号）赶了科研、课程、CS61B 等等等等
+
+7 号，休息一天，玩了会 GenAI
+
+8 号，完成了 blog 网站的升级，大幅降低了复杂度，削减不必要的样式与功能，强调 content-first，提升了 mobile view 下的 UX，更新了依赖和工具链，完善了 CI
+
+然后接着推进 CS61B
 
 ## Plan
 
