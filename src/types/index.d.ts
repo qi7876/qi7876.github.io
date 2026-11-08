@@ -15,13 +15,11 @@ export interface ThemeConfig {
     verification?: {
       google?: string;
     };
-    googleAnalyticsID?: string;
   };
   footer: {
     startYear: number;
   };
   preload?: {
     imageHostURL?: string;
-    customGoogleAnalyticsJS?: string;
   };
 }

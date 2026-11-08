@@ -10,9 +10,8 @@ const { postTitle } = Astro.props;
 
 // Site Configuration
 const { title, description, author, favicon } = themeConfig.site;
-const { verification = {}, googleAnalyticsID = "" } = themeConfig.seo ?? {};
+const { verification = {} } = themeConfig.seo ?? {};
 const { google = "" } = verification;
-const { customGoogleAnalyticsJS = "" } = themeConfig.preload ?? {};
 
 // Page Metadata
 const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
@@ -43,42 +42,4 @@ const pageTitle = postTitle ? `${postTitle} | ${title}` : title;
 
   <!-- Site Verification -->
   {google && <meta name="google-site-verification" content={google} />}
-
-  <!-- Google Analytics -->
-  <!-- Define gtag on window object for proper Partytown forwarding -->
-  <!-- See https://github.com/QwikDev/partytown/issues/382 -->
-  {googleAnalyticsID && (
-    <>
-      <script
-        is:inline
-        type="text/partytown"
-        src={
-          customGoogleAnalyticsJS ||
-          `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsID}`
-        }
-      />
-      <script
-        is:inline
-        type="text/partytown"
-        define:vars={{
-          googleAnalyticsID,
-          customGoogleAnalyticsJS,
-        }}
-      >
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () {
-          dataLayer.push(arguments);
-        };
-        window.gtag("js", new Date());
-
-        if (customGoogleAnalyticsJS) {
-          window.gtag("config", googleAnalyticsID, {
-            transport_url: new URL(customGoogleAnalyticsJS).origin,
-          });
-        } else {
-          window.gtag("config", googleAnalyticsID);
-        }
-      </script>
-    </>
-  )}
 </head>
