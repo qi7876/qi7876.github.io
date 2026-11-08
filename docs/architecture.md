@@ -15,3 +15,5 @@ Posts use a content collection to validate metadata. Their filenames determine U
 Markdown uses the unified processor with remark-math and rehype-katex for formulas, and Shiki for code highlighting. Keep this processor unless a replacement preserves the existing math and Markdown rendering.
 
 GitHub Actions checks and builds pull requests and main. Only main can deploy to GitHub Pages. Deployment uses the domain root; subpath deployments and remote image processing are not configured.
+
+The pnpm package extension for astro2tsx supplies its missing emnapi runtime dependency at the version matching its core. Without it, pnpm can pair core 1.x with runtime 2.x beta and `astro check` fails to load. Remove the extension when upgrading to an upstream version that declares a compatible runtime.

@@ -1,2 +1,9 @@
 allowBuilds:
   esbuild: true
+
+# astro2tsx requires matching emnapi core and runtime versions.
+# Without this dependency, pnpm resolves its runtime peer to an incompatible 2.x beta.
+packageExtensions:
+  "@astrojs/astro2tsx@0.1.2":
+    dependencies:
+      "@emnapi/runtime": "1.11.3"
