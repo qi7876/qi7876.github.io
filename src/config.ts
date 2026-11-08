@@ -1,6 +1,6 @@
 export const siteConfig = {
   title: "Qi's Blog",
-  description: "Qi's blog",
+  description: "Notes on machine learning, software engineering, and everyday life.",
   author: "qi7876",
   url: "https://qi7876.github.io",
   startYear: 2024,
