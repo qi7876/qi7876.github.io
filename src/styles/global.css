@@ -197,12 +197,14 @@ img {
   text-wrap: pretty;
 }
 
+.post-list-item a,
 .heti :where(a) {
-  font-weight: 600;
+  color: #0000ee;
+}
+
+.post-list-item a:hover,
+.heti :where(a:hover) {
   text-decoration: underline;
-  text-decoration-thickness: 0.075em;
-  text-decoration-color: rgb(0 0 0 / 80%);
-  text-underline-offset: 0.1em;
 }
 
 .heti :where(img) {
@@ -377,10 +379,6 @@ img {
   font-size: 0.85em;
   font-weight: 700;
   line-height: 1;
-}
-
-.heti :where(sub, sup) :where(a) {
-  text-decoration: none;
 }
 
 .heti :where(hr) {
