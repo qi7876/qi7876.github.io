@@ -1,7 +1,6 @@
 ---
 title: Mac使用iPhone USB以太网时配置代理
 published: 2026-06-29
-draft: false
 ---
 
 之前使用 iPhone USB 来连接热点时，Mac 总会无法使用代理。今天稍微 debug 了一下，找出了背后的原因。

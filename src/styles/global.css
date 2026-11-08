@@ -110,10 +110,6 @@ img {
   overflow-wrap: break-word;
 }
 
-.post-group {
-  margin-bottom: 2rem;
-}
-
 .post-list-item {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
@@ -135,14 +131,6 @@ img {
   font-size: inherit;
   font-weight: 400;
   overflow-wrap: anywhere;
-}
-
-.pin-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-left: 0.25em;
-  transform: translateY(-0.1em);
 }
 
 .post-date {

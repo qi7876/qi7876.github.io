@@ -1,7 +1,6 @@
 ---
 title: 记录的力量
 published: 2025-11-12
-draft: false
 ---
 
 **一定要频繁大量记录自己**

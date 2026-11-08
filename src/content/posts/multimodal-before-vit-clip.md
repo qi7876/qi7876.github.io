@@ -1,7 +1,6 @@
 ---
 title: ViT/CLIP前的多模态学习
 published: 2025-06-15
-draft: false
 ---
 
 CLIP 出现，通过使用 ViT 与全新的训练方式，改写了多模态学习的范式。那么今天，我们来总结性的回顾一下，ViT/CLIP 出现前的多模态学习是什么样的。

@@ -1,7 +1,6 @@
 ---
 title: Rust中的async时间漂移
 published: 2026-09-25
-draft: false
 ---
 
 有一个简单的异步程序

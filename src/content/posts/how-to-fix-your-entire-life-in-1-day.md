@@ -1,7 +1,6 @@
 ---
 title: "[Note] How to fix your entire life in 1 day"
 published: 2026-01-23
-draft: false
 ---
 
 来自 Dan Koe，[原文](https://letters.thedankoe.com/p/how-to-fix-your-entire-life-in-1)

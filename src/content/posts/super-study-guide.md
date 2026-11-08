@@ -1,7 +1,6 @@
 ---
 title: "[Note] Super Study Guide: Transformers and Large Language Models"
 published: 2026-05-21
-draft: false
 ---
 
 趁着 NIPS 投稿结束，终于抽出两周时间断断续续给这本书看完了，不过其中有些部分还是稍微跳过了一些，比如最后 preference tuning 和 model compression 的内容。

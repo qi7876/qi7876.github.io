@@ -1,7 +1,6 @@
 ---
 title: Coding Agent Guide
 published: 2026-01-13
-draft: false
 ---
 
 **2026-09-23 Update**：按照 codex cli 0.156.0 版本更新了一些内容

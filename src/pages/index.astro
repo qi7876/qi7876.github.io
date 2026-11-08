@@ -1,24 +1,12 @@
 ---
 import PostList from "@/components/PostList.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getPostLists } from "@/utils/content";
+import { getPosts } from "@/utils/content";
 
-const { pinnedPosts, regularPosts } = await getPostLists();
+const posts = await getPosts();
 ---
 
 <Layout>
   <h1 class="page-title">Posts</h1>
-  <!-- Pinned Posts -->
-  {pinnedPosts.length > 0 && (
-    <section class="post-group">
-      <PostList posts={pinnedPosts} pinned={true} />
-    </section>
-  )}
-
-  <!-- Regular Posts -->
-  {regularPosts.length > 0 && (
-    <section class="post-group">
-      <PostList posts={regularPosts} />
-    </section>
-  )}
+  <PostList posts={posts} />
 </Layout>

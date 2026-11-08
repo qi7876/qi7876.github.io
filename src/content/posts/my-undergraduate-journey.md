@@ -2,7 +2,6 @@
 title: My Undergraduate Journey
 published: 2027-05-01
 updated: 2026-11-06
-draft: false
 ---
 
 经过两三年的探索，大概知道了自己的方向：Multimodal LLMs, Agentic AI, and ML Systems

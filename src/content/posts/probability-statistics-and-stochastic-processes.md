@@ -1,7 +1,6 @@
 ---
 title: 概率论、统计学与随机过程
 published: 2025-07-18
-draft: false
 ---
 
 ## 概率论

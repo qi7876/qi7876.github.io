@@ -11,38 +11,24 @@
     "format": "oxfmt --write . && lint-md \"**/*.md\" --fix"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/markdown-remark": "^7.3.6",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.5",
-    "katex": "^0.18.9",
+    "astro": "^7.4.7",
+    "katex": "^0.16.47",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "sharp": "^0.35.4"
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/compiler-rs": "^0.5.2",
-    "@lint-md/cli": "^2.4.0",
-    "@types/node": "^24.19.0",
-    "lint-staged": "^17.6.0",
-    "oxfmt": "^0.74.0",
-    "oxlint": "^1.89.0",
-    "simple-git-hooks": "^2.14.0",
+    "@astrojs/check": "^0.9.12",
+    "@lint-md/cli": "^2.5.1",
+    "@types/node": "^26.6.6",
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0",
     "typescript": "~6.0.3"
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
+  "engines": {
+    "node": "26.x"
   },
-  "lint-staged": {
-    "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": [
-      "oxlint --fix --deny-warnings",
-      "oxfmt --write"
-    ],
-    "*.md": [
-      "oxfmt --write",
-      "lint-md --fix"
-    ],
-    "*.{astro,json,jsonc,json5,css,scss,less,yaml,yml,toml,html,graphql,gql}": "oxfmt --write"
-  },
-  "packageManager": "pnpm@12.6.0"
+  "packageManager": "pnpm@12.18.0"
 }

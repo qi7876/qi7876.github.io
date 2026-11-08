@@ -1,7 +1,6 @@
 ---
 title: 论文叙事
 published: 2026-05-01
-draft: false
 ---
 
 在 B 站看到的一个博士生的视频

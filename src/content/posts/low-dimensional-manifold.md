@@ -1,7 +1,6 @@
 ---
 title: Low-Dimensional Manifold 低维流形
 published: 2026-03-24
-draft: false
 ---
 
 低维流形，一个被滥用的概念。最近在 Reddit 上看到了一个 10 年前非常通俗易懂的解释：
