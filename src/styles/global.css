@@ -94,11 +94,6 @@ img {
   font-weight: 600;
 }
 
-.site-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
 .page-title,
 .heti .page-title {
   margin: 0 0 2rem;
