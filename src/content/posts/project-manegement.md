@@ -1,7 +1,6 @@
 ---
 title: Project Management
 published: 2026-10-14
-draft: false
 ---
 
 ## 工作模型

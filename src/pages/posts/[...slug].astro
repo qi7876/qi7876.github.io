@@ -1,52 +1,33 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection, render } from "astro:content";
-import PostDate from "@/components/PostDate.astro";
+import { render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import { checkPostSlugDuplication } from "@/utils/content";
+import { getPosts, type Post } from "@/utils/content";
 
 export async function getStaticPaths() {
-  const posts: CollectionEntry<"posts">[] = await getCollection("posts");
-
-  // Check if there are duplicate post slugs
-  const duplicates = checkPostSlugDuplication(posts);
-  if (duplicates.length > 0) {
-    throw new Error(`Duplicate post slugs:\n${duplicates.join("\n")}`);
-  }
-
-  return (
-    posts
-      // Show drafts in dev mode only
-      .filter((post) => import.meta.env.DEV || !post.data.draft)
-      .map((post) => {
-        const slug = post.data.abbrlink || post.id;
-        return {
-          params: { slug },
-          props: { post },
-        };
-      })
-  );
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
 interface Props {
-  post: CollectionEntry<"posts">;
+  post: Post;
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const published = post.data.published.toISOString().split("T")[0];
+const updated = post.data.updated?.toISOString().split("T")[0];
 ---
 
 <Layout postTitle={post.data.title}>
   <article class="heti">
     <h1 class="page-title">{post.data.title}</h1>
-
-    <!-- Date -->
-    <div id="post-date" class="post-date">
-      <PostDate date={post.data.published} updatedDate={post.data.updated} />
+    <div class="post-date">
+      <time datetime={published}>{published}</time>
+      {updated && <time datetime={updated}>updated {updated}</time>}
     </div>
-    <!-- Content -->
-    <div id="post-content">
-      <Content />
-    </div>
+    <Content />
   </article>
 </Layout>

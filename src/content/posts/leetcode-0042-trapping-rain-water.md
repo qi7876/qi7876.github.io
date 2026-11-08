@@ -1,7 +1,6 @@
 ---
 title: Leetcode 0042 trapping-rain-water
 published: 2024-03-12
-draft: false
 ---
 
 非常经典的题。除了暴力解法外，有三种效率比较高的解法：

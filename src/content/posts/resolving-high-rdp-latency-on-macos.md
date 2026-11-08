@@ -1,7 +1,6 @@
 ---
 title: 解决macOS上RDP高延迟问题
 published: 2025-09-09
-draft: false
 ---
 
 ## 最新编辑

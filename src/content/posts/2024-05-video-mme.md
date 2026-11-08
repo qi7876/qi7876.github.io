@@ -1,7 +1,6 @@
 ---
 title: 24.05 Video-MME
 published: 2025-09-13
-draft: false
 ---
 
 这是一篇引用过千的经典 Video MLLM Benchmark，我们一起来看看

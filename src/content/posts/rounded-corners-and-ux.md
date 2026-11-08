@@ -1,7 +1,6 @@
 ---
 title: 圆角和 UX
 published: 2026-10-20
-draft: false
 ---
 
 最近 VS Code 更新了界面设计，见 [issue #334285](https://github.com/microsoft/vscode/issues/334285)，让我们看看 VS Code 的开发者是怎么介绍的

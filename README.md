@@ -21,10 +21,12 @@ pnpm dev
 ## Content and configuration
 
 - Posts: `src/content/posts/` (Markdown with frontmatter defined in `src/content.config.ts`).
-- About page: `src/content/about/about.md`.
+- About page: `src/content/about.md`.
 - Site metadata, copyright start year, and Google verification: `src/config.ts`.
 - Styles: `src/styles/global.css`.
-- Architecture: [`docs/architecture/`](docs/architecture/).
+- Architecture: [`docs/architecture.md`](docs/architecture.md).
+
+Post filenames determine their URLs. Frontmatter requires `title` and `published`, with optional `updated` and `draft` fields.
 
 Markdown supports math through KaTeX and code highlighting through Shiki. Draft posts appear only in development.
 
@@ -34,7 +36,7 @@ The site is deployed at the domain root; deployment under a subpath is not suppo
 
 The site includes a sitemap, robots.txt, canonical URLs, and Google Search Console verification for search discovery. It does not load analytics or visitor tracking scripts.
 
-GitHub Actions builds and deploys updates to `main`, with manual deployment also available.
+GitHub Actions checks and builds pull requests and updates to `main`. Only `main` deploys to GitHub Pages; manual deployment from `main` is also available.
 
 ## License
 

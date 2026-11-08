@@ -1,7 +1,6 @@
 ---
 title: 三遍阅读法
 published: 2025-07-12
-draft: false
 ---
 
 ## Pass-1 Survey / Overview

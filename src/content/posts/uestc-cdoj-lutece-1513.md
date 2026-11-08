@@ -1,7 +1,6 @@
 ---
 title: UESTC CDOJ Lutece 1513 简单的数学题
 published: 2025-05-26
-draft: false
 ---
 
 ## Description

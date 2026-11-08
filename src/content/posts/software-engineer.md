@@ -1,7 +1,6 @@
 ---
 title: Software Engineering
 published: 2026-09-23
-draft: false
 ---
 
 https://github.com/qi7876/dotfiles/blob/main/AGENTS.md

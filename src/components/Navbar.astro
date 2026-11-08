@@ -1,10 +1,7 @@
 ---
-import { getPageInfo } from "@/utils/page";
-
-const { isHome, isPost, isAbout } = getPageInfo(Astro.url.pathname);
-
-const isPostActive = isHome || isPost;
-const isAboutActive = isAbout;
+const path = Astro.url.pathname.replace(/\/$/, "");
+const isPostActive = path === "" || path.startsWith("/posts/");
+const isAboutActive = path === "/about";
 
 const navItems = [
   {

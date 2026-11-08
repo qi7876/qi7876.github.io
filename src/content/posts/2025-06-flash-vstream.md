@@ -1,7 +1,6 @@
 ---
 title: 25.06 Flash-VStream
 published: 2025-09-13
-draft: false
 ---
 
 使用了 memory 来提高模型的性能与实时响应能力，在很多 Benchmark 上取得了 SOTA，但作者也表示模型没有针对开放性问题进行优化，有些脱离实际使用场景

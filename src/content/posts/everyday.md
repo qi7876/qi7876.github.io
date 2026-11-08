@@ -1,7 +1,6 @@
 ---
 title: 每天应该做的8件事
 published: 2026-03-19
-draft: false
 ---
 
 1. 每天阅读 30 分钟

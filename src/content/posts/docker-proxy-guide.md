@@ -1,7 +1,6 @@
 ---
 title: Docker Proxy Guide
 published: 2024-03-20
-draft: false
 ---
 
 docker 需要实现三个情景下的代理设置：

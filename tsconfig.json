@@ -4,8 +4,7 @@
     "lib": ["esnext", "dom"],
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "allowJs": true
+    }
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]

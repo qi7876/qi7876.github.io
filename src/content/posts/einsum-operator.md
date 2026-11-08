@@ -1,7 +1,6 @@
 ---
 title: Einsum Operator
 published: 2025-04-08
-draft: false
 ---
 
 ## einsum 是什么

@@ -1,26 +1,22 @@
 ---
-import type { Post } from "@/types";
-import PinIcon from "@/assets/icons/pin-icon.svg";
+import type { Post } from "@/utils/content";
 
-export interface Props {
+interface Props {
   posts: Post[];
-  pinned?: boolean;
 }
 
-const { posts, pinned = false } = Astro.props;
+const { posts } = Astro.props;
 ---
 
 <ul class="post-list">
   {posts.map((post) => {
-    const slug = post.data.abbrlink || post.id;
     const published = post.data.published.toISOString().split("T")[0];
 
     return (
       <li class="post-list-item">
         <time datetime={published}>{published}</time>
         <h2>
-          <a href={`/posts/${slug}/`}>{post.data.title}</a>
-          {pinned && <PinIcon aria-hidden="true" class="pin-icon" fill="currentColor" />}
+          <a href={`/posts/${post.id}/`}>{post.data.title}</a>
         </h2>
       </li>
     );

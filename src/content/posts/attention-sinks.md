@@ -1,7 +1,6 @@
 ---
 title: Attention sinks
 published: 2026-07-21
-draft: false
 ---
 
 2026-09-25：添加了一些科研笔记，最开始的部分可能有一些错误理解，后面整理一下
