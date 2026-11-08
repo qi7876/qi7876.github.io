@@ -18,6 +18,8 @@ pnpm dev
 | `pnpm build`   | Generate the static site in `dist/`                     |
 | `pnpm preview` | Preview the production build locally                    |
 
+Run `pnpm check` and `pnpm build` before pushing changes. Git hooks are not installed.
+
 ## Content and configuration
 
 - Posts: `src/content/posts/` (Markdown with frontmatter defined in `src/content.config.ts`).

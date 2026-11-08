@@ -21,28 +21,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/compiler-rs": "^0.5.2",
     "@lint-md/cli": "^2.4.0",
     "@types/node": "^24.19.0",
-    "lint-staged": "^17.6.0",
     "oxfmt": "^0.74.0",
     "oxlint": "^1.89.0",
-    "simple-git-hooks": "^2.14.0",
     "typescript": "~6.0.3"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": [
-      "oxlint --fix --deny-warnings",
-      "oxfmt --write"
-    ],
-    "*.md": [
-      "oxfmt --write",
-      "lint-md --fix"
-    ],
-    "*.{astro,json,jsonc,json5,css,scss,less,yaml,yml,toml,html,graphql,gql}": "oxfmt --write"
   },
   "packageManager": "pnpm@12.6.0"
 }
