@@ -3,20 +3,12 @@ import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-import { base, themeConfig } from "./src/config";
-
-const { url: site } = themeConfig.site;
-const { imageHostURL } = themeConfig.preload ?? {};
-const imageConfig = imageHostURL
-  ? { image: { domains: [imageHostURL], remotePatterns: [{ protocol: "https" }] } }
-  : {};
+import { siteConfig } from "./src/config";
 
 export default defineConfig({
-  site,
-  base,
+  site: siteConfig.url,
   trailingSlash: "always", // Not recommended to change
   compressHTML: true,
-  ...imageConfig,
   integrations: [sitemap()],
   markdown: {
     processor: unified({

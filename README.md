@@ -22,13 +22,15 @@ pnpm dev
 
 - Posts: `src/content/posts/` (Markdown with frontmatter defined in `src/content.config.ts`).
 - About page: `src/content/about/about.md`.
-- Site configuration: `src/config.ts`.
+- Site metadata, copyright start year, and Google verification: `src/config.ts`.
 - Styles: `src/styles/global.css`.
 - Architecture: [`docs/architecture/`](docs/architecture/).
 
 Markdown supports math through KaTeX and code highlighting through Shiki. Draft posts appear only in development.
 
 Post pages omit description and Open Graph description metadata; no excerpts are generated. Other pages use the site description.
+
+The site is deployed at the domain root; deployment under a subpath is not supported. Article images are stored locally in the repository; no remote image processing is configured.
 
 The site includes a sitemap, robots.txt, canonical URLs, and Google Search Console verification for search discovery. It does not load analytics or visitor tracking scripts.
 

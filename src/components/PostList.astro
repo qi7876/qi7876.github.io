@@ -1,7 +1,6 @@
 ---
 import type { Post } from "@/types";
 import PinIcon from "@/assets/icons/pin-icon.svg";
-import { base } from "@/config";
 
 export interface Props {
   posts: Post[];
@@ -20,7 +19,7 @@ const { posts, pinned = false } = Astro.props;
       <li class="post-list-item">
         <time datetime={published}>{published}</time>
         <h2>
-          <a href={`${base}/posts/${slug}/`}>{post.data.title}</a>
+          <a href={`/posts/${slug}/`}>{post.data.title}</a>
           {pinned && <PinIcon aria-hidden="true" class="pin-icon" fill="currentColor" />}
         </h2>
       </li>
