@@ -131,6 +131,11 @@ img {
   white-space: nowrap;
 }
 
+.post-list-item time,
+.post-date {
+  font-size: 0.8em;
+}
+
 .post-list-item h2 {
   font-size: inherit;
   font-weight: 400;
@@ -199,7 +204,7 @@ img {
 
 .post-list-item a,
 .heti :where(a) {
-  color: #4a78a8;
+  color: rgb(49 115 220);
 }
 
 .post-list-item a:hover,
