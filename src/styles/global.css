@@ -50,7 +50,6 @@ a {
 
 pre,
 code,
-kbd,
 .post-list-item time,
 .post-date {
   font-family:
@@ -67,7 +66,6 @@ img {
   max-width: 100%;
   height: auto;
   border: 1px solid rgb(0 0 0 / 5%);
-  border-radius: 0.25rem;
 }
 
 .site-layout {
@@ -203,7 +201,6 @@ img {
   overflow: auto;
   padding: 0.75rem 1rem;
   border: 1px solid rgb(0 0 0 / 5%);
-  border-radius: 0.25rem;
 }
 
 .heti pre code {
@@ -222,7 +219,6 @@ img {
 
 .heti :where(code) {
   border: 1px solid rgb(0 0 0 / 5%);
-  border-radius: 0.25rem;
   background: rgb(0 0 0 / 5%);
   padding: 0.15em 0.4em;
   font-size: 0.85em;
@@ -355,16 +351,6 @@ img {
 .heti :where(u) {
   text-decoration: underline wavy currentColor;
   text-underline-offset: 0.25em;
-}
-
-.heti :where(kbd) {
-  display: inline-block;
-  padding: 0.3em 0.4em;
-  border: 1px solid rgb(0 0 0 / 40%);
-  border-radius: 0.25rem;
-  font-size: 0.85em;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .heti :where(sub, sup) :where(a) {
