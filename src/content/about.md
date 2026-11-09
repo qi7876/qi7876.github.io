@@ -12,13 +12,8 @@ Beyond AI, I enjoy exploring computer systems end to end,
 from programming languages and developer tooling to operating systems, performance, and hardware.
 In general, I like understanding how things work and making them simpler, faster, and better engineered.
 
+My tech stack: C++, CUDA, Golang, Python, Pytorch, Rust, Tilelang, Triton
+
 Outside of computers, I care about living a healthy life and enjoy listening to music, especially **City Pop and R&B**.
 
 Feel free to reach out to me via [email](mailto:qi7876@gmail.com).
-
-My tech stack: C++, CUDA, Golang, Python, Pytorch, Rust, Tilelang, Triton
-
-Friends:
-
-1. [Mengyu Yang](https://mulinjushi.github.io/)
-2. [Jie Huang](https://jie-1203.github.io/)
