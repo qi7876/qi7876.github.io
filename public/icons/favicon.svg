@@ -9,7 +9,7 @@
     }
   </style>
 
-  <rect class="bg" width="64" height="64" rx="18"/>
+  <rect class="bg" width="64" height="64"/>
   <text
     class="text"
     x="50%"
