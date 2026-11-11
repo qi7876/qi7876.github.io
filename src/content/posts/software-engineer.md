@@ -9,4 +9,4 @@ https://github.com/qi7876/dotfiles/blob/main/AGENTS.md
 
 如文件名所示，我也把这些内容用作 `AGENTS.md`
 
-[AI时代的软件工程师](https://jrswab.com/blog/why-do-they-want-to-get-rid-of-software-engineers/)
+[AI 时代的软件工程师](https://jrswab.com/blog/why-do-they-want-to-get-rid-of-software-engineers/)
