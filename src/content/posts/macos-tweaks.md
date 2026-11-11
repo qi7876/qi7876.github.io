@@ -1,9 +1,9 @@
 ---
-title: macOS 小妙招
+title: macOS Tweaks
 published: 2026-10-21
 ---
 
-新开一个 post 专门记录一下 macOS 上一些好用的小技巧。
+记录一些 macOS 上一些好用的小技巧。
 
 关闭切换 IME 时的小弹窗：
 

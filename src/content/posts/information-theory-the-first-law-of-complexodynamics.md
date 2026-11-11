@@ -104,4 +104,4 @@ Kolmogorov complexity（柯尔莫哥洛夫复杂度）用来衡量一个对象�
 
 在一个封闭系统中，我们可以发现一个很有趣的现象，熵在从小变大，而复杂性则从小变大再变小。这个现象似乎还没有被很好的解释。
 
-扩展阅读： <https://scottaaronson.blog/?p=762>
+[扩展阅读](https://scottaaronson.blog/?p=762)

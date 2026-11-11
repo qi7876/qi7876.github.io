@@ -1,6 +1,7 @@
 ---
 title: Coding Agent Guide
 published: 2026-01-13
+updated: 2026-09-23
 ---
 
 **2026-09-23 Update**：按照 codex cli 0.156.0 版本更新了一些内容
@@ -74,7 +75,7 @@ npm install -g @openai/codex
 
 首先，我们需要一个能接入到 Codex 的 API Key。这里对模型没有限制，可以使用 gpt 系列，也能使用其他开源模型。但考虑到 Codex 逆向出来的 gpt 价格如此之低，我仍然强烈推荐你直接使用 gpt。
 
-对于中转站，我推荐 ikuncode，低价且稳定，aff 链接：<https://api.ikuncode.cc/register?aff=wAM2>
+对于中转站，我推荐 ikuncode，低价且稳定，[aff 链接](https://api.ikuncode.cc/register?aff=wAM2)
 
 如果你也想使用这个中转站，可以考虑点击我的 aff 链接给我一些邀请奖励。
 

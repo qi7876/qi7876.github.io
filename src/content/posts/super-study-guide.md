@@ -89,12 +89,12 @@ encoder-only 中最出名的是 BERT，其 pretrain 策略影响很大：
 首先是不同的 sparse attention：
 
 1. reformer：只计算相似 token 间的 attention，这里又使用了 LSH 来寻找相似 token，复杂度降至$O(N \log{N})$
-1. longformer：对 attention map 下手，部分 token 为 global，可以被所有 token 看到同时看到所有 token，其余 token 使用 sliding window attention，只能看到局部的 token，还有可选的 dilated sliding window，每隔几个 token 看一个 token
+2. longformer：对 attention map 下手，部分 token 为 global，可以被所有 token 看到同时看到所有 token，其余 token 使用 sliding window attention，只能看到局部的 token，还有可选的 dilated sliding window，每隔几个 token 看一个 token
 
 然后是 low rank attention，sparse attention 直接让每个 token 只 attend 部分 token，而 low rank attention 选择使用低秩结构近似完整的 attention：
 
 1. linformer：为 KV 矩阵加入低秩矩阵以降低复杂度
-1. performer：利用 kernel trick 降低 attention 计算复杂度
+2. performer：利用 kernel trick 降低 attention 计算复杂度
 
 ### Hardware optimization
 
@@ -119,15 +119,15 @@ pretraining 让模型学习数据的 generalities，finetuning 让模型学习�
 finetuning 和 preference tuning 可以合称为 alignment，都包含在 post-training 中，post-training 的方向很多：
 
 1. Supervised fine-tuning / SFT
-1. Preference tuning / alignment optimization
-1. Reinforcement learning / RL-style post-training
-1. Reasoning-oriented post-training
-1. Distillation / teacher-student training
-1. Domain adaptation / continual fine-tuning
-1. Tool-use / agentic training
-1. Safety / refusal / policy behavior training
-1. Long-context / memory / retrieval-oriented training
-1. Efficient adaptation: LoRA, QLoRA, adapters, prompt tuning
+2. Preference tuning / alignment optimization
+3. Reinforcement learning / RL-style post-training
+4. Reasoning-oriented post-training
+5. Distillation / teacher-student training
+6. Domain adaptation / continual fine-tuning
+7. Tool-use / agentic training
+8. Safety / refusal / policy behavior training
+9. Long-context / memory / retrieval-oriented training
+10. Efficient adaptation: LoRA, QLoRA, adapters, prompt tuning
 
 然后是 emergent abilities，随着 model size 的增长，模型能力会在一个临界点后显著提高
 
@@ -165,7 +165,7 @@ context window 和 context length 也需要了解一下，前者是 LLM 的最�
 
 接着是 ToT，树状的去搜索答案，说实话没见过真正的应用，只能说有启发意义
 
-最后是 ReAct，将 Thought、Action、Observation 交替进行从而提高模型能力，这是后续 agent 发展的基石理论。有趣的是，相近的但适用于人类的决策模型早在 1970s 就出现了：[Wiki pedia OODA Loop](https://en.wikipedia.org/wiki/OODA_loop)，我在 Anthropic 的一个 leader 的 blog 中也看到其在使用这个决策模型，所以也写进了自己的 blog 里。
+最后是 ReAct，将 Thought、Action、Observation 交替进行从而提高模型能力，这是后续 agent 发展的基石理论。有趣的是，相近的但适用于人类的决策模型早在 1970s 就出现了：[Wiki pedia OODA Loop](https://en.wikipedia.org/wiki/OODA_loop)，我在 Anthropic 的一个 leader 的 blog 中也看到其在使用这个决策模型。
 
 prompt 也存在安全问题，比如 prompt injection attack，以及 model hallucination。
 
@@ -186,3 +186,7 @@ preference tuning 用来让模型生成更好的、更贴近我们 preference �
 ### Model compression
 
 模型压缩主要有两条路：蒸馏和量化。这块就不再细讲了。
+
+## nanochat
+
+可以通过 [nanochat](https://github.com/karpathy/nanochat) 这个项目来实践一下我们学习到的知识。
