@@ -164,7 +164,7 @@ title = false
 
 安装和配置完成后，我们就可以在项目中使用 Codex 了，随意以一个项目为例，我们运行命令进入 Codex。
 
-![](./assets/coding-agent-guide/Pasted image 20260310114517.png)
+![](./assets/coding-agent-guide/20260310-114517.png)
 
 在首次进入一个项目时，Codex 会让我们确定一些基础的权限，对于有 version control 的项目，可以直接给予 Codex 编辑和运行部分命令的权限，运行其他命令仍然需要你手动同意。当然，为了最高的权限控制，你也可以让 Codex 的每次修改文件和运行命令都要经过你的同意。
 
